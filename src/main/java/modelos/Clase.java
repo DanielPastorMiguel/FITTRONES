@@ -1,5 +1,6 @@
 package modelos;
 
+import modelos.Usuarios.IntSuscriptor;
 import java.util.HashMap;
 
 

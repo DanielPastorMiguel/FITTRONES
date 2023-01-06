@@ -1,5 +1,6 @@
 package modelos;
 
+import modelos.Usuarios.Socio;
 import java.util.HashMap;
 
 /**

@@ -1,5 +1,7 @@
 package modelos;
 
+import modelos.Usuarios.IntCliente;
+
 /**
  * @author Daniel
  * @version 1.0
