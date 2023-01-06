@@ -1,5 +1,7 @@
 package modelos;
 
+import java.util.List;
+
 /**
  * @author Daniel
  * @version 1.0
@@ -7,7 +9,7 @@ package modelos;
  */
 public class Rutina {
 
-	private ArrayList ejercicios;
+	private List ejercicios;
 
 	public Rutina(){
 

@@ -1,5 +1,7 @@
 package modelos;
 
+import java.util.List;
+
 /**
  * @author Daniel
  * @version 1.0
@@ -11,6 +13,6 @@ public interface IntEstrategiaOrdenadoActividades {
 	 * 
 	 * @param actividades
 	 */
-	public ArrayList ordenar(ArrayList actividades);
+	public List ordenar(List actividades);
 
 }

@@ -1,5 +1,7 @@
 package modelos;
 
+import java.util.List;
+
 /**
  * @author Daniel
  * @version 1.0
@@ -7,9 +9,9 @@ package modelos;
  */
 public interface FabricaRutina {
 
-	public Rutina m_Rutina;
-	public Monitor m_Monitor;
+	/*public Rutina m_Rutina;
+	public Monitor m_Monitor;*/
 
-	public ArrayList crearEjercicios();
+	public List crearEjercicios();
 
 }

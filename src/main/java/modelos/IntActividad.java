@@ -7,7 +7,8 @@ package modelos;
  */
 public interface IntActividad {
 
-	private int aforo;
+    /*
+    private int aforo;
 	private Enum sala;
-
+     */
 }

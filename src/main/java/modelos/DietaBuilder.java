@@ -7,7 +7,7 @@ package modelos;
  */
 public interface DietaBuilder {
 
-	public Dieta m_Dieta;
+	//public Dieta m_Dieta;
 
 	public void crearDietaDomingo();
 

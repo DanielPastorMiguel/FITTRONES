@@ -1,3 +1,5 @@
+package modelos;
+
 
 
 /**
@@ -7,9 +9,9 @@
  */
 public interface Descuento {
 
-	public double porcentaje;
+	/*public double porcentaje;
 	public String tipo;
-	public Socio m_Socio;
+	public Socio m_Socio;*/
 
 	/**
 	 * 

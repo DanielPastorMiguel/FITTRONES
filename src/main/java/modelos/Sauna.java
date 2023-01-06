@@ -1,5 +1,7 @@
 package modelos;
 
+import java.util.HashMap;
+
 /**
  * @author Daniel
  * @version 1.0

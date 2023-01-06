@@ -1,5 +1,7 @@
 package modelos;
 
+import java.util.List;
+
 
 
 /**
@@ -31,7 +33,7 @@ public class Aplicacion {
 
 	}
 
-	public ArrayList ejecutarEstrategiaOrdenadoActividades(){
+	public List ejecutarEstrategiaOrdenadoActividades(){
 		return null;
 	}
 

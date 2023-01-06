@@ -1,5 +1,7 @@
 package modelos;
 
+import java.util.List;
+
 /**
  * @author Daniel
  * @version 1.0
@@ -18,7 +20,7 @@ public class OrdenarDia implements IntEstrategiaOrdenadoActividades {
 	 * 
 	 * @param actividades
 	 */
-	public ArrayList ordenar(ArrayList actividades){
+	public List ordenar(List actividades){
 		return null;
 	}
 }//end OrdenarDia

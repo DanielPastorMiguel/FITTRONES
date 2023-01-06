@@ -1,5 +1,7 @@
 package modelos;
 
+import java.util.List;
+
 /**
  * @author Daniel
  * @version 1.0
@@ -14,7 +16,7 @@ public class FactoriaPrincipiante implements FabricaRutina {
 	public void finalize() throws Throwable {
 
 	}
-	public ArrayList crearEjercicios(){
+	public List crearEjercicios(){
 		return null;
 	}
 }//end FactoriaPrincipiante

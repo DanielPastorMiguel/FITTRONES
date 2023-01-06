@@ -1,5 +1,7 @@
 package modelos;
 
+import java.util.Date;
+
 /**
  * @author Daniel
  * @version 1.0
@@ -11,7 +13,7 @@ public class Factura {
 	private String concepto;
 	private int descuento;
 	private int dni;
-	private DateTime fecha;
+	private Date fecha;
 	private int nombre;
 	private int precio;
 	public Aplicacion m_Aplicacion;

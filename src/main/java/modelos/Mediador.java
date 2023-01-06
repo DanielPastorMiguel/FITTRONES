@@ -7,7 +7,7 @@ package modelos;
  */
 public interface Mediador {
 
-	public ComponenteInterfaz m_ComponenteInterfaz;
+	//public ComponenteInterfaz m_ComponenteInterfaz;
 
 	/**
 	 * 

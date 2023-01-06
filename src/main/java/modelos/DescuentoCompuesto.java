@@ -1,5 +1,7 @@
 package modelos;
 
+import java.util.List;
+
 
 
 /**
@@ -9,7 +11,7 @@ package modelos;
  */
 public class DescuentoCompuesto implements Descuento {
 
-	private ArrayList descuentos;
+	private List descuentos;
 
 	public DescuentoCompuesto(){
 
