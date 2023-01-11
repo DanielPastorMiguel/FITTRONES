@@ -1,5 +1,7 @@
 package modelos.AlquilerState;
 
+import modelos.AlquilerDecorator.AlquilerPista;
+
 /**
  * @author Daniel
  * @version 1.0
@@ -7,6 +9,10 @@ package modelos.AlquilerState;
  */
 public interface IntEstadoPista {
 
-	public void alquilarPista();
+        /**
+         * Modifica el estado de la pista
+         * @param pista 
+         */
+	public void alquilarPista(AlquilerPista pista);
 
 }

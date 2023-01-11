@@ -1,8 +1,8 @@
 package modelos.AlquilerDecorator;
 
 import java.util.HashMap;
-import modelos.Usuarios.Cliente;
 import modelos.AlquilerState.IntEstadoPista;
+import modelos.Usuarios.Cliente;
 import modelos.Usuarios.Socio;
 
 /**
@@ -12,24 +12,119 @@ import modelos.Usuarios.Socio;
  */
 public class AlquilerPista {
 
-	private HashMap alquilerJueves;
-	private HashMap alquilerLunes;
-	private HashMap alquilerMartes;
-	private HashMap alquilerMiercoles;
-	private HashMap alquilerViernes;
-	private String complementos;
-	private int numPista;
-	private int precio;
-	private Enum tipo;
-	public IntEstadoPista m_IntEstadoPista;
-	public Cliente m_Cliente;
-	public Socio m_Socio;
+    private HashMap alquilerLunes;
+    private HashMap alquilerMartes;
+    private HashMap alquilerMiercoles;
+    private HashMap alquilerJueves;
+    private HashMap alquilerViernes;
+    private String complementos;
+    private int numPista;
+    private int precio;
+    private Enum tipo;
+    public IntEstadoPista estadoPista;
+    public Cliente cliente;
+    public Socio socio;
 
-	public AlquilerPista(){
+    public AlquilerPista() {
 
-	}
+    }
 
-	public void finalize() throws Throwable {
 
-	}
+    public HashMap getAlquilerLunes() {
+        return alquilerLunes;
+    }
+
+    public void setAlquilerLunes(HashMap alquilerLunes) {
+        this.alquilerLunes = alquilerLunes;
+    }
+
+    public HashMap getAlquilerMartes() {
+        return alquilerMartes;
+    }
+
+    public void setAlquilerMartes(HashMap alquilerMartes) {
+        this.alquilerMartes = alquilerMartes;
+    }
+
+    public HashMap getAlquilerMiercoles() {
+        return alquilerMiercoles;
+    }
+
+    public void setAlquilerMiercoles(HashMap alquilerMiercoles) {
+        this.alquilerMiercoles = alquilerMiercoles;
+    }
+
+    public HashMap getAlquilerJueves() {
+        return alquilerJueves;
+    }
+
+    public void setAlquilerJueves(HashMap alquilerJueves) {
+        this.alquilerJueves = alquilerJueves;
+    }
+
+    public HashMap getAlquilerViernes() {
+        return alquilerViernes;
+    }
+
+    public void setAlquilerViernes(HashMap alquilerViernes) {
+        this.alquilerViernes = alquilerViernes;
+    }
+
+    public String getComplementos() {
+        return complementos;
+    }
+
+    public void setComplementos(String complementos) {
+        this.complementos = complementos;
+    }
+
+    public int getNumPista() {
+        return numPista;
+    }
+
+    public void setNumPista(int numPista) {
+        this.numPista = numPista;
+    }
+
+    public int getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(int precio) {
+        this.precio = precio;
+    }
+
+    public Enum getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(Enum tipo) {
+        this.tipo = tipo;
+    }
+
+    public IntEstadoPista getEstadoPista() {
+        return estadoPista;
+    }
+
+    public void setEstadoPista(IntEstadoPista estadoPista) {
+        this.estadoPista = estadoPista;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Socio getSocio() {
+        return socio;
+    }
+
+    public void setSocio(Socio socio) {
+        this.socio = socio;
+    }
+    
+    
 }//end AlquilerPista

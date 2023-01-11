@@ -5,28 +5,27 @@ package modelos.DescuentosComposite;
  * @version 1.0
  * @created 06-ene.-2023 17:48:11
  */
-public class DescuentoMiercoles implements Descuento {
+public class DescuentoMiercoles extends Descuento {
 
-	public DescuentoMiercoles(){
+    public DescuentoMiercoles(double porcentajeDesccuento, String tipoDescuento) {
+        super(porcentajeDesccuento, tipoDescuento);
+    }
 
-	}
+    @Override
+    public void añadirDescuento(Descuento descuento) {
+    }
 
-	public void finalize() throws Throwable {
+    @Override
+    public void eliminarDescuento(Descuento descuento) {
+    }
 
-	}
-	/**
-	 * 
-	 * @param descuento
-	 */
-	public void añadirDescuento(Descuento descuento){
+    @Override
+    public String getDescripcion() {
+        return " Descuento Miércoles";
+    }
 
-	}
-
-	/**
-	 * 
-	 * @param descuento
-	 */
-	public void eliminarDescuento(Descuento descuento){
-
-	}
+    @Override
+    public int getAllPorcentajeDescuentos() {
+        return 5;
+    }
 }//end DescuentoMiercoles
