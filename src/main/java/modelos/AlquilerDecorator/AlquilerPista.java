@@ -19,16 +19,29 @@ public class AlquilerPista {
     private HashMap alquilerViernes;
     private String complementos;
     private int numPista;
-    private int precio;
-    private Enum tipo;
+    private double precio;
+    private String descripcion;
     public IntEstadoPista estadoPista;
     public Cliente cliente;
     public Socio socio;
 
-    public AlquilerPista() {
-
+    public AlquilerPista(HashMap alquilerLunes, HashMap alquilerMartes, HashMap alquilerMiercoles, HashMap alquilerJueves, HashMap alquilerViernes, String complementos, int numPista, String descripcion, IntEstadoPista estadoPista, Cliente cliente, Socio socio) {
+        this.alquilerLunes = alquilerLunes;
+        this.alquilerMartes = alquilerMartes;
+        this.alquilerMiercoles = alquilerMiercoles;
+        this.alquilerJueves = alquilerJueves;
+        this.alquilerViernes = alquilerViernes;
+        this.complementos = complementos;
+        this.numPista = numPista;
+        this.precio = 10;
+        this.descripcion = descripcion; //Pista padel o Pista tenis o Pista futbol...
+        this.estadoPista = estadoPista;
+        this.cliente = cliente;
+        this.socio = socio;
     }
 
+    public AlquilerPista() {
+    }
 
     public HashMap getAlquilerLunes() {
         return alquilerLunes;
@@ -86,20 +99,20 @@ public class AlquilerPista {
         this.numPista = numPista;
     }
 
-    public int getPrecio() {
+    public double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(int precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
 
-    public Enum getTipo() {
-        return tipo;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setTipo(Enum tipo) {
-        this.tipo = tipo;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public IntEstadoPista getEstadoPista() {
@@ -125,6 +138,5 @@ public class AlquilerPista {
     public void setSocio(Socio socio) {
         this.socio = socio;
     }
-    
-    
+
 }//end AlquilerPista

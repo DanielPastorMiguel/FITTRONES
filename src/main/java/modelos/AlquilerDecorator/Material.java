@@ -7,11 +7,18 @@ package modelos.AlquilerDecorator;
  */
 public class Material extends AlquilerPistaDecorador {
 
-	public Material(){
+    public Material(AlquilerPista alquilerPista) {
+        super(alquilerPista);
+    }
 
-	}
+    @Override
+    public String getDescripcion() {
+        return alquilerPista.getDescripcion() + ", con material";
+    }
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
+    @Override
+    public double getPrecio() {
+        return alquilerPista.getPrecio() + 3;
+    }
+
 }//end Material

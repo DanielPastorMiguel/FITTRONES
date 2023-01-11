@@ -7,11 +7,20 @@ package modelos.AlquilerDecorator;
  */
 public class Luces extends AlquilerPistaDecorador {
 
-	public Luces(){
+    public Luces(AlquilerPista alquilerPista) {
+        super(alquilerPista);
+    }
 
-	}
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
+    @Override
+    public String getDescripcion() {
+        return alquilerPista.getDescripcion() + ", con luces";
+    }
+
+    @Override
+    public double getPrecio() {
+        return alquilerPista.getPrecio() + 2.50;
+    }
+
+
 }//end Luces
