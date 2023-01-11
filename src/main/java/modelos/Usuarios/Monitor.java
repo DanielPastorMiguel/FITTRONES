@@ -1,6 +1,7 @@
 package modelos.Usuarios;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import modelos.Actividad;
 import modelos.DietaBuilder.Dieta;
@@ -17,14 +18,14 @@ public class Monitor extends Empleado {
     private Actividad actividad;
     private DietaBuilder dietaBuilder;
 
-    public Monitor(Actividad actividad, DietaBuilder dietaBuilder) {
-        this.listaSocios = new ArrayList<>();
+    public Monitor(List<Socio> listaSocios, Actividad actividad, DietaBuilder dietaBuilder, int codEmpleado, Enum turno, String contrasena, String correo, String dni, Date fechaNacimiento, String nombre, String telefono) {
+        super(codEmpleado, turno, contrasena, correo, dni, fechaNacimiento, nombre, telefono);
+        this.listaSocios = listaSocios;
         this.actividad = actividad;
         this.dietaBuilder = dietaBuilder;
     }
 
-    public Monitor() {
-    }
+   
 
     public void añadirSocio(Socio s) {
         listaSocios.add(s);

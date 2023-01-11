@@ -1,5 +1,6 @@
 package modelos.Usuarios;
 
+import java.util.Date;
 import modelos.Clase;
 
 /**
@@ -9,13 +10,18 @@ import modelos.Clase;
  */
 public class Profesor extends Empleado {
 
-	public Clase clase;
+    public Clase clase;
 
-	public Profesor(){
+    public Profesor(int codEmpleado, Enum turno, String contrasena, String correo, String dni, Date fechaNacimiento, String nombre, String telefono) {
+        super(codEmpleado, turno, contrasena, correo, dni, fechaNacimiento, nombre, telefono);
+    }
 
-	}
+    public Clase getClase() {
+        return clase;
+    }
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
+    public void setClase(Clase clase) {
+        this.clase = clase;
+    }
+
 }//end Profesor

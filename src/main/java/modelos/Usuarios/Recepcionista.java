@@ -1,5 +1,6 @@
 package modelos.Usuarios;
 
+import java.util.Date;
 import modelos.ProxyProteccionClientes;
 
 /**
@@ -9,16 +10,18 @@ import modelos.ProxyProteccionClientes;
  */
 public class Recepcionista extends Empleado implements IntCliente {
 
-	public ProxyProteccionClientes proxyProteccionClientes;
+    public ProxyProteccionClientes proxyProteccionClientes;
 
-	public Recepcionista(){
+    public Recepcionista(ProxyProteccionClientes proxyProteccionClientes, int codEmpleado, Enum turno, String contrasena, String correo, String dni, Date fechaNacimiento, String nombre, String telefono) {
+        super(codEmpleado, turno, contrasena, correo, dni, fechaNacimiento, nombre, telefono);
+        this.proxyProteccionClientes = proxyProteccionClientes;
+    }
 
-	}
+    public void finalize() throws Throwable {
+        super.finalize();
+    }
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
-	public void getInformacionCliente(){
+    public void getInformacionCliente() {
 
-	}
+    }
 }//end Recepcionista

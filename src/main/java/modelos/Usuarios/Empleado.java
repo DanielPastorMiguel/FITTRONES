@@ -1,5 +1,7 @@
 package modelos.Usuarios;
 
+import java.util.Date;
+
 /**
  * @author Daniel
  * @version 1.0
@@ -7,14 +9,16 @@ package modelos.Usuarios;
  */
 public class Empleado extends Usuario {
 
-	private int codEmpleado;
-	private Enum turno;
+    private int codEmpleado;
+    private Enum turno;
 
-	public Empleado(){
+    public Empleado(int codEmpleado, Enum turno, String contrasena, String correo, String dni, Date fechaNacimiento, String nombre, String telefono) {
+        super(contrasena, correo, dni, fechaNacimiento, nombre, telefono);
+        this.codEmpleado = codEmpleado;
+        this.turno = turno;
+    }
 
-	}
-
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
+    public void finalize() throws Throwable {
+        super.finalize();
+    }
 }//end Empleado

@@ -1,8 +1,7 @@
 package modelos.Usuarios;
 
+import java.util.Date;
 import modelos.ProxyProteccionClientes;
-
-
 
 /**
  * @author Daniel
@@ -11,13 +10,14 @@ import modelos.ProxyProteccionClientes;
  */
 public class Cliente extends Usuario implements IntCliente {
 
-	public ProxyProteccionClientes proxyProteccionClientes;
+    public ProxyProteccionClientes proxyProteccionClientes;
 
-	public Cliente(){
+    public Cliente(String contrasena, String correo, String dni, Date fechaNacimiento, String nombre, String telefono) {
+        super(contrasena, correo, dni, fechaNacimiento, nombre, telefono);
 
-	}
+    }
 
-	public void getInformacionCliente(){
+    public void getInformacionCliente() {
 
-	}
+    }
 }//end Cliente

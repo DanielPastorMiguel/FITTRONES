@@ -13,9 +13,6 @@ public class ProxyProteccionClientes implements IntCliente {
 
 	}
 
-	public void finalize() throws Throwable {
-
-	}
 	public void getInformacionCliente(){
 
 	}

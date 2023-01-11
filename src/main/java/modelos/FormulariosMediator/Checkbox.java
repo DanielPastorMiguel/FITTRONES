@@ -13,9 +13,7 @@ public class Checkbox extends ComponenteInterfaz {
 
 	}
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
+
 	public void check(){
 
 	}
