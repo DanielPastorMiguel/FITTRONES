@@ -16,7 +16,7 @@ public class FactoriaAvanzado implements FabricaRutina {
 	public void finalize() throws Throwable {
 
 	}
-	public List crearEjercicios(){
+	public List<Ejercicio> crearEjercicios(){
 		return null;
 	}
 }//end FactoriaAvanzado

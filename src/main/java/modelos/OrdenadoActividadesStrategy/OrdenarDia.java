@@ -1,26 +1,36 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package modelos.OrdenadoActividadesStrategy;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import modelos.Actividad;
 
 /**
- * @author Daniel
- * @version 1.0
- * @created 06-ene.-2023 17:48:31
+ *
+ * @author Octavian
  */
-public class OrdenarDia implements IntEstrategiaOrdenadoActividades {
+public class OrdenarDia implements IntEstrategiaOrdenadoActividades{
 
-	public OrdenarDia(){
+    @Override
+    public void ordenarActividades(List<Actividad> actividades) {
+        //Comparador para ordenar los alumnos por universidad
+        Comparator diaComp = new Comparator() {
 
-	}
+            @Override
+            public int compare(Object a1, Object a2) {
+                Actividad act1 = (Actividad) a1;
+                Actividad act2 = (Actividad) a2;
 
-	public void finalize() throws Throwable {
+                return String.valueOf(act1.getDia()).compareTo(String.valueOf(act2.getDia()));
+            }
+        };
 
-	}
-	/**
-	 * 
-	 * @param actividades
-	 */
-	public List ordenar(List actividades){
-		return null;
-	}
-}//end OrdenarDia
+        //Ordenamos los objetos del array por el atributo universidad
+        Collections.sort(actividades, diaComp);
+    }
+    
+}

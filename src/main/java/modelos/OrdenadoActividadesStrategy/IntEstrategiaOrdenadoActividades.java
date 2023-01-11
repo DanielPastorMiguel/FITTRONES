@@ -1,6 +1,7 @@
 package modelos.OrdenadoActividadesStrategy;
 
 import java.util.List;
+import modelos.Actividad;
 
 /**
  * @author Daniel
@@ -13,6 +14,6 @@ public interface IntEstrategiaOrdenadoActividades {
 	 * 
 	 * @param actividades
 	 */
-	public List ordenar(List actividades);
+	public void ordenarActividades(List<Actividad> actividades);
 
 }

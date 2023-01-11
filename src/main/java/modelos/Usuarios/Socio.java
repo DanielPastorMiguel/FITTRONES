@@ -1,15 +1,10 @@
 package modelos.Usuarios;
 
 import modelos.Actividad;
-import modelos.Actividad;
-import modelos.Clase;
 import modelos.Clase;
 import modelos.DietaBuilder.Dieta;
 import modelos.ProxyProteccionClientes;
-import modelos.ProxyProteccionClientes;
 import modelos.FabricaRutina.Rutina;
-import modelos.FabricaRutina.Rutina;
-import modelos.Usuarios.Usuario;
 
 /**
  * @author Daniel
@@ -19,11 +14,11 @@ import modelos.Usuarios.Usuario;
 public class Socio extends Usuario implements IntCliente, IntSuscriptor {
 
 	private int codSocio;
-	public Clase m_Clase;
-	public Dieta m_Dieta;
-	public Rutina m_Rutina;
-	public Actividad m_Actividad;
-	public ProxyProteccionClientes m_ProxyProteccionClientes;
+	public Clase clase;
+	public Dieta dieta;
+	public Rutina rutina;
+	public Actividad actividad;
+	public ProxyProteccionClientes proxyProteccionClientes;
 
 	public Socio(){
 

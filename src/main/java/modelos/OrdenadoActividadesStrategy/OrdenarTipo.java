@@ -1,6 +1,9 @@
 package modelos.OrdenadoActividadesStrategy;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import modelos.Actividad;
 
 /**
  * @author Daniel
@@ -9,18 +12,22 @@ import java.util.List;
  */
 public class OrdenarTipo implements IntEstrategiaOrdenadoActividades {
 
-	public OrdenarTipo(){
 
-	}
+    @Override
+    public void ordenarActividades(List<Actividad> actividades) {
+        //Comparador para ordenar los alumnos por universidad
+        Comparator TipoComp = new Comparator() {
 
-	public void finalize() throws Throwable {
+            @Override
+            public int compare(Object a1, Object a2) {
+                Actividad act1 = (Actividad) a1;
+                Actividad act2 = (Actividad) a2;
 
-	}
-	/**
-	 * 
-	 * @param actividades
-	 */
-	public List ordenar(List actividades){
-		return null;
-	}
+                return act1.getTipo().compareTo(act2.getTipo());
+            }
+        };
+
+        //Ordenamos los objetos del array por el atributo universidad
+        Collections.sort(actividades, TipoComp);
+    }
 }//end OrdenarTipo

@@ -9,7 +9,7 @@ import modelos.Clase;
  */
 public class Profesor extends Empleado {
 
-	public Clase m_Clase;
+	public Clase clase;
 
 	public Profesor(){
 

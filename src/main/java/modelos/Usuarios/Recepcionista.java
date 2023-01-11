@@ -1,7 +1,6 @@
 package modelos.Usuarios;
 
 import modelos.ProxyProteccionClientes;
-import modelos.Usuarios.Empleado;
 
 /**
  * @author Daniel
@@ -10,7 +9,7 @@ import modelos.Usuarios.Empleado;
  */
 public class Recepcionista extends Empleado implements IntCliente {
 
-	public ProxyProteccionClientes m_ProxyProteccionClientes;
+	public ProxyProteccionClientes proxyProteccionClientes;
 
 	public Recepcionista(){
 

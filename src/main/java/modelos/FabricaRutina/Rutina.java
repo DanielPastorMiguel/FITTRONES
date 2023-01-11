@@ -9,13 +9,11 @@ import java.util.List;
  */
 public class Rutina {
 
-	private List ejercicios;
+	private List<Ejercicio> ejercicios;
 
 	public Rutina(){
 
 	}
 
-	public void finalize() throws Throwable {
 
-	}
 }//end Rutina

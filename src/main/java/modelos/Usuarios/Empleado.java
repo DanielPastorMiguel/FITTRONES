@@ -1,7 +1,5 @@
 package modelos.Usuarios;
 
-import modelos.Usuarios.Usuario;
-
 /**
  * @author Daniel
  * @version 1.0

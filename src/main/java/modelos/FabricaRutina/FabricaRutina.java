@@ -12,6 +12,6 @@ public interface FabricaRutina {
 	/*public Rutina m_Rutina;
 	public Monitor m_Monitor;*/
 
-	public List crearEjercicios();
+	public List<Ejercicio> crearEjercicios();
 
 }

@@ -1,6 +1,9 @@
 package modelos.OrdenadoActividadesStrategy;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import modelos.Actividad;
 
 /**
  * @author Daniel
@@ -9,18 +12,21 @@ import java.util.List;
  */
 public class OrdenarHorario implements IntEstrategiaOrdenadoActividades {
 
-	public OrdenarHorario(){
+    @Override
+    public void ordenarActividades(List<Actividad> actividades) {
+        //Comparador para ordenar los alumnos por universidad
+        Comparator horarioComp = new Comparator() {
 
-	}
+            @Override
+            public int compare(Object a1, Object a2) {
+                Actividad act1 = (Actividad) a1;
+                Actividad act2 = (Actividad) a2;
 
-	public void finalize() throws Throwable {
+                return String.valueOf(act1.getHorario()).compareTo(String.valueOf(act2.getHorario()));
+            }
+        };
 
-	}
-	/**
-	 * 
-	 * @param actividades
-	 */
-	public List ordenar(List actividades){
-		return null;
-	}
+        //Ordenamos los objetos del array por el atributo universidad
+        Collections.sort(actividades, horarioComp);
+    }
 }//end OrdenarHorario

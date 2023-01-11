@@ -11,15 +11,12 @@ import modelos.ProxyProteccionClientes;
  */
 public class Cliente extends Usuario implements IntCliente {
 
-	public ProxyProteccionClientes m_ProxyProteccionClientes;
+	public ProxyProteccionClientes proxyProteccionClientes;
 
 	public Cliente(){
 
 	}
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
 	public void getInformacionCliente(){
 
 	}
