@@ -5,44 +5,110 @@ package modelos.DietaBuilder;
  * @version 1.0
  * @created 06-ene.-2023 17:48:13
  */
-public class DietaVolumenBuilder implements DietaBuilder {
+public class DietaVolumenBuilder extends DietaBuilder {
 
-	public DietaVolumenBuilder(){
+ 
+    @Override
+    public void crearMenuLunes() {
+        Menu menu = new Menu();
+        /*
+        Crear platos para el menu de desayuno comida merienda y cena
+        Cada uno de los platos tiene unas calorias y nombre
+         */
+        dieta.setTipoDieta("Volumen");
+        
+        menu.setDesayuno(crearPlatoDesayuno("Volumen"));
+        menu.setComida(crearPlatoComida("Volumen"));
+        menu.setMerienda(crearPlatoMerienda("Volumen"));
+        menu.setCena(crearPlatoCena("Volumen"));
+        
+        dieta.setLunes(menu);
+    }
 
-	}
+    @Override
+    public void crearMenuMartes() {
+        Menu menu = new Menu();
+        
+        dieta.setTipoDieta("Volumen");
+        
+        menu.setDesayuno(crearPlatoDesayuno("Volumen"));
+        menu.setComida(crearPlatoComida("Volumen"));
+        menu.setMerienda(crearPlatoMerienda("Volumen"));
+        menu.setCena(crearPlatoCena("Volumen"));
 
-	public void finalize() throws Throwable {
+        dieta.setMartes(menu);
+    }
 
-	}
-	public void crearDietaDomingo(){
+    @Override
+    public void crearMenuMiercoles() {
+        Menu menu = new Menu();
+        
+        dieta.setTipoDieta("Volumen");
+        
+        menu.setDesayuno(crearPlatoDesayuno("Volumen"));
+        menu.setComida(crearPlatoComida("Volumen"));
+        menu.setMerienda(crearPlatoMerienda("Volumen"));
+        menu.setCena(crearPlatoCena("Volumen"));
 
-	}
+        dieta.setMiercoles(menu);
+    }
 
-	public void crearDietaJueves(){
+    @Override
+    public void crearMenuJueves() {
+        Menu menu = new Menu();
+        
+        dieta.setTipoDieta("Volumen");
+        
+        menu.setDesayuno(crearPlatoDesayuno("Volumen"));
+        menu.setComida(crearPlatoComida("Volumen"));
+        menu.setMerienda(crearPlatoMerienda("Volumen"));
+        menu.setCena(crearPlatoCena("Volumen"));
 
-	}
+        dieta.setJueves(menu);
+    }
 
-	public void crearDietaLunes(){
+    @Override
+    public void crearMenuViernes() {
+        Menu menu = new Menu();
+        
+        dieta.setTipoDieta("Volumen");
+        
+        menu.setDesayuno(crearPlatoDesayuno("Volumen"));
+        menu.setComida(crearPlatoComida("Volumen"));
+        menu.setMerienda(crearPlatoMerienda("Volumen"));
+        menu.setCena(crearPlatoCena("Volumen"));
 
-	}
+        dieta.setViernes(menu);
+    }
 
-	public void crearDietaMartes(){
+    @Override
+    public void crearMenuSabado() {
+       Menu menu = new Menu();
+        
+        dieta.setTipoDieta("Volumen");
+        
+        menu.setDesayuno(crearPlatoDesayuno("Volumen"));
+        menu.setComida(crearPlatoComida("Volumen"));
+        menu.setMerienda(crearPlatoMerienda("Volumen"));
+        menu.setCena(crearPlatoCena("Volumen"));
 
-	}
+        dieta.setSabado(menu);
+    }
 
-	public void crearDietaMiercoles(){
+    @Override
+    public void crearMenuDomingo() {
+       Menu menu = new Menu();
+        
+        dieta.setTipoDieta("Volumen");
+        
+        menu.setDesayuno(crearPlatoDesayuno("Volumen"));
+        menu.setComida(crearPlatoComida("Volumen"));
+        menu.setMerienda(crearPlatoMerienda("Volumen"));
+        menu.setCena(crearPlatoCena("Volumen"));
 
-	}
+        dieta.setDomingo(menu);
+    }
+    
 
-	public void crearDietaSabado(){
-
-	}
-
-	public void crearDietaViernes(){
-
-	}
-
-	public Dieta getDieta(){
-		return null;
-	}
+   
 }//end DietaVolumenBuilder

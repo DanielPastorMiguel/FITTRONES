@@ -5,44 +5,110 @@ package modelos.DietaBuilder;
  * @version 1.0
  * @created 06-ene.-2023 17:48:13
  */
-public class DietaDefinicionBuilder implements DietaBuilder {
+public class DietaDefinicionBuilder extends DietaBuilder {
 
-	public DietaDefinicionBuilder(){
 
-	}
+    @Override
+    public void crearMenuLunes() {
+        Menu menu = new Menu();
+        /*
+        Crear platos para el menu de desayuno comida merienda y cena
+        Cada uno de los platos tiene unas calorias y nombre
+         */
+        dieta.setTipoDieta("Definicion");
+        
+        menu.setDesayuno(crearPlatoDesayuno("definicion"));
+        menu.setComida(crearPlatoComida("definicion"));
+        menu.setMerienda(crearPlatoMerienda("definicion"));
+        menu.setCena(crearPlatoCena("definicion"));
+        
+        dieta.setLunes(menu);
+    }
 
-	public void finalize() throws Throwable {
+    @Override
+    public void crearMenuMartes() {
+        Menu menu = new Menu();
+        
+        dieta.setTipoDieta("Definicion");
+        
+        menu.setDesayuno(crearPlatoDesayuno("definicion"));
+        menu.setComida(crearPlatoComida("definicion"));
+        menu.setMerienda(crearPlatoMerienda("definicion"));
+        menu.setCena(crearPlatoCena("definicion"));
 
-	}
-	public void crearDietaDomingo(){
+        dieta.setMartes(menu);
+    }
 
-	}
+    @Override
+    public void crearMenuMiercoles() {
+        Menu menu = new Menu();
+        
+        dieta.setTipoDieta("Definicion");
+        
+        menu.setDesayuno(crearPlatoDesayuno("definicion"));
+        menu.setComida(crearPlatoComida("definicion"));
+        menu.setMerienda(crearPlatoMerienda("definicion"));
+        menu.setCena(crearPlatoCena("definicion"));
 
-	public void crearDietaJueves(){
+        dieta.setMiercoles(menu);
+    }
 
-	}
+    @Override
+    public void crearMenuJueves() {
+        Menu menu = new Menu();
+        
+        dieta.setTipoDieta("Definicion");
+        
+        menu.setDesayuno(crearPlatoDesayuno("definicion"));
+        menu.setComida(crearPlatoComida("definicion"));
+        menu.setMerienda(crearPlatoMerienda("definicion"));
+        menu.setCena(crearPlatoCena("definicion"));
 
-	public void crearDietaLunes(){
+        dieta.setJueves(menu);
+    }
 
-	}
+    @Override
+    public void crearMenuViernes() {
+        Menu menu = new Menu();
+        
+        dieta.setTipoDieta("Definicion");
+        
+        menu.setDesayuno(crearPlatoDesayuno("definicion"));
+        menu.setComida(crearPlatoComida("definicion"));
+        menu.setMerienda(crearPlatoMerienda("definicion"));
+        menu.setCena(crearPlatoCena("definicion"));
 
-	public void crearDietaMartes(){
+        dieta.setViernes(menu);
+    }
 
-	}
+    @Override
+    public void crearMenuSabado() {
+       Menu menu = new Menu();
+        
+        dieta.setTipoDieta("Definicion");
+        
+        menu.setDesayuno(crearPlatoDesayuno("definicion"));
+        menu.setComida(crearPlatoComida("definicion"));
+        menu.setMerienda(crearPlatoMerienda("definicion"));
+        menu.setCena(crearPlatoCena("definicion"));
 
-	public void crearDietaMiercoles(){
+        dieta.setSabado(menu);
+    }
 
-	}
+    @Override
+    public void crearMenuDomingo() {
+       Menu menu = new Menu();
+        
+        dieta.setTipoDieta("Definicion");
+        
+        menu.setDesayuno(crearPlatoDesayuno("definicion"));
+        menu.setComida(crearPlatoComida("definicion"));
+        menu.setMerienda(crearPlatoMerienda("definicion"));
+        menu.setCena(crearPlatoCena("definicion"));
 
-	public void crearDietaSabado(){
-
-	}
-
-	public void crearDietaViernes(){
-
-	}
-
-	public Dieta getDieta(){
-		return null;
-	}
-}//end DietaDefinicionBuilder
+        dieta.setDomingo(menu);
+    }
+    
+    
+        
+}//end Dieta"definicion"Builder

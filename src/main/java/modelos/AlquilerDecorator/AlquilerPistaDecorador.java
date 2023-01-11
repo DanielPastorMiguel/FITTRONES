@@ -28,7 +28,5 @@ public abstract class AlquilerPistaDecorador extends AlquilerPista {
     @Override
     public abstract double getPrecio();
     
-    
-
  
 }//end AlquilerPistaDecorador

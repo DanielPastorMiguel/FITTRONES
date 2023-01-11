@@ -1,6 +1,9 @@
 package modelos.Usuarios;
 
+import java.util.ArrayList;
+import java.util.List;
 import modelos.Actividad;
+import modelos.DietaBuilder.Dieta;
 import modelos.DietaBuilder.DietaBuilder;
 
 /**
@@ -10,18 +13,50 @@ import modelos.DietaBuilder.DietaBuilder;
  */
 public class Monitor extends Empleado {
 
-	public Socio m_Socio;
-	public Actividad m_Actividad;
-	public DietaBuilder m_DietaBuilder;
+    private List<Socio> listaSocios;
+    private Actividad actividad;
+    private DietaBuilder dietaBuilder;
 
-	public Monitor(){
+    public Monitor(Actividad actividad, DietaBuilder dietaBuilder) {
+        this.listaSocios = new ArrayList<>();
+        this.actividad = actividad;
+        this.dietaBuilder = dietaBuilder;
+    }
 
-	}
+    public Monitor() {
+    }
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
-	public void crearDieta(){
+    public void añadirSocio(Socio s) {
+        listaSocios.add(s);
+    }
 
-	}
+    public void eliminaSocio(Socio s) {
+        listaSocios.remove(s);
+    }
+
+    /**
+     * Establece el tipo de dietabuilder que se desea
+     *
+     * @param dietaBuilder
+     */
+    public void setDietaBuilder(DietaBuilder dietaBuilder) {
+        this.dietaBuilder = dietaBuilder;
+    }
+
+    public Dieta getListaDietas() {
+        return dietaBuilder.getDieta();
+    }
+
+    /**
+     * Crea la dieta
+     */
+    public void crearListaDietas() {
+        dietaBuilder.crearMenuLunes();
+        dietaBuilder.crearMenuMartes();
+        dietaBuilder.crearMenuMiercoles();
+        dietaBuilder.crearMenuJueves();
+        dietaBuilder.crearMenuViernes();
+        dietaBuilder.crearMenuSabado();
+        dietaBuilder.crearMenuDomingo();
+    }
 }//end Monitor

@@ -7,14 +7,36 @@ package modelos.DietaBuilder;
  */
 public class Plato {
 
-	private int calorias;
-	private String nombre;
+    private int calorias;
+    private String nombre;
 
-	public Plato(){
+    public Plato() {
+    }
 
-	}
+    public Plato(int calorias, String nombre) {
+        this.calorias = calorias;
+        this.nombre = nombre;
+    }
 
-	public void finalize() throws Throwable {
+    public int getCalorias() {
+        return calorias;
+    }
 
-	}
+    public void setCalorias(int calorias) {
+        this.calorias = calorias;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    @Override
+    public String toString() {
+        return "Plato{" + "calorias=" + calorias + ", nombre=" + nombre + '}';
+    }
+
 }//end Plato
