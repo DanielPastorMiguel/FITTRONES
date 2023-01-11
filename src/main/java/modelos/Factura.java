@@ -9,18 +9,28 @@ import java.util.Date;
  */
 public class Factura {
 
-	private int cif;
-	private String concepto;
-	private int descuento;
-	private int dni;
-	private Date fecha;
-	private int nombre;
-	private int precio;
-	public Aplicacion aplicacion;
+    private int cif;
+    private String concepto;
+    private int descuento;
+    private int dni;
+    private Date fecha;
+    private int nombre;
+    private int precio;
+    public Aplicacion aplicacion;
 
-	public Factura(){
+    public Factura() {
+    }
 
-	}
+    public Factura(int cif, String concepto, int descuento, int dni, Date fecha, int nombre, int precio, Aplicacion aplicacion) {
+        this.cif = cif;
+        this.concepto = concepto;
+        this.descuento = descuento;
+        this.dni = dni;
+        this.fecha = fecha;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.aplicacion = aplicacion;
+    }
 
     public int getCif() {
         return cif;
@@ -90,6 +100,5 @@ public class Factura {
     public String toString() {
         return "Factura{" + "cif=" + cif + ", concepto=" + concepto + ", descuento=" + descuento + ", dni=" + dni + ", fecha=" + fecha + ", nombre=" + nombre + ", precio=" + precio + ", aplicacion=" + aplicacion + '}';
     }
-
 
 }//end Factura

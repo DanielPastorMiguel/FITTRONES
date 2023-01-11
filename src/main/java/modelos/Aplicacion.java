@@ -16,19 +16,16 @@ import java.util.List;
 public class Aplicacion {
 
 	private Aplicacion instancia;
-	public IntEstrategiaOrdenadoActividades m_IntEstrategiaOrdenadoActividades;
-	public Usuario m_Usuario;
-	public AlquilerPista m_AlquilerPista;
-	public Aplicacion m_Aplicacion;
-	public Mediador m_Mediador;
+	public IntEstrategiaOrdenadoActividades intEstrategiaOrdenadoActividades;
+	public Usuario usuario;
+	public AlquilerPista alquilerPista;
+	public Aplicacion aplicacion;
+	public Mediador mediador;
 
 	public Aplicacion(){
 
 	}
 
-	public void finalize() throws Throwable {
-
-	}
 	public void alquilarPista(){
 
 	}

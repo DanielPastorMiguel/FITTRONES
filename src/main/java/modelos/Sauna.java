@@ -21,6 +21,15 @@ public class Sauna implements IntActividad {
 
     }
 
+    public Sauna(HashMap alquilerJueves, HashMap alquilerLunes, HashMap alquilerMartes, HashMap alquilerMiercoles, HashMap alquilerViernes, Socio socio) {
+        this.alquilerJueves = alquilerJueves;
+        this.alquilerLunes = alquilerLunes;
+        this.alquilerMartes = alquilerMartes;
+        this.alquilerMiercoles = alquilerMiercoles;
+        this.alquilerViernes = alquilerViernes;
+        this.socio = socio;
+    }
+
     public HashMap getAlquilerJueves() {
         return alquilerJueves;
     }
@@ -74,6 +83,4 @@ public class Sauna implements IntActividad {
         return "Sauna{" + "alquilerJueves=" + alquilerJueves + ", alquilerLunes=" + alquilerLunes + ", alquilerMartes=" + alquilerMartes + ", alquilerMiercoles=" + alquilerMiercoles + ", alquilerViernes=" + alquilerViernes + ", socio=" + socio + '}';
     }
 
-
-    
 }//end Sauna

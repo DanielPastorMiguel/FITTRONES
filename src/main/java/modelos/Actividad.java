@@ -16,6 +16,13 @@ public class Actividad implements IntActividad {
 
     }
 
+    public Actividad(Enum dia, int horario, int inscritos, Enum tipo) {
+        this.dia = dia;
+        this.horario = horario;
+        this.inscritos = inscritos;
+        this.tipo = tipo;
+    }
+
     public Enum getDia() {
         return dia;
     }

@@ -18,9 +18,20 @@ public class Clase {
     private Enum tipo;
     public IntSuscriptor intSuscriptor;
 
-    public Clase() {
-
+    public Clase(HashMap horario, int inscritos, Enum nivel, int numPista, int plazasMax, Enum tipo, IntSuscriptor intSuscriptor) {
+        this.horario = horario;
+        this.inscritos = inscritos;
+        this.nivel = nivel;
+        this.numPista = numPista;
+        this.plazasMax = plazasMax;
+        this.tipo = tipo;
+        this.intSuscriptor = intSuscriptor;
     }
+
+    public Clase() {
+    }
+
+   
 
     public HashMap getHorario() {
         return horario;
