@@ -10,24 +10,22 @@ import java.util.HashMap;
  */
 public class Sauna implements IntActividad {
 
-    private HashMap alquilerJueves;
     private HashMap alquilerLunes;
     private HashMap alquilerMartes;
     private HashMap alquilerMiercoles;
+    private HashMap alquilerJueves;
     private HashMap alquilerViernes;
-    public Socio socio; //creo que sobra
 
     public Sauna() {
 
     }
 
-    public Sauna(HashMap alquilerJueves, HashMap alquilerLunes, HashMap alquilerMartes, HashMap alquilerMiercoles, HashMap alquilerViernes, Socio socio) {
+    public Sauna(HashMap alquilerJueves, HashMap alquilerLunes, HashMap alquilerMartes, HashMap alquilerMiercoles, HashMap alquilerViernes) {
         this.alquilerJueves = alquilerJueves;
         this.alquilerLunes = alquilerLunes;
         this.alquilerMartes = alquilerMartes;
         this.alquilerMiercoles = alquilerMiercoles;
         this.alquilerViernes = alquilerViernes;
-        this.socio = socio;
     }
 
     public HashMap getAlquilerJueves() {
@@ -70,17 +68,9 @@ public class Sauna implements IntActividad {
         this.alquilerViernes = alquilerViernes;
     }
 
-    public Socio getSocio() {
-        return socio;
-    }
-
-    public void setSocio(Socio socio) {
-        this.socio = socio;
-    }
-
     @Override
     public String toString() {
-        return "Sauna{" + "alquilerJueves=" + alquilerJueves + ", alquilerLunes=" + alquilerLunes + ", alquilerMartes=" + alquilerMartes + ", alquilerMiercoles=" + alquilerMiercoles + ", alquilerViernes=" + alquilerViernes + ", socio=" + socio + '}';
+        return "Sauna{" + "alquilerJueves=" + alquilerJueves + ", alquilerLunes=" + alquilerLunes + ", alquilerMartes=" + alquilerMartes + ", alquilerMiercoles=" + alquilerMiercoles + ", alquilerViernes=" + alquilerViernes + '}';
     }
 
 }//end Sauna
