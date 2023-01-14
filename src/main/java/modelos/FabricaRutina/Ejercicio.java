@@ -7,21 +7,23 @@ package modelos.FabricaRutina;
  */
 public class Ejercicio {
 
-    private int nombre;
+    private String nombre;
     private int repeticiones;
     private int series;
     private Enum tipo;
-    public FabricaRutina fabricaRutina;
 
-    public Ejercicio() {
-
+    public Ejercicio(String nombre, int repeticiones, int series, Enum tipo) {
+        this.nombre = nombre;
+        this.repeticiones = repeticiones;
+        this.series = series;
+        this.tipo = tipo;
     }
 
-    public int getNombre() {
+    public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(int nombre) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
@@ -49,17 +51,9 @@ public class Ejercicio {
         this.tipo = tipo;
     }
 
-    public FabricaRutina getFabricaRutina() {
-        return fabricaRutina;
-    }
-
-    public void setFabricaRutina(FabricaRutina fabricaRutina) {
-        this.fabricaRutina = fabricaRutina;
-    }
-
     @Override
     public String toString() {
-        return "Ejercicio{" + "nombre=" + nombre + ", repeticiones=" + repeticiones + ", series=" + series + ", tipo=" + tipo + ", fabricaRutina=" + fabricaRutina + '}';
+        return "Ejercicio{" + "nombre=" + nombre + ", repeticiones=" + repeticiones + ", series=" + series + ", tipo=" + tipo + '}';
     }
 
 }//end Ejercicio

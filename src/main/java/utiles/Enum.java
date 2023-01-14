@@ -26,4 +26,8 @@ public class Enum {
         MAÑANA, TARDE;
     }
     
+    public enum Ejercicio {
+        EMPUJE, TIRON, PIERNA;
+    }
+    
 }
