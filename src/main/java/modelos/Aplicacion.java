@@ -55,6 +55,5 @@ public class Aplicacion {
 	 * @param estrategiaOrdenado
 	 */
 	public void setEstrategiaOrdenadoActividades(IntEstrategiaOrdenadoActividades estrategiaOrdenado){
-
 	}
 }//end Aplicacion
