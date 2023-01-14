@@ -8,9 +8,10 @@ package modelos;
 public class Actividad implements IntActividad {
 
     private Enum dia;
+    private Enum tipo;
+
     private int horario;
     private int inscritos;
-    private Enum tipo;
 
     public Actividad() {
 
