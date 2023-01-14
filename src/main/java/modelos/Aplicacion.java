@@ -16,11 +16,12 @@ import java.util.List;
 public class Aplicacion {
 
 	private Aplicacion instancia;
-	public IntEstrategiaOrdenadoActividades intEstrategiaOrdenadoActividades;
-	public Usuario usuario;
-	public AlquilerPista alquilerPista;
-	public Aplicacion aplicacion;
-	public Mediador mediador;
+	private IntEstrategiaOrdenadoActividades estrategiaOrdenadoActividades;
+	private Usuario usuario;
+	private AlquilerPista alquilerPista;
+	private Aplicacion aplicacion;
+	private Mediador mediador;
+        private List<Actividad> actividades;
 
 	public Aplicacion(){
 
@@ -55,6 +56,10 @@ public class Aplicacion {
 	 * @param estrategiaOrdenado
 	 */
 	public void setEstrategiaOrdenadoActividades(IntEstrategiaOrdenadoActividades estrategiaOrdenado){
-
+            estrategiaOrdenadoActividades = estrategiaOrdenado;
 	}
+        
+        public void ejecutarEstrategiaOrdenacion(){
+            estrategiaOrdenadoActividades.ordenarActividades(actividades);
+        }
 }//end Aplicacion
