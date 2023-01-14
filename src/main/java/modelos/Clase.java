@@ -15,11 +15,13 @@ public class Clase {
 
     private HashMap horario;
     private int inscritos;
+    private int plazasMax;
+
+    private Enum tipo;
     private Enum nivel;
     private int numPista;
-    private int plazasMax;
-    private Enum tipo;
     public IntSuscriptor intSuscriptor;
+
     private List<Socio> sociosInscritos = new ArrayList<>();
     private List<Socio> sociosInscritosNotificaciones = new ArrayList<>();
 
@@ -103,6 +105,9 @@ public class Clase {
             suscribirse(s);
         } else {
             sociosInscritos.add(s);
+            if (this.plazasMax == this.inscritos) {
+                notificarSuscriptores();
+            }
         }
     }
 
@@ -141,7 +146,11 @@ public class Clase {
      */
     public void notificarSuscriptores() {
         for (Socio s : sociosInscritosNotificaciones) {
-            s.getListaNotificaciones().add("La clase: " + this.getTipo() + " tiene: " + (this.plazasMax - this.inscritos) + " plazas disponibles");
+            if (this.plazasMax == this.inscritos) {
+                s.getListaNotificaciones().add("La clase: " + this.getTipo() + " con nivel: " + this.getNivel() + " se ha llenado");
+            } else {
+                s.getListaNotificaciones().add("La clase: " + this.getTipo() + " con nivel: " + this.getNivel() + " tiene: " + (this.plazasMax - this.inscritos) + " plazas disponibles");
+            }
         }
     }
 

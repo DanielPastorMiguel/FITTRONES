@@ -15,7 +15,7 @@ import modelos.FabricaRutina.Rutina;
  */
 public class Socio extends Usuario implements IntCliente, IntSuscriptor {
 
-    private int codSocio;
+    private int id;
     public Clase clase;
     public Dieta dieta;
     public Rutina rutina;
@@ -27,12 +27,12 @@ public class Socio extends Usuario implements IntCliente, IntSuscriptor {
         super(contrasena, correo, dni, fechaNacimiento, nombre, telefono);
     }
 
-    public int getCodSocio() {
-        return codSocio;
+    public int getId() {
+        return id;
     }
 
-    public void setCodSocio(int codSocio) {
-        this.codSocio = codSocio;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Clase getClase() {
