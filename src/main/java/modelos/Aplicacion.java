@@ -16,16 +16,22 @@ import java.util.List;
 public class Aplicacion {
 
 	private Aplicacion instancia;
+        
+        /**
+         * Patron Singleton
+         * @return 
+         */
+        public Aplicacion getInstancia(){
+            if (instancia == null) instancia = new Aplicacion();
+            return instancia;
+        }
+        
 	private IntEstrategiaOrdenadoActividades estrategiaOrdenadoActividades;
 	private Usuario usuario;
 	private AlquilerPista alquilerPista;
 	private Aplicacion aplicacion;
 	private Mediador mediador;
         private List<Actividad> actividades;
-
-	public Aplicacion(){
-
-	}
 
 	public void alquilarPista(){
 
@@ -41,10 +47,6 @@ public class Aplicacion {
 
 	public void generarFactura(){
 
-	}
-
-	public Aplicacion getInstancia(){
-		return null;
 	}
 
 	public void registrarSocio(){
