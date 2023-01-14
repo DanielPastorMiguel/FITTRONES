@@ -2,6 +2,7 @@ package modelos;
 
 import modelos.Usuarios.IntSuscriptor;
 import java.util.HashMap;
+import modelos.Usuarios.Socio;
 
 /**
  * @author Daniel
@@ -89,7 +90,7 @@ public class Clase {
         this.intSuscriptor = intSuscriptor;
     }
 
-    public void desuscribirse() {
+    public void desuscribir(Socio s) {
 
     }
 
@@ -97,7 +98,7 @@ public class Clase {
 
     }
 
-    public void suscribirse() {
+    public void suscribirse(Socio s) {
 
     }
 
