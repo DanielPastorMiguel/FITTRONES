@@ -1,4 +1,4 @@
-package modelos.Usuarios;
+package modelos.proxyProteccion;
 
 /**
  * @author Daniel
@@ -7,6 +7,6 @@ package modelos.Usuarios;
  */
 public interface IntCliente {
 
-	public void getInformacionCliente();
+	public String getInformacionCliente();
 
 }

@@ -17,7 +17,6 @@ public class OrdenarDia implements IntEstrategiaOrdenadoActividades{
 
     @Override
     public void ordenarActividades(List<Actividad> actividades) {
-        //Comparador para ordenar los alumnos por universidad
         Comparator diaComp = new Comparator() {
 
             @Override
@@ -29,7 +28,6 @@ public class OrdenarDia implements IntEstrategiaOrdenadoActividades{
             }
         };
 
-        //Ordenamos los objetos del array por el atributo universidad
         Collections.sort(actividades, diaComp);
     }
     

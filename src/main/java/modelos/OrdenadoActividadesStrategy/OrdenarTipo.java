@@ -15,7 +15,6 @@ public class OrdenarTipo implements IntEstrategiaOrdenadoActividades {
 
     @Override
     public void ordenarActividades(List<Actividad> actividades) {
-        //Comparador para ordenar los alumnos por universidad
         Comparator TipoComp = new Comparator() {
 
             @Override
@@ -27,7 +26,6 @@ public class OrdenarTipo implements IntEstrategiaOrdenadoActividades {
             }
         };
 
-        //Ordenamos los objetos del array por el atributo universidad
         Collections.sort(actividades, TipoComp);
     }
 }//end OrdenarTipo
