@@ -1,11 +1,12 @@
 package modelos.Usuarios;
 
+import modelos.proxyProteccion.IntCliente;
 import java.util.Date;
 import java.util.List;
 import modelos.Actividad;
 import modelos.Clase;
 import modelos.DietaBuilder.Dieta;
-import modelos.ProxyProteccionClientes;
+import modelos.proxyProteccion.ProxyProteccionClientes;
 import modelos.FabricaRutina.Rutina;
 
 /**
@@ -87,7 +88,8 @@ public class Socio extends Usuario implements IntCliente, IntSuscriptor {
 
     }
 
-    public void getInformacionCliente() {
-
+    public String getInformacionCliente() {
+        String datos = "Nombre: " + getNombre() + "; Correo: " + getCorreo() + "; Dni: " + getDni() + "; Fecha nacimiento: " + getFechaNacimiento() + "; Telefono: " + getTelefono() + "; Contraseña: " + getContrasena();
+        return datos;
     }
 }//end Socio

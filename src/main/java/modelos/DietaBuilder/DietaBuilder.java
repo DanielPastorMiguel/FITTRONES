@@ -12,17 +12,15 @@ public abstract class DietaBuilder {
     protected Dieta dieta;
 
     //Listas con los datos para asignar a las dietas
-    protected List<String> listaDatosDesayunos = List.of("Cereales con proteina", "Porridge de avena", "Tostadas de tomate y jamon york", "Yogur con cereales y fruta", "Fruta","Tortitas proteicas", "Frutos secos", "Tostada de aguacate", "Huevos revueltos", "Tortitas de arroz con jamon york");
-    protected List<String> listaDatosComidas = List.of("Macarrones boloñesa", "Gnochis con carne picada", "Arroz con pollo", "Pimientos rellenos", "Pasta carbonara","Ternera con patatas al horno" );
-    protected List<String> listaDatosMeriendas = List.of("Cereales con proteina", "Porridge de avena", "Tostadas de tomate y jamon york", "Yogur con cereales y fruta", "Fruta","Tortitas proteicas", "Frutos secos", "Tostada de aguacate", "Huevos revueltos", "Tortitas de arroz con jamon york");
+    protected List<String> listaDatosDesayunos = List.of("Cereales con proteina", "Porridge de avena", "Tostadas de tomate y jamon york", "Yogur con cereales y fruta", "Fruta", "Tortitas proteicas", "Frutos secos", "Tostada de aguacate", "Huevos revueltos", "Tortitas de arroz con jamon york");
+    protected List<String> listaDatosComidas = List.of("Macarrones boloñesa", "Gnochis con carne picada", "Arroz con pollo", "Pimientos rellenos", "Pasta carbonara", "Ternera con patatas al horno");
+    protected List<String> listaDatosMeriendas = List.of("Cereales con proteina", "Porridge de avena", "Tostadas de tomate y jamon york", "Yogur con cereales y fruta", "Fruta", "Tortitas proteicas", "Frutos secos", "Tostada de aguacate", "Huevos revueltos", "Tortitas de arroz con jamon york");
     protected List<String> listaDatosCenas = List.of("Pescado al horno", "Pizza proteica", "Tosta de sardinas", "Huevo y patata cocida", "Fajitas de pollo con pimientos", "Burrito bowl", "Sushi", "Poke bowl");
 
     public Dieta getDieta() {
         return dieta;
     }
 
-    ;
-    
     public void crearNuevaDieta() {
         dieta = new Dieta();
     }

@@ -1,7 +1,8 @@
 package modelos.Usuarios;
 
+import modelos.proxyProteccion.IntCliente;
 import java.util.Date;
-import modelos.ProxyProteccionClientes;
+import modelos.proxyProteccion.ProxyProteccionClientes;
 
 /**
  * @author Daniel
@@ -14,10 +15,16 @@ public class Cliente extends Usuario implements IntCliente {
 
     public Cliente(String contrasena, String correo, String dni, Date fechaNacimiento, String nombre, String telefono) {
         super(contrasena, correo, dni, fechaNacimiento, nombre, telefono);
-
     }
 
-    public void getInformacionCliente() {
-
+    public String getInformacionCliente() {
+        String datos = "Nombre: " + getNombre() + "; Correo: " + getCorreo() + "; Dni: " + getDni() + "; Fecha nacimiento: " + getFechaNacimiento() + "; Telefono: " + getTelefono() + "; Contraseña: " + getContrasena();
+        return datos;
     }
+
+    @Override
+    public String toString() {
+        return "Cliente{" + '}';
+    }
+
 }//end Cliente

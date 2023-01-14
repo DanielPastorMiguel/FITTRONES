@@ -18,7 +18,4 @@ public class Empleado extends Usuario {
         this.turno = turno;
     }
 
-    public void finalize() throws Throwable {
-        super.finalize();
-    }
 }//end Empleado
