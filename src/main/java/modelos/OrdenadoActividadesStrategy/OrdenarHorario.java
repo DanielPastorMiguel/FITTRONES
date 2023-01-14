@@ -14,7 +14,6 @@ public class OrdenarHorario implements IntEstrategiaOrdenadoActividades {
 
     @Override
     public void ordenarActividades(List<Actividad> actividades) {
-        //Comparador para ordenar los alumnos por universidad
         Comparator horarioComp = new Comparator() {
 
             @Override
@@ -26,7 +25,6 @@ public class OrdenarHorario implements IntEstrategiaOrdenadoActividades {
             }
         };
 
-        //Ordenamos los objetos del array por el atributo universidad
         Collections.sort(actividades, horarioComp);
     }
 }//end OrdenarHorario
