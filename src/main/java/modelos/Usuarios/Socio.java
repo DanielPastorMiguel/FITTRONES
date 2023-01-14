@@ -1,6 +1,7 @@
 package modelos.Usuarios;
 
 import java.util.Date;
+import java.util.List;
 import modelos.Actividad;
 import modelos.Clase;
 import modelos.DietaBuilder.Dieta;
@@ -20,6 +21,7 @@ public class Socio extends Usuario implements IntCliente, IntSuscriptor {
     public Rutina rutina;
     public Actividad actividad;
     public ProxyProteccionClientes proxyProteccionClientes;
+    private List<String> listaNotificaciones;
 
     public Socio(String contrasena, String correo, String dni, Date fechaNacimiento, String nombre, String telefono) {
         super(contrasena, correo, dni, fechaNacimiento, nombre, telefono);
@@ -71,6 +73,14 @@ public class Socio extends Usuario implements IntCliente, IntSuscriptor {
 
     public void setProxyProteccionClientes(ProxyProteccionClientes proxyProteccionClientes) {
         this.proxyProteccionClientes = proxyProteccionClientes;
+    }
+
+    public List<String> getListaNotificaciones() {
+        return listaNotificaciones;
+    }
+
+    public void setListaNotificaciones(List<String> listaNotificaciones) {
+        this.listaNotificaciones = listaNotificaciones;
     }
 
     public void actualizar() {

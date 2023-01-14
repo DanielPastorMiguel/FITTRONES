@@ -1,7 +1,9 @@
 package modelos;
 
+import java.util.ArrayList;
 import modelos.Usuarios.IntSuscriptor;
 import java.util.HashMap;
+import java.util.List;
 import modelos.Usuarios.Socio;
 
 /**
@@ -18,8 +20,10 @@ public class Clase {
     private int plazasMax;
     private Enum tipo;
     public IntSuscriptor intSuscriptor;
+    private List<Socio> sociosInscritos = new ArrayList<>();
+    private List<Socio> sociosInscritosNotificaciones = new ArrayList<>();
 
-    public Clase(HashMap horario, int inscritos, Enum nivel, int numPista, int plazasMax, Enum tipo, IntSuscriptor intSuscriptor) {
+    public Clase(HashMap horario, int inscritos, Enum nivel, int numPista, int plazasMax, Enum tipo, IntSuscriptor intSuscriptor, List<Socio> sociosInscritos) {
         this.horario = horario;
         this.inscritos = inscritos;
         this.nivel = nivel;
@@ -27,12 +31,11 @@ public class Clase {
         this.plazasMax = plazasMax;
         this.tipo = tipo;
         this.intSuscriptor = intSuscriptor;
+        this.sociosInscritos = sociosInscritos;
     }
 
     public Clase() {
     }
-
-   
 
     public HashMap getHorario() {
         return horario;
@@ -90,16 +93,56 @@ public class Clase {
         this.intSuscriptor = intSuscriptor;
     }
 
-    public void desuscribir(Socio s) {
-
+    /**
+     * Apunta el socio a la clase
+     *
+     * @param s
+     */
+    public void apuntarSocioClase(Socio s) {
+        if (this.plazasMax == this.inscritos) {
+            suscribirse(s);
+        } else {
+            sociosInscritos.add(s);
+        }
     }
 
-    public void notificarSuscriptores() {
-
+    /**
+     * Desapunta el socio de la clase
+     *
+     * @param s
+     */
+    public void desapuntarSocioClase(Socio s) {
+        if (this.plazasMax == this.inscritos) {
+            notificarSuscriptores();
+        }
+        this.sociosInscritos.remove(s);
     }
 
+    /**
+     * Apunta a un socio a la lista de notificaciones
+     *
+     * @param s
+     */
     public void suscribirse(Socio s) {
+        sociosInscritosNotificaciones.add(s);
+    }
 
+    /**
+     * Desuscribe un socio de la lista de notificaciones
+     *
+     * @param s
+     */
+    public void desuscribir(Socio s) {
+        sociosInscritosNotificaciones.remove(s);
+    }
+
+    /**
+     * Notifica a los socios que estan en la lista de notificaciones
+     */
+    public void notificarSuscriptores() {
+        for (Socio s : sociosInscritosNotificaciones) {
+            s.getListaNotificaciones().add("La clase: " + this.getTipo() + " tiene: " + (this.plazasMax - this.inscritos) + " plazas disponibles");
+        }
     }
 
     @Override
