@@ -7,24 +7,32 @@ import java.util.HashMap;
  * @version 1.0
  * @created 06-ene.-2023 17:48:34
  */
-public class Sauna implements IntActividad {
+public class Sauna {
 
     private HashMap alquilerLunes;
     private HashMap alquilerMartes;
     private HashMap alquilerMiercoles;
     private HashMap alquilerJueves;
     private HashMap alquilerViernes;
+    private int aforoMax;
 
-    public Sauna() {
+    public Sauna() {}
 
-    }
-
-    public Sauna(HashMap alquilerJueves, HashMap alquilerLunes, HashMap alquilerMartes, HashMap alquilerMiercoles, HashMap alquilerViernes) {
+    public Sauna(HashMap alquilerJueves, HashMap alquilerLunes, HashMap alquilerMartes, HashMap alquilerMiercoles, HashMap alquilerViernes, int aforoMax) {
         this.alquilerJueves = alquilerJueves;
         this.alquilerLunes = alquilerLunes;
         this.alquilerMartes = alquilerMartes;
         this.alquilerMiercoles = alquilerMiercoles;
         this.alquilerViernes = alquilerViernes;
+        this.aforoMax = aforoMax;
+    }
+
+    public int getAforoMax() {
+        return aforoMax;
+    }
+
+    public void setAforoMax(int aforoMax) {
+        this.aforoMax = aforoMax;
     }
 
     public HashMap getAlquilerJueves() {

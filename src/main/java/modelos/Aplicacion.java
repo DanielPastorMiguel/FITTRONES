@@ -1,5 +1,6 @@
 package modelos;
 
+import java.util.ArrayList;
 import modelos.FormulariosMediator.Mediador;
 import modelos.OrdenadoActividadesStrategy.IntEstrategiaOrdenadoActividades;
 import modelos.Usuarios.Usuario;
@@ -31,7 +32,13 @@ public class Aplicacion {
 	private AlquilerPista alquilerPista;
 	private Aplicacion aplicacion;
 	private Mediador mediador;
-        private List<Actividad> actividades;
+        
+        private Usuario usuarioLogueado;
+        private List<Usuario> usuariosRegistrados = new ArrayList<>();
+        private List<Actividad> actividades = new ArrayList<>(); 
+        private List<Clase> clases = new ArrayList<>();
+        private List<AlquilerPista> pistas = new ArrayList<>();
+        
 
 	public void alquilarPista(){
 
@@ -41,8 +48,8 @@ public class Aplicacion {
 
 	}
 
-	public List ejecutarEstrategiaOrdenadoActividades(){
-		return null;
+	public void ejecutarEstrategiaOrdenadoActividades(){
+            estrategiaOrdenadoActividades.ordenarActividades(actividades);
 	}
 
 	public void generarFactura(){

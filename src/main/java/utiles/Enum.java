@@ -30,4 +30,11 @@ public class Enum {
         EMPUJE, TIRON, PIERNA;
     }
     
+    public enum Sala {
+        SALA1, SALA2, SALA3, SALA4, SALA5;
+    }
+    
+    public enum Dia {
+        LUNES, MARTES, MIERCOLES, JUEVES, VIERNES, SABADO, DOMINGO;
+    }
 }

@@ -21,7 +21,7 @@ public class OrdenarHorario implements IntEstrategiaOrdenadoActividades {
                 Actividad act1 = (Actividad) a1;
                 Actividad act2 = (Actividad) a2;
 
-                return String.valueOf(act1.getHorario()).compareTo(String.valueOf(act2.getHorario()));
+                return String.valueOf(act1.getHora()).compareTo(String.valueOf(act2.getHora()));
             }
         };
 

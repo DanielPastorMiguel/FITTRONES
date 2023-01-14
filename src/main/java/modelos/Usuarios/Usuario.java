@@ -16,10 +16,6 @@ public class Usuario {
     private String nombre;
     private String telefono;
 
-    public Usuario() {
-
-    }
-
     public Usuario(String contrasena, String correo, String dni, Date fechaNacimiento, String nombre, String telefono) {
         this.contrasena = contrasena;
         this.correo = correo;
