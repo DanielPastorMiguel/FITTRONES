@@ -17,4 +17,11 @@
         <exec.mainClass>FITTRONES</exec.mainClass>
     </properties>
     <name>FITTRONES</name>
+    <dependencies>
+        <dependency>
+            <groupId>org.netbeans.external</groupId>
+            <artifactId>AbsoluteLayout</artifactId>
+            <version>RELEASE150</version>
+        </dependency>
+    </dependencies>
 </project>
