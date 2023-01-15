@@ -1,7 +1,7 @@
 package modelos.Usuarios;
 
+import java.time.LocalDate;
 import modelos.proxyProteccion.IntCliente;
-import java.util.Date;
 import java.util.List;
 import modelos.Actividad;
 import modelos.Clase;
@@ -24,7 +24,7 @@ public class Socio extends Usuario implements IntCliente, IntSuscriptor {
     public ProxyProteccionClientes proxyProteccionClientes;
     private List<String> listaNotificaciones;
 
-    public Socio(String contrasena, String correo, String dni, Date fechaNacimiento, String nombre, String telefono) {
+    public Socio(String contrasena, String correo, String dni, LocalDate fechaNacimiento, String nombre, String telefono) {
         super(contrasena, correo, dni, fechaNacimiento, nombre, telefono);
     }
 

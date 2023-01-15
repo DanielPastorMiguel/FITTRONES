@@ -17,13 +17,13 @@ public class FactoriaPrincipiante extends FabricaRutina {
         List<Ejercicio> ejerciciosPierna = new ArrayList<>();
 
         for (String nombreEj : listaEjerciciosEmpuje) {
-            ejerciciosEmpuje.add(new Ejercicio(nombreEj, 8, 2, Enum.Ejercicio.EMPUJE));
+            ejerciciosEmpuje.add(new Ejercicio(nombreEj, 8, 2, Enum.EjercicioEnum.EMPUJE));
         }
         for (String nombreEj : listaEjerciciosTiron) {
-            ejerciciosTiron.add(new Ejercicio(nombreEj, 8, 2, Enum.Ejercicio.TIRON));
+            ejerciciosTiron.add(new Ejercicio(nombreEj, 8, 2, Enum.EjercicioEnum.TIRON));
         }
         for (String nombreEj : listaEjerciciosPierna) {
-            ejerciciosPierna.add(new Ejercicio(nombreEj, 8, 2, Enum.Ejercicio.PIERNA));
+            ejerciciosPierna.add(new Ejercicio(nombreEj, 8, 2, Enum.EjercicioEnum.PIERNA));
         }
 
         return new Rutina(ejerciciosEmpuje, ejerciciosTiron, ejerciciosPierna);

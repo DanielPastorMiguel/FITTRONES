@@ -6,8 +6,14 @@ import modelos.OrdenadoActividadesStrategy.IntEstrategiaOrdenadoActividades;
 import modelos.Usuarios.Usuario;
 import modelos.AlquilerDecorator.AlquilerPista;
 import java.util.List;
-
-
+import modelos.Usuarios.Cliente;
+import modelos.Usuarios.Empleado;
+import modelos.Usuarios.Monitor;
+import modelos.Usuarios.Profesor;
+import modelos.Usuarios.Recepcionista;
+import modelos.Usuarios.Socio;
+import utiles.Excepcion;
+import utiles.Enum.LoginEnum;
 
 /**
  * @author Daniel
@@ -16,59 +22,98 @@ import java.util.List;
  */
 public class Aplicacion {
 
-	private Aplicacion instancia;
-        
-        /**
-         * Patron Singleton
-         * @return 
-         */
-        public Aplicacion getInstancia(){
-            if (instancia == null) instancia = new Aplicacion();
-            return instancia;
+    private Aplicacion instancia;
+
+    /**
+     * Patron Singleton
+     *
+     * @return
+     */
+    public Aplicacion getInstancia() {
+        if (instancia == null) {
+            instancia = new Aplicacion();
         }
-        
-	private IntEstrategiaOrdenadoActividades estrategiaOrdenadoActividades;
-	private Usuario usuario;
-	private AlquilerPista alquilerPista;
-	private Aplicacion aplicacion;
-	private Mediador mediador;
-        
-        private Usuario usuarioLogueado;
-        private List<Usuario> usuariosRegistrados = new ArrayList<>();
-        private List<Actividad> actividades = new ArrayList<>(); 
-        private List<Clase> clases = new ArrayList<>();
-        private List<AlquilerPista> pistas = new ArrayList<>();
-        
+        return instancia;
+    }
 
-	public void alquilarPista(){
+    private IntEstrategiaOrdenadoActividades estrategiaOrdenadoActividades;
+    private AlquilerPista alquilerPista;
+    private Aplicacion aplicacion;
+    private Mediador mediador;
 
-	}
+    private Usuario usuarioLogueado;
+    private List<Usuario> usuariosRegistrados = new ArrayList<>();
+    private List<Actividad> actividades = new ArrayList<>();
+    private List<Clase> clases = new ArrayList<>();
+    private List<AlquilerPista> pistas = new ArrayList<>();
 
-	public void apuntarSocioClase(){
-
-	}
-
-	public void ejecutarEstrategiaOrdenadoActividades(){
-            estrategiaOrdenadoActividades.ordenarActividades(actividades);
-	}
-
-	public void generarFactura(){
-
-	}
-
-	public void registrarSocio(){
-
-	}
-
-	/**
-	 * 
-	 * @param estrategiaOrdenado
-	 */
-	public void setEstrategiaOrdenadoActividades(IntEstrategiaOrdenadoActividades estrategiaOrdenado){
-            estrategiaOrdenadoActividades = estrategiaOrdenado;
-	}
-        
-        public void ejecutarEstrategiaOrdenacion(){
-            estrategiaOrdenadoActividades.ordenarActividades(actividades);
+    public void registrarUsuario(Usuario usuario) throws Excepcion {
+        if (usuario == null) {
+            throw new Excepcion("el cliente introducido no es válido");
         }
+        if (!existeCorreo(usuario.getCorreo())) {
+            usuariosRegistrados.add(usuario);
+        } else {
+            throw new Excepcion("el correo introducido ya se encuentra registrado");
+        }
+    }
+    
+    public Enum iniciarSesion(String correo, String contrasena) {
+        for (Usuario usuario : usuariosRegistrados) {
+            if (usuario.getCorreo().equals(correo)) {
+                if (usuario.getContrasena().equals(contrasena)) {
+                    usuarioLogueado = usuario;
+                    
+                    if (usuario.getClass().equals(Cliente.class)) return LoginEnum.CLIENTE;
+                    if (usuario.getClass().equals(Socio.class)) return LoginEnum.SOCIO;
+                    if (usuario.getClass().equals(Recepcionista.class)) return LoginEnum.RECEPCIONISTA;
+                    if (usuario.getClass().equals(Profesor.class)) return LoginEnum.PROFESOR;
+                    if (usuario.getClass().equals(Monitor.class)) return LoginEnum.MONITOR;
+                } else {
+                    return LoginEnum.ERROR_CONTRASENA;
+                }
+            }
+        }
+        return LoginEnum.ERROR_CORREO;
+    }
+    
+    private boolean existeCorreo(String correo){
+        for (Usuario usuario : usuariosRegistrados){
+            if (usuario.getCorreo().equals(correo)) return true;
+        }
+        return false;
+    }
+
+    public void alquilarPista() {
+
+    }
+
+    public void apuntarSocioClase() {
+
+    }
+
+    public void generarFactura() {
+
+    }
+
+
+    /**
+     *
+     * @param estrategiaOrdenado
+     */
+    public void setEstrategiaOrdenadoActividades(IntEstrategiaOrdenadoActividades estrategiaOrdenado) {
+        estrategiaOrdenadoActividades = estrategiaOrdenado;
+    }
+
+    public void ejecutarEstrategiaOrdenadoActividades() {
+        estrategiaOrdenadoActividades.ordenarActividades(actividades);
+    }
+    
+    public int getNumEmpleados(){
+        int num = 0;
+        for (Usuario user : usuariosRegistrados){
+            if (user.getClass().equals(Empleado.class)) num++;
+        }
+        return num;
+    }
 }//end Aplicacion
