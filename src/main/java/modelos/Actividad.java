@@ -9,7 +9,7 @@ import modelos.Usuarios.Usuario;
  * @version 1.0
  * @created 06-ene.-2023 17:48:00
  */
-public class Actividad{
+public class Actividad {
 
     private Enum dia;
     private Enum tipo;
