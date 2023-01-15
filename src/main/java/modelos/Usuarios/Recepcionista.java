@@ -13,7 +13,7 @@ public class Recepcionista extends Empleado implements IntCliente {
 
     public ProxyProteccionClientes proxyProteccionClientes = new ProxyProteccionClientes();
 
-    public Recepcionista(int codEmpleado, Enum turno, String contrasena, String correo, String dni, LocalDate fechaNacimiento, String nombre, String telefono) {
+    public Recepcionista(Enum turno, String contrasena, String correo, String dni, LocalDate fechaNacimiento, String nombre, String telefono) {
         super(turno, contrasena, correo, dni, fechaNacimiento, nombre, telefono);
     }
 

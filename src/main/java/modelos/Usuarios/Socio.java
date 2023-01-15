@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import modelos.proxyProteccion.IntCliente;
 import java.util.List;
 import modelos.Actividad;
+import modelos.Aplicacion;
 import modelos.Clase;
 import modelos.DietaBuilder.Dieta;
 import modelos.proxyProteccion.ProxyProteccionClientes;
@@ -16,7 +17,7 @@ import modelos.FabricaRutina.Rutina;
  */
 public class Socio extends Usuario implements IntCliente, IntSuscriptor {
 
-    private int id;
+    private final int id;
     public Clase clase;
     public Dieta dieta;
     public Rutina rutina;
@@ -26,14 +27,11 @@ public class Socio extends Usuario implements IntCliente, IntSuscriptor {
 
     public Socio(String contrasena, String correo, String dni, LocalDate fechaNacimiento, String nombre, String telefono) {
         super(contrasena, correo, dni, fechaNacimiento, nombre, telefono);
+        id = new Aplicacion().getNumSocios() + 1;
     }
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public Clase getClase() {
