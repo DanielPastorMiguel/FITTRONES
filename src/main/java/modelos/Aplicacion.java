@@ -46,6 +46,7 @@ public class Aplicacion {
     private List<Actividad> actividades = new ArrayList<>();
     private List<Clase> clases = new ArrayList<>();
     private List<AlquilerPista> pistas = new ArrayList<>();
+    private Sauna sauna = new Sauna();
 
     public void registrarUsuario(Usuario usuario) throws Excepcion {
         if (usuario == null) {
@@ -59,6 +60,7 @@ public class Aplicacion {
     }
     
     public Enum iniciarSesion(String correo, String contrasena) {
+        if (correo.equals("admin@fittrones.com") && contrasena.equals("admin")) return LoginEnum.ADMIN;
         for (Usuario usuario : usuariosRegistrados) {
             if (usuario.getCorreo().equals(correo)) {
                 if (usuario.getContrasena().equals(contrasena)) {
@@ -96,6 +98,37 @@ public class Aplicacion {
 
     }
 
+    public void setUsuarioLogueado(Usuario usuarioLogueado) {
+        this.usuarioLogueado = usuarioLogueado;
+    }
+
+    public Sauna getSauna() {
+        return sauna;
+    }
+    
+    public void anadirActividad(Actividad act){
+        actividades.add(act);
+    }
+    
+    public void anadirClase(Clase clase){
+        clases.add(clase);
+    }
+
+    public Usuario getUsuarioLogueado() {
+        return usuarioLogueado;
+    }
+
+    public List<Usuario> getUsuariosRegistrados() {
+        return usuariosRegistrados;
+    }
+
+    public List<Actividad> getActividades() {
+        return actividades;
+    }
+
+    public List<Clase> getClases() {
+        return clases;
+    }
 
     /**
      *
@@ -113,6 +146,14 @@ public class Aplicacion {
         int num = 0;
         for (Usuario user : usuariosRegistrados){
             if (user.getClass().equals(Empleado.class)) num++;
+        }
+        return num;
+    }
+    
+    public int getNumSocios(){
+        int num = 0;
+        for (Usuario user : usuariosRegistrados){
+            if (user.getClass().equals(Socio.class)) num++;
         }
         return num;
     }
