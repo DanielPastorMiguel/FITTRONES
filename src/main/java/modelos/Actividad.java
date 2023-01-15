@@ -1,6 +1,6 @@
 package modelos;
 
-import java.sql.Time;
+import java.time.LocalTime;
 import java.util.List;
 import modelos.Usuarios.Usuario;
 
@@ -14,15 +14,11 @@ public class Actividad{
     private Enum dia;
     private Enum tipo;
 
-    private Time hora;
+    private LocalTime hora;
     private int aforo;
     private List<Usuario> usuariosInscritos;
 
-    public Actividad() {
-
-    }
-
-    public Actividad(Enum dia, Time hora, List<Usuario> usuariosInscritos, Enum tipo) {
+    public Actividad(Enum dia, LocalTime hora, List<Usuario> usuariosInscritos, Enum tipo) {
         this.dia = dia;
         this.hora = hora;
         this.usuariosInscritos = usuariosInscritos;
@@ -37,11 +33,11 @@ public class Actividad{
         this.dia = dia;
     }
 
-    public Time getHora() {
+    public LocalTime getHora() {
         return hora;
     }
 
-    public void setHora(Time hora) {
+    public void setHora(LocalTime hora) {
         this.hora = hora;
     }
 

@@ -1,6 +1,7 @@
 package modelos.Usuarios;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.List;
 import modelos.Clase;
 
 /**
@@ -10,17 +11,18 @@ import modelos.Clase;
  */
 public class Profesor extends Empleado {
 
-    public Clase clase;
+    public List<Clase> clase;
 
-    public Profesor(int codEmpleado, Enum turno, String contrasena, String correo, String dni, Date fechaNacimiento, String nombre, String telefono) {
-        super(codEmpleado, turno, contrasena, correo, dni, fechaNacimiento, nombre, telefono);
+    public Profesor(Enum turno, String contrasena, String correo, String dni, LocalDate fechaNacimiento, String nombre, String telefono, List<Clase> clase) {
+        super(turno, contrasena, correo, dni, fechaNacimiento, nombre, telefono);
+        this.clase = clase;
     }
 
-    public Clase getClase() {
+    public List<Clase> getClase() {
         return clase;
     }
 
-    public void setClase(Clase clase) {
+    public void setClase(List<Clase> clase) {
         this.clase = clase;
     }
 
