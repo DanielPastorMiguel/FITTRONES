@@ -22,9 +22,4 @@ public class Cliente extends Usuario implements IntCliente {
         return datos;
     }
 
-    @Override
-    public String toString() {
-        return "Cliente{" + '}';
-    }
-
 }//end Cliente
