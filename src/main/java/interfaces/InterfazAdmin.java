@@ -28,7 +28,6 @@ public class InterfazAdmin extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jButtonAltaCliente = new javax.swing.JButton();
-        jButtonBajaCliente = new javax.swing.JButton();
         jButtonConsultarClientes = new javax.swing.JButton();
         jButtonConsultarReservas = new javax.swing.JButton();
         jButtonConsultarVentas = new javax.swing.JButton();
@@ -36,12 +35,10 @@ public class InterfazAdmin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel1.setText("Bienvenido admin");
 
         jButtonAltaCliente.setText("Alta cliente");
-
-        jButtonBajaCliente.setText("Baja cliente");
 
         jButtonConsultarClientes.setText("Consultar clientes");
 
@@ -64,12 +61,11 @@ public class InterfazAdmin extends javax.swing.JFrame {
                         .addGap(131, 131, 131)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButtonConsultarClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonBajaCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonAltaCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonConsultarReservas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonConsultarVentas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonVolver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -79,8 +75,6 @@ public class InterfazAdmin extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jButtonAltaCliente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonBajaCliente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonConsultarClientes)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonConsultarReservas)
@@ -88,7 +82,7 @@ public class InterfazAdmin extends javax.swing.JFrame {
                 .addComponent(jButtonConsultarVentas)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonVolver)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         pack();
@@ -97,7 +91,6 @@ public class InterfazAdmin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAltaCliente;
-    private javax.swing.JButton jButtonBajaCliente;
     private javax.swing.JButton jButtonConsultarClientes;
     private javax.swing.JButton jButtonConsultarReservas;
     private javax.swing.JButton jButtonConsultarVentas;
