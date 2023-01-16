@@ -1,6 +1,6 @@
 package modelos.Usuarios;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
  * @author Daniel
@@ -12,15 +12,11 @@ public class Usuario {
     private String contrasena;
     private String correo;
     private String dni;
-    private Date fechaNacimiento;
+    private LocalDate fechaNacimiento;
     private String nombre;
     private String telefono;
 
-    public Usuario() {
-
-    }
-
-    public Usuario(String contrasena, String correo, String dni, Date fechaNacimiento, String nombre, String telefono) {
+    public Usuario(String contrasena, String correo, String dni, LocalDate fechaNacimiento, String nombre, String telefono) {
         this.contrasena = contrasena;
         this.correo = correo;
         this.dni = dni;
@@ -28,7 +24,7 @@ public class Usuario {
         this.nombre = nombre;
         this.telefono = telefono;
     }
-
+    
     public String getContrasena() {
         return contrasena;
     }
@@ -53,11 +49,11 @@ public class Usuario {
         this.dni = dni;
     }
 
-    public Date getFechaNacimiento() {
+    public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 

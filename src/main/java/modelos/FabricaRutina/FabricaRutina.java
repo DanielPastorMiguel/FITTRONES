@@ -7,11 +7,12 @@ import java.util.List;
  * @version 1.0
  * @created 06-ene.-2023 17:48:19
  */
-public interface FabricaRutina {
+public abstract class FabricaRutina {
 
-	/*public Rutina m_Rutina;
-	public Monitor m_Monitor;*/
+    protected List<String> listaEjerciciosEmpuje = List.of("Press banca", "Press militar", "Press frances", "Cruce de cables");
+    protected List<String> listaEjerciciosTiron = List.of("Remo con barra", "Curl biceps", "Jalon al pecho", "Remo gironda");
+    protected List<String> listaEjerciciosPierna = List.of("Sentadilla", "Prensa", "RDL", "Extension cuadriceps");
 
-	public List<Ejercicio> crearEjercicios();
+    public abstract Rutina crearEjercicios();
 
 }

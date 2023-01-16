@@ -1,5 +1,6 @@
 package modelos;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 import modelos.Usuarios.IntSuscriptor;
 import java.util.HashMap;
@@ -13,30 +14,23 @@ import modelos.Usuarios.Socio;
  */
 public class Clase {
 
-    private HashMap horario;
-    private int inscritos;
+    private HashMap<Enum, LocalTime> horario;
     private int plazasMax;
 
     private Enum tipo;
     private Enum nivel;
-    private int numPista;
-    public IntSuscriptor intSuscriptor;
+    private Enum numPista;
 
     private List<Socio> sociosInscritos = new ArrayList<>();
     private List<Socio> sociosInscritosNotificaciones = new ArrayList<>();
 
-    public Clase(HashMap horario, int inscritos, Enum nivel, int numPista, int plazasMax, Enum tipo, IntSuscriptor intSuscriptor, List<Socio> sociosInscritos) {
+    public Clase(HashMap horario, Enum nivel, Enum numPista, Enum tipo, int plazasMax, List<Socio> sociosInscritos) {
         this.horario = horario;
-        this.inscritos = inscritos;
         this.nivel = nivel;
         this.numPista = numPista;
         this.plazasMax = plazasMax;
         this.tipo = tipo;
-        this.intSuscriptor = intSuscriptor;
         this.sociosInscritos = sociosInscritos;
-    }
-
-    public Clase() {
     }
 
     public HashMap getHorario() {
@@ -47,14 +41,6 @@ public class Clase {
         this.horario = horario;
     }
 
-    public int getInscritos() {
-        return inscritos;
-    }
-
-    public void setInscritos(int inscritos) {
-        this.inscritos = inscritos;
-    }
-
     public Enum getNivel() {
         return nivel;
     }
@@ -63,11 +49,11 @@ public class Clase {
         this.nivel = nivel;
     }
 
-    public int getNumPista() {
+    public Enum getNumPista() {
         return numPista;
     }
 
-    public void setNumPista(int numPista) {
+    public void setNumPista(Enum numPista) {
         this.numPista = numPista;
     }
 
@@ -87,25 +73,17 @@ public class Clase {
         this.tipo = tipo;
     }
 
-    public IntSuscriptor getIntSuscriptor() {
-        return intSuscriptor;
-    }
-
-    public void setIntSuscriptor(IntSuscriptor intSuscriptor) {
-        this.intSuscriptor = intSuscriptor;
-    }
-
     /**
      * Apunta el socio a la clase
      *
      * @param s
      */
     public void apuntarSocioClase(Socio s) {
-        if (this.plazasMax == this.inscritos) {
+        if (this.plazasMax == this.sociosInscritos.size()) {
             suscribirse(s);
         } else {
             sociosInscritos.add(s);
-            if (this.plazasMax == this.inscritos) {
+            if (this.plazasMax == this.sociosInscritos.size()) {
                 notificarSuscriptores();
             }
         }
@@ -117,7 +95,7 @@ public class Clase {
      * @param s
      */
     public void desapuntarSocioClase(Socio s) {
-        if (this.plazasMax == this.inscritos) {
+        if (this.plazasMax == this.sociosInscritos.size()) {
             notificarSuscriptores();
         }
         this.sociosInscritos.remove(s);
@@ -146,16 +124,16 @@ public class Clase {
      */
     public void notificarSuscriptores() {
         for (Socio s : sociosInscritosNotificaciones) {
-            if (this.plazasMax == this.inscritos) {
+            if (this.plazasMax == this.sociosInscritos.size()) {
                 s.getListaNotificaciones().add("La clase: " + this.getTipo() + " con nivel: " + this.getNivel() + " se ha llenado");
             } else {
-                s.getListaNotificaciones().add("La clase: " + this.getTipo() + " con nivel: " + this.getNivel() + " tiene: " + (this.plazasMax - this.inscritos) + " plazas disponibles");
+                s.getListaNotificaciones().add("La clase: " + this.getTipo() + " con nivel: " + this.getNivel() + " tiene: " + (this.plazasMax - this.sociosInscritos.size()) + " plazas disponibles");
             }
         }
     }
 
     @Override
     public String toString() {
-        return "Clase{" + "horario=" + horario + ", inscritos=" + inscritos + ", nivel=" + nivel + ", numPista=" + numPista + ", plazasMax=" + plazasMax + ", tipo=" + tipo + ", intSuscriptor=" + intSuscriptor + '}';
+        return "Clase{" + "horario=" + horario + ", inscritos=" + sociosInscritos.size() + ", nivel=" + nivel + ", numPista=" + numPista + ", plazasMax=" + plazasMax + ", tipo=" + tipo + ", intSuscriptor=" + '}';
     }
 }//end Clase
