@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package interfaces;
+package interfaces.VistasAdmin;
 
 /**
  *
  * @author Octavian
  */
-public class InterfazGimnasio extends javax.swing.JFrame {
+public class InterfazAdmin extends javax.swing.JFrame {
 
     /**
-     * Creates new form InterfazGimnasio
+     * Creates new form InterfazAdmin
      */
-    public InterfazGimnasio() {
+    public InterfazAdmin() {
         initComponents();
     }
 
@@ -27,21 +27,24 @@ public class InterfazGimnasio extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButtonAlta = new javax.swing.JButton();
-        jButtonBaja = new javax.swing.JButton();
-        jButtonBusquedaActividades = new javax.swing.JButton();
+        jButtonAltaCliente = new javax.swing.JButton();
+        jButtonConsultarClientes = new javax.swing.JButton();
+        jButtonConsultarReservas = new javax.swing.JButton();
+        jButtonConsultarVentas = new javax.swing.JButton();
         jButtonVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel1.setText("Bienvenido a nuestro gym");
+        jLabel1.setText("Bienvenido admin");
 
-        jButtonAlta.setText("Darse de alta");
+        jButtonAltaCliente.setText("Alta cliente");
 
-        jButtonBaja.setText("Darse de baja");
+        jButtonConsultarClientes.setText("Consultar clientes");
 
-        jButtonBusquedaActividades.setText("Buscar actividades");
+        jButtonConsultarReservas.setText("Consultar reservas");
+
+        jButtonConsultarVentas.setText("Consultar ventas");
 
         jButtonVolver.setText("Volver");
 
@@ -52,42 +55,45 @@ public class InterfazGimnasio extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
+                        .addGap(44, 44, 44)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(182, 182, 182)
+                        .addGap(131, 131, 131)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButtonBaja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonAlta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonBusquedaActividades, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(59, Short.MAX_VALUE))
+                            .addComponent(jButtonConsultarClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonAltaCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonConsultarReservas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonConsultarVentas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonVolver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(29, 29, 29)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jButtonAlta)
+                .addComponent(jButtonAltaCliente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonBusquedaActividades)
+                .addComponent(jButtonConsultarClientes)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonBaja)
+                .addComponent(jButtonConsultarReservas)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonConsultarVentas)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonVolver)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAlta;
-    private javax.swing.JButton jButtonBaja;
-    private javax.swing.JButton jButtonBusquedaActividades;
+    private javax.swing.JButton jButtonAltaCliente;
+    private javax.swing.JButton jButtonConsultarClientes;
+    private javax.swing.JButton jButtonConsultarReservas;
+    private javax.swing.JButton jButtonConsultarVentas;
     private javax.swing.JButton jButtonVolver;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables

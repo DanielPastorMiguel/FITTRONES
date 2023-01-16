@@ -66,7 +66,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="interfaces.PanelCliente" name="panelCliente1">
+    <Component class="interfaces.VistasCliente.PanelCliente" name="panelCliente1">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>

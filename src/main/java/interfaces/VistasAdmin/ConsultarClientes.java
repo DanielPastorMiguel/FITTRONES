@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package interfaces;
+package interfaces.VistasAdmin;
 
 /**
  *
@@ -26,7 +26,7 @@ public class ConsultarClientes extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelCliente1 = new interfaces.PanelCliente();
+        panelCliente1 = new interfaces.VistasCliente.PanelCliente();
         jLabel1 = new javax.swing.JLabel();
         jButtonAnterior = new javax.swing.JButton();
         jButtonSiguiente = new javax.swing.JButton();
@@ -87,6 +87,6 @@ public class ConsultarClientes extends javax.swing.JFrame {
     private javax.swing.JButton jButtonBorrar;
     private javax.swing.JButton jButtonSiguiente;
     private javax.swing.JLabel jLabel1;
-    private interfaces.PanelCliente panelCliente1;
+    private interfaces.VistasCliente.PanelCliente panelCliente1;
     // End of variables declaration//GEN-END:variables
 }
