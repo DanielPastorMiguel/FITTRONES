@@ -2,7 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package interfaces;
+package interfaces.VistasCliente;
+
+import interfaces.VistasAdmin.ConsultarReservas;
 
 /**
  *
@@ -33,7 +35,6 @@ public class VistaUsuarios extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(550, 550));
         setResizable(false);
 
         jButtonBusquedaServicios.setText("Buscar servicios");
@@ -106,21 +107,30 @@ public class VistaUsuarios extends javax.swing.JFrame {
 
     private void jButtonBusquedaServiciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBusquedaServiciosActionPerformed
         // TODO add your handling code here:
+        ConsultarReservas cr = new ConsultarReservas();
+        cr.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButtonBusquedaServiciosActionPerformed
 
     private void jButtonBusquedaEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBusquedaEquipoActionPerformed
         // TODO add your handling code here:
+        InterfazBuscarEquipo ibeq = new InterfazBuscarEquipo();
+        ibeq.setVisible(true);
+        this.dispose();
+
     }//GEN-LAST:event_jButtonBusquedaEquipoActionPerformed
 
     private void jButtonInterfazGimnasioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInterfazGimnasioActionPerformed
         // TODO add your handling code here:
+        InterfazGimnasio ig = new InterfazGimnasio();
+        ig.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButtonInterfazGimnasioActionPerformed
 
     private void jButtonCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarSesionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonCerrarSesionActionPerformed
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBusquedaEquipo;

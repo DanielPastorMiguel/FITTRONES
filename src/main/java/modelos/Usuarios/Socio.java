@@ -27,7 +27,7 @@ public class Socio extends Usuario implements IntCliente, IntSuscriptor {
 
     public Socio(String contrasena, String correo, String dni, LocalDate fechaNacimiento, String nombre, String telefono) {
         super(contrasena, correo, dni, fechaNacimiento, nombre, telefono);
-        id = new Aplicacion().getNumSocios() + 1;
+        id = Aplicacion.getInstancia().getNumSocios() + 1;
     }
 
     public int getId() {

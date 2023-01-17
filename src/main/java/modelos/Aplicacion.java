@@ -22,19 +22,22 @@ import utiles.Enum.LoginEnum;
  */
 public class Aplicacion {
 
-    private Aplicacion instancia;
+    private static Aplicacion instancia;
 
     /**
      * Patron Singleton
      *
      * @return
      */
-    public Aplicacion getInstancia() {
+    public static Aplicacion getInstancia() {
         if (instancia == null) {
             instancia = new Aplicacion();
         }
         return instancia;
     }
+    
+    private Aplicacion (){};
+
 
     private IntEstrategiaOrdenadoActividades estrategiaOrdenadoActividades;
     private AlquilerPista alquilerPista;
@@ -89,9 +92,9 @@ public class Aplicacion {
     public void alquilarPista() {
 
     }
-
-    public void apuntarSocioClase() {
-
+    
+    public boolean apuntarSocioClase(Socio socio ,Clase clase) {
+        return clase.apuntarSocioClase(socio);
     }
 
     public void generarFactura() {

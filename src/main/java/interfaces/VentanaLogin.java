@@ -1,17 +1,24 @@
 package interfaces;
 
+import interfaces.VistasAdmin.InterfazAdmin;
+import interfaces.VistasCliente.VistaUsuarios;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.time.LocalDate;
 import modelos.Aplicacion;
 import modelos.Usuarios.Cliente;
+import modelos.Usuarios.Monitor;
+import modelos.Usuarios.Profesor;
+import modelos.Usuarios.Recepcionista;
 import modelos.Usuarios.Socio;
 import modelos.Usuarios.Usuario;
 import utiles.Enum.LoginEnum;
 import utiles.Excepcion;
 
 public class VentanaLogin extends javax.swing.JFrame {
+
+    private Usuario usuario;
 
     public VentanaLogin() {
         //Aplicacion.cargarDatos();
@@ -276,7 +283,7 @@ public class VentanaLogin extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(laminaLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(scrollLaminaRegistrarse, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 584, Short.MAX_VALUE))
+                .addComponent(scrollLaminaRegistrarse, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 598, Short.MAX_VALUE))
         );
 
         pack();
@@ -293,37 +300,53 @@ public class VentanaLogin extends javax.swing.JFrame {
 
     private void botonIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIniciarSesionActionPerformed
         Enum iniciarSesion = app.iniciarSesion(campoCorreo.getText(), arrayCharToString(campoContrasenna.getPassword()));
-        
-        if (iniciarSesion == LoginEnum.ADMIN){
+        usuario = Aplicacion.getInstancia().getUsuarioLogueado();
+
+        if (iniciarSesion == LoginEnum.ADMIN) {
             System.out.println("admin");
+            InterfazAdmin iadmin = new InterfazAdmin();
+            iadmin.setVisible(true);
             this.dispose();
-        }
-        else if (iniciarSesion == LoginEnum.SOCIO){
+
+        } else if (iniciarSesion == LoginEnum.SOCIO) {
             System.out.println("socio");
+            VistaUsuarios vu = new VistaUsuarios();
+            vu.setVisible(true);
             this.dispose();
-        }
-        else if (iniciarSesion == LoginEnum.CLIENTE){
+
+        } else if (iniciarSesion == LoginEnum.CLIENTE) {
             System.out.println("cliente");
+            VistaUsuarios vu = new VistaUsuarios();
+            vu.setVisible(true);
+
             this.dispose();
-        }
-        else if (iniciarSesion == LoginEnum.MONITOR){
+
+        } else if (iniciarSesion == LoginEnum.MONITOR) {
             System.out.println("monitor");
+            VistaUsuarios vu = new VistaUsuarios();
+            vu.setVisible(true);
+
             this.dispose();
-        }
-        else if (iniciarSesion == LoginEnum.PROFESOR){
+
+        } else if (iniciarSesion == LoginEnum.PROFESOR) {
             System.out.println("profesor");
+            VistaUsuarios vu = new VistaUsuarios();
+            vu.setVisible(true);
+
             this.dispose();
-        }
-        else if (iniciarSesion == LoginEnum.RECEPCIONISTA){
+
+        } else if (iniciarSesion == LoginEnum.RECEPCIONISTA) {
             System.out.println("recepcionista");
+            VistaUsuarios vu = new VistaUsuarios();
+            vu.setVisible(true);
+
             this.dispose();
-        }
-        else if (iniciarSesion == LoginEnum.ERROR_CONTRASENA) {
+
+        } else if (iniciarSesion == LoginEnum.ERROR_CONTRASENA) {
             JOptionPane.showMessageDialog(this, "Contraseña incorrecta", "ERROR", JOptionPane.ERROR_MESSAGE);
             campoCorreo.setBackground(Color.white);
             campoContrasenna.setBackground(Color.red);
-        }
-        else {
+        } else {
             JOptionPane.showMessageDialog(this, "Correo electrónico incorrecto", "ERROR", JOptionPane.ERROR_MESSAGE);
             campoCorreo.setBackground(Color.red);
             campoContrasenna.setBackground(Color.white);
@@ -352,9 +375,12 @@ public class VentanaLogin extends javax.swing.JFrame {
 
     private void botonRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarseActionPerformed
         Usuario usuarioNuevo;
-        if (desplegableTipoCliente.getSelectedIndex() == 0) usuarioNuevo = new Cliente(campoContrasennaRegistro.getText(), campoCorreoRegistro.getText(), campoDNI.getText(), stringToDate(campoFechaNacimiento.getText()), campoNombreUsuarioRegistro.getText(), campoTelefono.getText());
-        else usuarioNuevo = new Socio(campoContrasennaRegistro.getText(), campoCorreoRegistro.getText(), campoDNI.getText(), stringToDate(campoFechaNacimiento.getText()), campoNombreUsuarioRegistro.getText(), campoTelefono.getText());
-        
+        if (desplegableTipoCliente.getSelectedIndex() == 0) {
+            usuarioNuevo = new Cliente(campoContrasennaRegistro.getText(), campoCorreoRegistro.getText(), campoDNI.getText(), stringToDate(campoFechaNacimiento.getText()), campoNombreUsuarioRegistro.getText(), campoTelefono.getText());
+        } else {
+            usuarioNuevo = new Socio(campoContrasennaRegistro.getText(), campoCorreoRegistro.getText(), campoDNI.getText(), stringToDate(campoFechaNacimiento.getText()), campoNombreUsuarioRegistro.getText(), campoTelefono.getText());
+        }
+
         try {
             app.registrarUsuario(usuarioNuevo);
             app.setUsuarioLogueado(usuarioNuevo);
@@ -464,6 +490,6 @@ public class VentanaLogin extends javax.swing.JFrame {
     private javax.swing.JLabel textocontrasennaRegistro;
     // End of variables declaration//GEN-END:variables
 
-    private Aplicacion app = new Aplicacion();
+    private Aplicacion app = Aplicacion.getInstancia();
 
 }
