@@ -49,6 +49,7 @@ public class InterfazAlquilerPistas extends javax.swing.JFrame {
         jComboBoxTipoPista = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jSpinnerFecha = new javax.swing.JSpinner();
+        jButtonBuscar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -65,6 +66,8 @@ public class InterfazAlquilerPistas extends javax.swing.JFrame {
         jSpinnerFecha.setModel(new javax.swing.SpinnerDateModel(new java.util.Date(-3600000L), null, null, java.util.Calendar.DAY_OF_MONTH));
         jSpinnerFecha.setEditor(new javax.swing.JSpinner.DateEditor(jSpinnerFecha, "dd/MM/yyyy"));
 
+        jButtonBuscar.setText("Buscar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -79,6 +82,10 @@ public class InterfazAlquilerPistas extends javax.swing.JFrame {
                         .addComponent(jSpinnerFecha, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jComboBoxTipoPista, javax.swing.GroupLayout.Alignment.LEADING, 0, 207, Short.MAX_VALUE)))
                 .addGap(88, 88, 88))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(134, 134, 134)
+                .addComponent(jButtonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,13 +99,16 @@ public class InterfazAlquilerPistas extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSpinnerFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 101, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addComponent(jButtonBuscar)
+                .addGap(0, 48, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonBuscar;
     private javax.swing.JComboBox<String> jComboBoxTipoPista;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
