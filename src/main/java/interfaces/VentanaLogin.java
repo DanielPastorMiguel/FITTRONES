@@ -464,6 +464,6 @@ public class VentanaLogin extends javax.swing.JFrame {
     private javax.swing.JLabel textocontrasennaRegistro;
     // End of variables declaration//GEN-END:variables
 
-    private Aplicacion app = new Aplicacion();
+    private Aplicacion app = Aplicacion.getInstancia();
 
 }
