@@ -71,9 +71,9 @@
                   <Component id="jButtonBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jSpinnerFecha" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="150" max="32767" attributes="0"/>
+              <EmptySpace pref="159" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jButtonAnterior" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButtonSiguiente" alignment="3" min="-2" max="-2" attributes="0"/>
