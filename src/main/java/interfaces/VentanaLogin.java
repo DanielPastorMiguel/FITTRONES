@@ -1,11 +1,21 @@
 package interfaces;
 
+import interfaces.VistasCliente.InterfazBuscarClase;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import modelos.Actividad;
 import modelos.Aplicacion;
+import modelos.Clase;
 import modelos.Usuarios.Cliente;
+import modelos.Usuarios.Monitor;
+import modelos.Usuarios.Profesor;
+import modelos.Usuarios.Recepcionista;
 import modelos.Usuarios.Socio;
 import modelos.Usuarios.Usuario;
 import utiles.Enum.LoginEnum;
@@ -17,6 +27,90 @@ public class VentanaLogin extends javax.swing.JFrame {
         //Aplicacion.cargarDatos();
         initComponents();
         scrollLaminaRegistrarse.setVisible(false);
+        inicializarDatos();
+
+    }
+
+    private void inicializarDatos() {
+        Cliente c1 = new Cliente("123", "c1", "", LocalDate.of(2001, 5, 7), "", "");
+        Cliente c2 = new Cliente("123", "c2", "", LocalDate.of(2002, 5, 17), "", "");
+        Cliente c3 = new Cliente("123", "c3", "", LocalDate.of(2000, 7, 2), "", "");
+        
+        Socio s1 = new Socio("123", "s1", "", LocalDate.of(1999, 2, 13), "", "");
+        Socio s2 = new Socio("123", "s2", "", LocalDate.of(1998, 12, 3), "", "");
+        Socio s3 = new Socio("123", "s3", "", LocalDate.of(2000, 2, 5), "", "");
+
+        Actividad act1 = new Actividad(utiles.Enum.DiaEnum.LUNES, LocalTime.of(10, 30), new ArrayList<>(), utiles.Enum.ActividadEnum.BODY_PUMP);
+        Actividad act2 = new Actividad(utiles.Enum.DiaEnum.LUNES, LocalTime.of(17, 0), new ArrayList<>(), utiles.Enum.ActividadEnum.BOXEO);
+        Actividad act3 = new Actividad(utiles.Enum.DiaEnum.MARTES, LocalTime.of(10, 30), new ArrayList<>(), utiles.Enum.ActividadEnum.SPINNING);
+        Actividad act4 = new Actividad(utiles.Enum.DiaEnum.MARTES, LocalTime.of(17, 0), new ArrayList<>(), utiles.Enum.ActividadEnum.BODY_PUMP);
+        Actividad act5 = new Actividad(utiles.Enum.DiaEnum.MIERCOLES, LocalTime.of(10, 30), new ArrayList<>(), utiles.Enum.ActividadEnum.YOGA);
+        Actividad act6 = new Actividad(utiles.Enum.DiaEnum.MIERCOLES, LocalTime.of(17, 0), new ArrayList<>(), utiles.Enum.ActividadEnum.BOXEO);
+        Actividad act7 = new Actividad(utiles.Enum.DiaEnum.JUEVES, LocalTime.of(10, 30), new ArrayList<>(), utiles.Enum.ActividadEnum.SPINNING);
+        Actividad act8 = new Actividad(utiles.Enum.DiaEnum.JUEVES, LocalTime.of(17, 0), new ArrayList<>(), utiles.Enum.ActividadEnum.DEFENSA_PERSONAL);
+        Actividad act9 = new Actividad(utiles.Enum.DiaEnum.VIERNES, LocalTime.of(12, 0), new ArrayList<>(), utiles.Enum.ActividadEnum.YOGA);
+
+        Monitor m1 = new Monitor(new ArrayList<>(), new ArrayList<>(Arrays.asList(act1, act4, act3, act7)), utiles.Enum.TurnoEnum.MAÑANA, "123", "m1", "", LocalDate.of(1990, 5, 12), "", "");
+        Monitor m2 = new Monitor(new ArrayList<>(), new ArrayList<>(Arrays.asList(act2, act6, act8)), utiles.Enum.TurnoEnum.TARDE, "123", "m2", "", LocalDate.of(1993, 7, 2), "", "");
+        Monitor m3 = new Monitor(new ArrayList<>(), new ArrayList<>(Arrays.asList(act5, act9)), utiles.Enum.TurnoEnum.MAÑANA, "123", "m3", "", LocalDate.of(1986, 2, 5), "", "");
+            
+        Clase claseFutbol1 = new Clase(new HashMap<>() {{put(utiles.Enum.DiaEnum.MIERCOLES, LocalTime.of(19, 0));}}, utiles.Enum.NivelFutbolEnum.BENJAMIN, utiles.Enum.PistaFutbolEnum.PISTA1, utiles.Enum.ClaseEnum.FUTBOL, 10, new ArrayList<>());
+        Clase claseFutbol2 = new Clase(new HashMap<>() {{put(utiles.Enum.DiaEnum.MARTES, LocalTime.of(19, 0)); put(utiles.Enum.DiaEnum.VIERNES, LocalTime.of(19, 0));}}, utiles.Enum.NivelFutbolEnum.CADETE, utiles.Enum.PistaFutbolEnum.PISTA1, utiles.Enum.ClaseEnum.FUTBOL, 13, new ArrayList<>());
+        Clase claseFutbol3 = new Clase(new HashMap<>() {{put(utiles.Enum.DiaEnum.LUNES, LocalTime.of(19, 0)); put(utiles.Enum.DiaEnum.JUEVES, LocalTime.of(19, 0));}}, utiles.Enum.NivelFutbolEnum.SENIOR, utiles.Enum.PistaFutbolEnum.PISTA1, utiles.Enum.ClaseEnum.FUTBOL, 17, new ArrayList<>());
+        
+        Clase clasePadel1 = new Clase(new HashMap<>() {{put(utiles.Enum.DiaEnum.MIERCOLES, LocalTime.of(19, 0));}}, utiles.Enum.NivelPadelNatacionEnum.PRINCIPIANTE, utiles.Enum.PistaPadelEnum.PISTA1, utiles.Enum.ClaseEnum.PADEL, 7, new ArrayList<>());
+        Clase clasePadel2 = new Clase(new HashMap<>() {{put(utiles.Enum.DiaEnum.MARTES, LocalTime.of(19, 0)); put(utiles.Enum.DiaEnum.VIERNES, LocalTime.of(19, 0));}}, utiles.Enum.NivelPadelNatacionEnum.INTERMEDIO, utiles.Enum.PistaPadelEnum.PISTA1, utiles.Enum.ClaseEnum.PADEL, 7, new ArrayList<>());
+        Clase clasePadel3 = new Clase(new HashMap<>() {{put(utiles.Enum.DiaEnum.LUNES, LocalTime.of(19, 0)); put(utiles.Enum.DiaEnum.JUEVES, LocalTime.of(19, 0));}}, utiles.Enum.NivelPadelNatacionEnum.AVANZADO, utiles.Enum.PistaPadelEnum.PISTA1, utiles.Enum.ClaseEnum.PADEL, 7, new ArrayList<>());
+        
+        Clase claseNatacion1 = new Clase(new HashMap<>() {{put(utiles.Enum.DiaEnum.MIERCOLES, LocalTime.of(19, 0));}}, utiles.Enum.NivelPadelNatacionEnum.PRINCIPIANTE, utiles.Enum.PistaNatacionEnum.PISTA1, utiles.Enum.ClaseEnum.NATACION, 5, new ArrayList<>());
+        Clase claseNatacion2 = new Clase(new HashMap<>() {{put(utiles.Enum.DiaEnum.MARTES, LocalTime.of(19, 0)); put(utiles.Enum.DiaEnum.VIERNES, LocalTime.of(19, 0));}}, utiles.Enum.NivelPadelNatacionEnum.INTERMEDIO, utiles.Enum.PistaNatacionEnum.PISTA1, utiles.Enum.ClaseEnum.NATACION, 5, new ArrayList<>());
+        Clase claseNatacion3 = new Clase(new HashMap<>() {{put(utiles.Enum.DiaEnum.LUNES, LocalTime.of(19, 0)); put(utiles.Enum.DiaEnum.JUEVES, LocalTime.of(19, 0));}}, utiles.Enum.NivelPadelNatacionEnum.AVANZADO, utiles.Enum.PistaNatacionEnum.PISTA1, utiles.Enum.ClaseEnum.NATACION, 5, new ArrayList<>());
+        
+        Profesor p1 = new Profesor(utiles.Enum.TurnoEnum.TARDE, "123", "p1", "", LocalDate.of(1985, 5, 10), "", "", new ArrayList<>(Arrays.asList(claseFutbol1, claseFutbol2, claseFutbol3)));
+        Profesor p2 = new Profesor(utiles.Enum.TurnoEnum.TARDE, "123", "p2", "", LocalDate.of(1987, 5, 8), "", "", new ArrayList<>(Arrays.asList(clasePadel1, clasePadel2, clasePadel3)));
+        Profesor p3 = new Profesor(utiles.Enum.TurnoEnum.TARDE, "123", "p3", "", LocalDate.of(1985, 5, 3), "", "", new ArrayList<>(Arrays.asList(claseNatacion1, claseNatacion2, claseNatacion3)));
+        
+        Recepcionista r1 = new Recepcionista(utiles.Enum.TurnoEnum.MAÑANA, "123", "r1", "", LocalDate.of(1988, 5, 7), "", "");
+        Recepcionista r2 = new Recepcionista(utiles.Enum.TurnoEnum.TARDE, "123", "r2", "", LocalDate.of(1985, 4, 7), "", "");
+        
+        try {
+            app.registrarUsuario(c1);
+            app.registrarUsuario(c2);
+            app.registrarUsuario(c3);
+            app.registrarUsuario(s1);
+            app.registrarUsuario(s2);
+            app.registrarUsuario(s3);
+            app.registrarUsuario(m1);
+            app.registrarUsuario(m2);
+            app.registrarUsuario(m3);
+            app.registrarUsuario(p1);
+            app.registrarUsuario(p2);
+            app.registrarUsuario(p3);
+            app.registrarUsuario(r1);
+            app.registrarUsuario(r2);
+            
+            app.anadirActividad(act1);
+            app.anadirActividad(act2);
+            app.anadirActividad(act3);
+            app.anadirActividad(act4);
+            app.anadirActividad(act5);
+            app.anadirActividad(act6);
+            app.anadirActividad(act7);
+            app.anadirActividad(act8);
+            app.anadirActividad(act9);
+            
+            app.anadirClase(claseFutbol1);
+            app.anadirClase(claseFutbol2);
+            app.anadirClase(claseFutbol3);
+            app.anadirClase(clasePadel1);
+            app.anadirClase(clasePadel2);
+            app.anadirClase(clasePadel3);
+            app.anadirClase(claseNatacion1);
+            app.anadirClase(claseNatacion2);
+            app.anadirClase(claseNatacion3);
+        }catch (Excepcion ex) {
+            System.out.println("Excepcion: "+ex.toString());
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -32,6 +126,7 @@ public class VentanaLogin extends javax.swing.JFrame {
         textoClickAqui = new javax.swing.JLabel();
         campoContrasenna = new javax.swing.JPasswordField();
         checkBoxMostrarContraseña = new javax.swing.JCheckBox();
+        jButton1 = new javax.swing.JButton();
         scrollLaminaRegistrarse = new javax.swing.JScrollPane();
         laminaRegistrarse = new javax.swing.JPanel();
         laminaBotonRegistrarse = new javax.swing.JPanel();
@@ -114,6 +209,13 @@ public class VentanaLogin extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout laminaLoginLayout = new javax.swing.GroupLayout(laminaLogin);
         laminaLogin.setLayout(laminaLoginLayout);
         laminaLoginLayout.setHorizontalGroup(
@@ -139,7 +241,10 @@ public class VentanaLogin extends javax.swing.JFrame {
                             .addComponent(campoContrasenna, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
                             .addGroup(laminaLoginLayout.createSequentialGroup()
                                 .addGap(16, 16, 16)
-                                .addComponent(checkBoxMostrarContraseña)))))
+                                .addComponent(checkBoxMostrarContraseña))))
+                    .addGroup(laminaLoginLayout.createSequentialGroup()
+                        .addGap(152, 152, 152)
+                        .addComponent(jButton1)))
                 .addGap(37, 37, 37))
         );
         laminaLoginLayout.setVerticalGroup(
@@ -157,7 +262,9 @@ public class VentanaLogin extends javax.swing.JFrame {
                 .addComponent(checkBoxMostrarContraseña)
                 .addGap(43, 43, 43)
                 .addComponent(botonIniciarSesion)
-                .addGap(89, 89, 89)
+                .addGap(26, 26, 26)
+                .addComponent(jButton1)
+                .addGap(40, 40, 40)
                 .addGroup(laminaLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textoRegistrarse)
                     .addComponent(textoClickAqui))
@@ -293,37 +400,30 @@ public class VentanaLogin extends javax.swing.JFrame {
 
     private void botonIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIniciarSesionActionPerformed
         Enum iniciarSesion = app.iniciarSesion(campoCorreo.getText(), arrayCharToString(campoContrasenna.getPassword()));
-        
-        if (iniciarSesion == LoginEnum.ADMIN){
+
+        if (iniciarSesion == LoginEnum.ADMIN) {
             System.out.println("admin");
             this.dispose();
-        }
-        else if (iniciarSesion == LoginEnum.SOCIO){
+        } else if (iniciarSesion == LoginEnum.SOCIO) {
             System.out.println("socio");
             this.dispose();
-        }
-        else if (iniciarSesion == LoginEnum.CLIENTE){
+        } else if (iniciarSesion == LoginEnum.CLIENTE) {
             System.out.println("cliente");
             this.dispose();
-        }
-        else if (iniciarSesion == LoginEnum.MONITOR){
+        } else if (iniciarSesion == LoginEnum.MONITOR) {
             System.out.println("monitor");
             this.dispose();
-        }
-        else if (iniciarSesion == LoginEnum.PROFESOR){
+        } else if (iniciarSesion == LoginEnum.PROFESOR) {
             System.out.println("profesor");
             this.dispose();
-        }
-        else if (iniciarSesion == LoginEnum.RECEPCIONISTA){
+        } else if (iniciarSesion == LoginEnum.RECEPCIONISTA) {
             System.out.println("recepcionista");
             this.dispose();
-        }
-        else if (iniciarSesion == LoginEnum.ERROR_CONTRASENA) {
+        } else if (iniciarSesion == LoginEnum.ERROR_CONTRASENA) {
             JOptionPane.showMessageDialog(this, "Contraseña incorrecta", "ERROR", JOptionPane.ERROR_MESSAGE);
             campoCorreo.setBackground(Color.white);
             campoContrasenna.setBackground(Color.red);
-        }
-        else {
+        } else {
             JOptionPane.showMessageDialog(this, "Correo electrónico incorrecto", "ERROR", JOptionPane.ERROR_MESSAGE);
             campoCorreo.setBackground(Color.red);
             campoContrasenna.setBackground(Color.white);
@@ -352,9 +452,12 @@ public class VentanaLogin extends javax.swing.JFrame {
 
     private void botonRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarseActionPerformed
         Usuario usuarioNuevo;
-        if (desplegableTipoCliente.getSelectedIndex() == 0) usuarioNuevo = new Cliente(campoContrasennaRegistro.getText(), campoCorreoRegistro.getText(), campoDNI.getText(), stringToDate(campoFechaNacimiento.getText()), campoNombreUsuarioRegistro.getText(), campoTelefono.getText());
-        else usuarioNuevo = new Socio(campoContrasennaRegistro.getText(), campoCorreoRegistro.getText(), campoDNI.getText(), stringToDate(campoFechaNacimiento.getText()), campoNombreUsuarioRegistro.getText(), campoTelefono.getText());
-        
+        if (desplegableTipoCliente.getSelectedIndex() == 0) {
+            usuarioNuevo = new Cliente(campoContrasennaRegistro.getText(), campoCorreoRegistro.getText(), campoDNI.getText(), stringToDate(campoFechaNacimiento.getText()), campoNombreUsuarioRegistro.getText(), campoTelefono.getText());
+        } else {
+            usuarioNuevo = new Socio(campoContrasennaRegistro.getText(), campoCorreoRegistro.getText(), campoDNI.getText(), stringToDate(campoFechaNacimiento.getText()), campoNombreUsuarioRegistro.getText(), campoTelefono.getText());
+        }
+
         try {
             app.registrarUsuario(usuarioNuevo);
             app.setUsuarioLogueado(usuarioNuevo);
@@ -380,6 +483,11 @@ public class VentanaLogin extends javax.swing.JFrame {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         //Aplicacion.guardarDatos();
     }//GEN-LAST:event_formWindowClosing
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        new InterfazBuscarClase().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private LocalDate stringToDate(String fecha) {
         try {
@@ -446,6 +554,7 @@ public class VentanaLogin extends javax.swing.JFrame {
     private javax.swing.JTextField campoTelefono;
     private javax.swing.JCheckBox checkBoxMostrarContraseña;
     private javax.swing.JComboBox<String> desplegableTipoCliente;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel laminaBotonRegistrarse;
     private javax.swing.JPanel laminaLogin;
     private javax.swing.JPanel laminaObjetosRegistrarse;
@@ -464,6 +573,6 @@ public class VentanaLogin extends javax.swing.JFrame {
     private javax.swing.JLabel textocontrasennaRegistro;
     // End of variables declaration//GEN-END:variables
 
-    private Aplicacion app = new Aplicacion();
+    private Aplicacion app = Aplicacion.getInstancia();
 
 }

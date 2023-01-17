@@ -22,19 +22,21 @@ import utiles.Enum.LoginEnum;
  */
 public class Aplicacion {
 
-    private Aplicacion instancia;
+    private static Aplicacion instancia;
 
     /**
      * Patron Singleton
      *
      * @return
      */
-    public Aplicacion getInstancia() {
+    public static Aplicacion getInstancia() {
         if (instancia == null) {
             instancia = new Aplicacion();
         }
         return instancia;
     }
+    
+    private Aplicacion(){}
 
     private IntEstrategiaOrdenadoActividades estrategiaOrdenadoActividades;
     private AlquilerPista alquilerPista;
@@ -128,6 +130,13 @@ public class Aplicacion {
 
     public List<Clase> getClases() {
         return clases;
+    }
+    
+    public Clase getClase(String tipoClase, String nivel){
+        for (Clase clase : clases){
+            if (String.valueOf(clase.getTipo()).equals(tipoClase) && String.valueOf(clase.getNivel()).equals(nivel)) return clase;
+        }
+        return null;
     }
 
     /**

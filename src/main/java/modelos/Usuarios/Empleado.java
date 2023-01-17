@@ -15,7 +15,7 @@ public class Empleado extends Usuario {
 
     public Empleado(Enum turno, String contrasena, String correo, String dni, LocalDate fechaNacimiento, String nombre, String telefono) {
         super(contrasena, correo, dni, fechaNacimiento, nombre, telefono);
-        this.codEmpleado = new Aplicacion().getNumEmpleados() + 1;
+        this.codEmpleado = Aplicacion.getInstancia().getNumEmpleados() + 1;
         this.turno = turno;
     }
 
