@@ -38,6 +38,11 @@ public class InterfazGimnasio extends javax.swing.JFrame {
         jLabel1.setText("Bienvenido a nuestro gym");
 
         jButtonAlta.setText("Darse de alta");
+        jButtonAlta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAltaActionPerformed(evt);
+            }
+        });
 
         jButtonBaja.setText("Darse de baja");
 
@@ -81,6 +86,10 @@ public class InterfazGimnasio extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAltaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonAltaActionPerformed
 
     
 
