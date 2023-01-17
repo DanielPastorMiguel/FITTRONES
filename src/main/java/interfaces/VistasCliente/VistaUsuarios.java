@@ -5,6 +5,7 @@
 package interfaces.VistasCliente;
 
 import interfaces.VistasAdmin.ConsultarReservas;
+import interfaces.VistasCliente.InterfazBuscarClase;
 
 /**
  *
@@ -114,7 +115,7 @@ public class VistaUsuarios extends javax.swing.JFrame {
 
     private void jButtonBusquedaEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBusquedaEquipoActionPerformed
         // TODO add your handling code here:
-        InterfazBuscarEquipo ibeq = new InterfazBuscarEquipo();
+        InterfazBuscarClase ibeq = new InterfazBuscarClase();
         ibeq.setVisible(true);
         this.dispose();
 

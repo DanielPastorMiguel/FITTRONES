@@ -21,6 +21,7 @@ import modelos.Usuarios.Socio;
 import modelos.Usuarios.Usuario;
 import utiles.Enum.LoginEnum;
 import utiles.Excepcion;
+import interfaces.VistasCliente.InterfazBuscarClase;
 
 public class VentanaLogin extends javax.swing.JFrame {
 
