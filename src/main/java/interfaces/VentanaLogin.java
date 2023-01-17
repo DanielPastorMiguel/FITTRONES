@@ -1,6 +1,7 @@
 package interfaces;
 
-import interfaces.VistasCliente.InterfazBuscarClase;
+import interfaces.VistasAdmin.InterfazAdmin;
+import interfaces.VistasCliente.VistaUsuarios;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -20,8 +21,11 @@ import modelos.Usuarios.Socio;
 import modelos.Usuarios.Usuario;
 import utiles.Enum.LoginEnum;
 import utiles.Excepcion;
+import interfaces.VistasCliente.InterfazBuscarClase;
 
 public class VentanaLogin extends javax.swing.JFrame {
+
+    private Usuario usuario;
 
     public VentanaLogin() {
         //Aplicacion.cargarDatos();
@@ -383,7 +387,7 @@ public class VentanaLogin extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(laminaLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(scrollLaminaRegistrarse, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 584, Short.MAX_VALUE))
+                .addComponent(scrollLaminaRegistrarse, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 598, Short.MAX_VALUE))
         );
 
         pack();
@@ -400,26 +404,48 @@ public class VentanaLogin extends javax.swing.JFrame {
 
     private void botonIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIniciarSesionActionPerformed
         Enum iniciarSesion = app.iniciarSesion(campoCorreo.getText(), arrayCharToString(campoContrasenna.getPassword()));
-
-        if (iniciarSesion == LoginEnum.ADMIN) {
+        
+        if (iniciarSesion == LoginEnum.ADMIN){
             System.out.println("admin");
+            InterfazAdmin iadmin = new InterfazAdmin();
+            iadmin.setVisible(true);
             this.dispose();
-        } else if (iniciarSesion == LoginEnum.SOCIO) {
+        }
+        else if (iniciarSesion == LoginEnum.SOCIO){
             System.out.println("socio");
+            VistaUsuarios vu = new VistaUsuarios();
+            vu.setVisible(true);
             this.dispose();
-        } else if (iniciarSesion == LoginEnum.CLIENTE) {
+        }
+        else if (iniciarSesion == LoginEnum.CLIENTE){
             System.out.println("cliente");
+            VistaUsuarios vu = new VistaUsuarios();
+            vu.setVisible(true);
+
             this.dispose();
-        } else if (iniciarSesion == LoginEnum.MONITOR) {
+        }
+        else if (iniciarSesion == LoginEnum.MONITOR){
             System.out.println("monitor");
+            VistaUsuarios vu = new VistaUsuarios();
+            vu.setVisible(true);
+
             this.dispose();
-        } else if (iniciarSesion == LoginEnum.PROFESOR) {
+        }
+        else if (iniciarSesion == LoginEnum.PROFESOR){
             System.out.println("profesor");
+            VistaUsuarios vu = new VistaUsuarios();
+            vu.setVisible(true);
+
             this.dispose();
-        } else if (iniciarSesion == LoginEnum.RECEPCIONISTA) {
+        }
+        else if (iniciarSesion == LoginEnum.RECEPCIONISTA){
             System.out.println("recepcionista");
+            VistaUsuarios vu = new VistaUsuarios();
+            vu.setVisible(true);
+
             this.dispose();
-        } else if (iniciarSesion == LoginEnum.ERROR_CONTRASENA) {
+        }
+        else if (iniciarSesion == LoginEnum.ERROR_CONTRASENA) {
             JOptionPane.showMessageDialog(this, "Contraseña incorrecta", "ERROR", JOptionPane.ERROR_MESSAGE);
             campoCorreo.setBackground(Color.white);
             campoContrasenna.setBackground(Color.red);

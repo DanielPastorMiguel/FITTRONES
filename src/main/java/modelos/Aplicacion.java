@@ -35,8 +35,8 @@ public class Aplicacion {
         }
         return instancia;
     }
-    
     private Aplicacion(){}
+
 
     private IntEstrategiaOrdenadoActividades estrategiaOrdenadoActividades;
     private AlquilerPista alquilerPista;
@@ -91,9 +91,9 @@ public class Aplicacion {
     public void alquilarPista() {
 
     }
-
-    public void apuntarSocioClase() {
-
+    
+    public boolean apuntarSocioClase(Socio socio ,Clase clase) {
+        return clase.apuntarSocioClase(socio);
     }
 
     public void generarFactura() {

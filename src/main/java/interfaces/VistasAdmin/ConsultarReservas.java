@@ -4,11 +4,10 @@
  */
 package interfaces.VistasAdmin;
 
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.Date;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import modelos.AlquilerDecorator.AlquilerPista;
+import utiles.ModeloTabla;
 
 /**
  *
@@ -21,17 +20,32 @@ public class ConsultarReservas extends javax.swing.JFrame {
      */
     public ConsultarReservas() {
         initComponents();
+        inicializarTabla();
     }
 
-    public LocalDate getjSpinnerFecha() {
-        Date fecha = (Date) jSpinnerFecha.getValue();
-        Instant instant = Instant.ofEpochMilli(fecha.getTime());
-        LocalDate localDate = LocalDateTime.ofInstant(instant, ZoneId.systemDefault()).toLocalDate();
-        return localDate;
+    private void inicializarTabla() {
+        tabla.getTableHeader().setReorderingAllowed(false);
+        String[] columnas = {"Nº Pista", "16:00-17:00", "17:00-18:00", "18:00-19:00", "19:00-20:00", "20:00-21:00", "21:00-22:00"};
+
+        ModeloTabla modeloTabla = new ModeloTabla(null, columnas);
+
+        tabla.setModel(modeloTabla);
     }
 
-    public void setjSpinnerFecha(Date d) {
-        this.jSpinnerFecha.setValue(d);
+    private void rellenarTablaProductos(DefaultTableModel modeloTabla, List<AlquilerPista> pistas, utiles.Enum.DiaEnum dia) {
+        try {
+            Object[] filaTabla = new Object[5];
+            for (AlquilerPista pista : pistas) {
+                filaTabla[0] = pista.getNumPista();
+                //filaTabla[1] = pista.getTitulo();
+                filaTabla[2] = pista.getDescripcion();
+                // filaTabla[3] = pista.getCategoria().toString();
+                // filaTabla[4] = String.valueOf(producto.getPrecio());
+                modeloTabla.addRow(filaTabla);
+            }
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
     }
 
     /**
@@ -48,15 +62,15 @@ public class ConsultarReservas extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jComboBoxTipoPista = new javax.swing.JComboBox<>();
         jButtonBuscar = new javax.swing.JButton();
-        jSpinnerFecha = new javax.swing.JSpinner();
-        jLabel4 = new javax.swing.JLabel();
-        jButtonAnterior = new javax.swing.JButton();
-        jButtonSiguiente = new javax.swing.JButton();
+        jComboBoxTipoPista1 = new javax.swing.JComboBox<>();
+        jButtonReservar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabla = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel1.setText("Consulta de reservas");
+        jLabel1.setText("Reservas");
 
         jLabel2.setText("Tipo de pista");
 
@@ -66,15 +80,29 @@ public class ConsultarReservas extends javax.swing.JFrame {
 
         jButtonBuscar.setText("Buscar");
 
-        jSpinnerFecha.setModel(new javax.swing.SpinnerDateModel(new java.util.Date(-3600000L), null, null, java.util.Calendar.DAY_OF_MONTH));
-        jSpinnerFecha.setEditor(new javax.swing.JSpinner.DateEditor(jSpinnerFecha, "dd/MM/yyyy"));
+        jComboBoxTipoPista1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", " " }));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel4.setText("PANEL DE LAS RESERVAS");
+        jButtonReservar.setText("Reservar");
+        jButtonReservar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonReservarActionPerformed(evt);
+            }
+        });
 
-        jButtonAnterior.setText("Anterior");
-
-        jButtonSiguiente.setText("Siguiente");
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Nº pista", "15-16", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7"
+            }
+        ));
+        jScrollPane1.setViewportView(tabla);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -83,30 +111,26 @@ public class ConsultarReservas extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 811, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(379, 379, 379)
+                        .addComponent(jButtonReservar))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jComboBoxTipoPista, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSpinnerFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(57, 57, 57)
-                        .addComponent(jButtonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(214, 214, 214)
-                        .addComponent(jLabel1)))
-                .addContainerGap(35, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(jButtonAnterior)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonSiguiente)
-                .addGap(114, 114, 114))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addGap(168, 168, 168))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBoxTipoPista1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(46, 46, 46)
+                                .addComponent(jButtonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,28 +143,30 @@ public class ConsultarReservas extends javax.swing.JFrame {
                     .addComponent(jComboBoxTipoPista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(jButtonBuscar)
-                    .addComponent(jSpinnerFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(113, 113, 113)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonAnterior)
-                    .addComponent(jButtonSiguiente))
-                .addGap(32, 32, 32))
+                    .addComponent(jComboBoxTipoPista1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addComponent(jButtonReservar)
+                .addGap(23, 23, 23))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonReservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReservarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonReservarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAnterior;
     private javax.swing.JButton jButtonBuscar;
-    private javax.swing.JButton jButtonSiguiente;
+    private javax.swing.JButton jButtonReservar;
     private javax.swing.JComboBox<String> jComboBoxTipoPista;
+    private javax.swing.JComboBox<String> jComboBoxTipoPista1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JSpinner jSpinnerFecha;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
 }

@@ -39,12 +39,32 @@ public class InterfazAdmin extends javax.swing.JFrame {
         jLabel1.setText("Bienvenido admin");
 
         jButtonAltaCliente.setText("Alta cliente");
+        jButtonAltaCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAltaClienteActionPerformed(evt);
+            }
+        });
 
         jButtonConsultarClientes.setText("Consultar clientes");
+        jButtonConsultarClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConsultarClientesActionPerformed(evt);
+            }
+        });
 
         jButtonConsultarReservas.setText("Consultar reservas");
+        jButtonConsultarReservas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConsultarReservasActionPerformed(evt);
+            }
+        });
 
         jButtonConsultarVentas.setText("Consultar ventas");
+        jButtonConsultarVentas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConsultarVentasActionPerformed(evt);
+            }
+        });
 
         jButtonVolver.setText("Volver");
 
@@ -87,6 +107,26 @@ public class InterfazAdmin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonAltaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAltaClienteActionPerformed
+        // TODO add your handling code here:
+        AltaCliente ac = new AltaCliente();
+    }//GEN-LAST:event_jButtonAltaClienteActionPerformed
+
+    private void jButtonConsultarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarClientesActionPerformed
+        // TODO add your handling code here:
+        ConsultarClientes consulta = new ConsultarClientes(this);
+    }//GEN-LAST:event_jButtonConsultarClientesActionPerformed
+
+    private void jButtonConsultarReservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarReservasActionPerformed
+        // TODO add your handling code here:
+        ConsultarReservas cr = new ConsultarReservas();
+    }//GEN-LAST:event_jButtonConsultarReservasActionPerformed
+
+    private void jButtonConsultarVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarVentasActionPerformed
+        // TODO add your handling code here:
+        ConsultarVentas cv = new ConsultarVentas();
+    }//GEN-LAST:event_jButtonConsultarVentasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

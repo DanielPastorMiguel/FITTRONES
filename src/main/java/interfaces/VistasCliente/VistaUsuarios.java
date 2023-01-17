@@ -4,6 +4,9 @@
  */
 package interfaces.VistasCliente;
 
+import interfaces.VistasAdmin.ConsultarReservas;
+import interfaces.VistasCliente.InterfazBuscarClase;
+
 /**
  *
  * @author Octavian
@@ -105,21 +108,30 @@ public class VistaUsuarios extends javax.swing.JFrame {
 
     private void jButtonBusquedaServiciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBusquedaServiciosActionPerformed
         // TODO add your handling code here:
+        ConsultarReservas cr = new ConsultarReservas();
+        cr.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButtonBusquedaServiciosActionPerformed
 
     private void jButtonBusquedaEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBusquedaEquipoActionPerformed
         // TODO add your handling code here:
+        InterfazBuscarClase ibeq = new InterfazBuscarClase();
+        ibeq.setVisible(true);
+        this.dispose();
+
     }//GEN-LAST:event_jButtonBusquedaEquipoActionPerformed
 
     private void jButtonInterfazGimnasioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInterfazGimnasioActionPerformed
         // TODO add your handling code here:
+        InterfazGimnasio ig = new InterfazGimnasio();
+        ig.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButtonInterfazGimnasioActionPerformed
 
     private void jButtonCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarSesionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonCerrarSesionActionPerformed
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBusquedaEquipo;
