@@ -35,8 +35,7 @@ public class Aplicacion {
         }
         return instancia;
     }
-    
-    private Aplicacion (){};
+    private Aplicacion(){}
 
 
     private IntEstrategiaOrdenadoActividades estrategiaOrdenadoActividades;
@@ -131,6 +130,13 @@ public class Aplicacion {
 
     public List<Clase> getClases() {
         return clases;
+    }
+    
+    public Clase getClase(String tipoClase, String nivel){
+        for (Clase clase : clases){
+            if (String.valueOf(clase.getTipo()).equals(tipoClase) && String.valueOf(clase.getNivel()).equals(nivel)) return clase;
+        }
+        return null;
     }
 
     /**

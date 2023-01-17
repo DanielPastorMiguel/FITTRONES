@@ -32,6 +32,10 @@ public class Clase {
         this.tipo = tipo;
         this.sociosInscritos = sociosInscritos;
     }
+    
+    public String getInformacion(){
+        return "horario: " + horario.toString();
+    }
 
     public HashMap getHorario() {
         return horario;
