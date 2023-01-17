@@ -4,6 +4,12 @@
  */
 package interfaces.VistasAdmin;
 
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import modelos.AlquilerDecorator.AlquilerPista;
+import utiles.Enum.DiaEnum;
+import utiles.ModeloTabla;
+
 /**
  *
  * @author Octavian
@@ -15,6 +21,32 @@ public class PanelReservas extends javax.swing.JFrame {
      */
     public PanelReservas() {
         initComponents();
+        inicializarTabla();
+    }
+
+    private void inicializarTabla() {
+        tabla.getTableHeader().setReorderingAllowed(false);
+        String[] columnas = {"Nº Pista", "16:00-17:00", "17:00-18:00", "18:00-19:00", "19:00-20:00", "20:00-21:00", "21:00-22:00"};
+
+        ModeloTabla modeloTabla = new ModeloTabla(null, columnas);
+
+        tabla.setModel(modeloTabla);
+    }
+
+    private void rellenarTablaProductos(DefaultTableModel modeloTabla, List<AlquilerPista> pistas, DiaEnum dia) {
+        try {
+            Object[] filaTabla = new Object[5];
+            for (AlquilerPista pista : pistas) {
+                filaTabla[0] = pista.getNumPista();
+                //filaTabla[1] = pista.getTitulo();
+                filaTabla[2] = pista.getDescripcion();
+                // filaTabla[3] = pista.getCategoria().toString();
+                // filaTabla[4] = String.valueOf(producto.getPrecio());
+                modeloTabla.addRow(filaTabla);
+            }
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
     }
 
     /**
@@ -27,36 +59,34 @@ public class PanelReservas extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabla = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Nº pista", "15-16", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabla);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 316, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 811, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 149, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -65,6 +95,6 @@ public class PanelReservas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
 }
