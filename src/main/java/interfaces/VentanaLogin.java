@@ -24,9 +24,7 @@ import utiles.Excepcion;
 import interfaces.VistasCliente.InterfazBuscarClase;
 
 public class VentanaLogin extends javax.swing.JFrame {
-
-    private Usuario usuario;
-
+    
     public VentanaLogin() {
         //Aplicacion.cargarDatos();
         initComponents();

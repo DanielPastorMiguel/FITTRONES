@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package interfaces.VistasAdmin;
+package interfaces.VistasCliente;
 
+import interfaces.VistasAdmin.*;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import modelos.AlquilerDecorator.AlquilerPista;
@@ -13,12 +14,12 @@ import utiles.ModeloTabla;
  *
  * @author Octavian
  */
-public class ConsultarReservas extends javax.swing.JFrame {
+public class InterfazReservaPista extends javax.swing.JFrame {
 
     /**
      * Creates new form ConsultarReservas
      */
-    public ConsultarReservas() {
+    public InterfazReservaPista() {
         initComponents();
         inicializarTabla();
     }
