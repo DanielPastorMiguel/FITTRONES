@@ -34,7 +34,7 @@ public class AlquilerPista {
         this.complementos = complementos;
         this.numPista = numPista;
         this.precio = 10;
-        this.descripcion = descripcion; //Pista padel o Pista tenis o Pista futbol...
+        this.descripcion = descripcion; //Pista padel o  Pista futbol...
         this.estadoPista = estadoPista;
         this.cliente = cliente;
         this.socio = socio;

@@ -1,5 +1,6 @@
 package interfaces;
 
+import interfaces.VistasAdmin.PanelReservas;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -32,6 +33,7 @@ public class VentanaLogin extends javax.swing.JFrame {
         textoClickAqui = new javax.swing.JLabel();
         campoContrasenna = new javax.swing.JPasswordField();
         checkBoxMostrarContraseña = new javax.swing.JCheckBox();
+        jButton1 = new javax.swing.JButton();
         scrollLaminaRegistrarse = new javax.swing.JScrollPane();
         laminaRegistrarse = new javax.swing.JPanel();
         laminaBotonRegistrarse = new javax.swing.JPanel();
@@ -114,6 +116,13 @@ public class VentanaLogin extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout laminaLoginLayout = new javax.swing.GroupLayout(laminaLogin);
         laminaLogin.setLayout(laminaLoginLayout);
         laminaLoginLayout.setHorizontalGroup(
@@ -139,7 +148,10 @@ public class VentanaLogin extends javax.swing.JFrame {
                             .addComponent(campoContrasenna, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
                             .addGroup(laminaLoginLayout.createSequentialGroup()
                                 .addGap(16, 16, 16)
-                                .addComponent(checkBoxMostrarContraseña)))))
+                                .addComponent(checkBoxMostrarContraseña))))
+                    .addGroup(laminaLoginLayout.createSequentialGroup()
+                        .addGap(156, 156, 156)
+                        .addComponent(jButton1)))
                 .addGap(37, 37, 37))
         );
         laminaLoginLayout.setVerticalGroup(
@@ -157,7 +169,9 @@ public class VentanaLogin extends javax.swing.JFrame {
                 .addComponent(checkBoxMostrarContraseña)
                 .addGap(43, 43, 43)
                 .addComponent(botonIniciarSesion)
-                .addGap(89, 89, 89)
+                .addGap(27, 27, 27)
+                .addComponent(jButton1)
+                .addGap(37, 37, 37)
                 .addGroup(laminaLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textoRegistrarse)
                     .addComponent(textoClickAqui))
@@ -276,7 +290,7 @@ public class VentanaLogin extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(laminaLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(scrollLaminaRegistrarse, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 584, Short.MAX_VALUE))
+                .addComponent(scrollLaminaRegistrarse, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 598, Short.MAX_VALUE))
         );
 
         pack();
@@ -381,6 +395,12 @@ public class VentanaLogin extends javax.swing.JFrame {
         //Aplicacion.guardarDatos();
     }//GEN-LAST:event_formWindowClosing
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        PanelReservas p1 = new PanelReservas();
+        p1.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     private LocalDate stringToDate(String fecha) {
         try {
             String[] fechaSplit = fecha.split("/");
@@ -446,6 +466,7 @@ public class VentanaLogin extends javax.swing.JFrame {
     private javax.swing.JTextField campoTelefono;
     private javax.swing.JCheckBox checkBoxMostrarContraseña;
     private javax.swing.JComboBox<String> desplegableTipoCliente;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel laminaBotonRegistrarse;
     private javax.swing.JPanel laminaLogin;
     private javax.swing.JPanel laminaObjetosRegistrarse;
