@@ -4,17 +4,85 @@
  */
 package interfaces.VistasAdmin;
 
+import java.util.List;
+import java.util.ListIterator;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import modelos.Aplicacion;
+import modelos.Usuarios.Socio;
+import modelos.Usuarios.Usuario;
+
 /**
  *
  * @author Octavian
  */
 public class ConsultarClientes extends javax.swing.JFrame {
+    
+    private Aplicacion aplicacion;
+    private JFrame principal;
+    private List<Usuario> listaUsuarios = null;
+    private ListIterator<Usuario> li;
+    private Usuario objUsr;
 
     /**
      * Creates new form ConsultarClientes
      */
-    public ConsultarClientes() {
+    public ConsultarClientes(JFrame ventana) {
         initComponents();
+        this.setLocationRelativeTo(null);
+        principal = ventana;
+        principal.setVisible(false);
+        consultarUsuarios();
+        this.setVisible(true);
+    }
+
+    private void consultarUsuarios() {
+        try {
+            listaUsuarios = aplicacion.getUsuariosRegistrados();
+            li = listaUsuarios.listIterator();
+            //si no hay personas...
+            if (listaUsuarios.size() < 1) {
+                JOptionPane.showMessageDialog(this, "No hay clientes.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+                jButtonSiguiente.setEnabled(false);
+                jButtonAnterior.setEnabled(false);
+                jButtonBorrar.setEnabled(true);
+
+                return;
+            } else {
+                jButtonSiguiente.setEnabled(true);
+                jButtonAnterior.setEnabled(true);
+                jButtonBorrar.setEnabled(true);
+            }
+            //presentamos el primner usuario
+            if (li.hasNext()) {
+                objUsr = (Usuario) li.next();
+            }
+            if (objUsr != null) {
+                presenta(objUsr);
+            } else {
+                JOptionPane.showMessageDialog(this, "No hay clientes.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage(), "Mensaje", JOptionPane.ERROR_MESSAGE);
+            System.out.println("Error: " + e.toString());
+        }
+    }
+
+    private void presenta(Usuario u) {
+        panelCliente1.desactivarSocio();
+        String tipo = u.getClass().getSimpleName();
+        panelCliente1.setjTextFieldNombre(u.getNombre());
+        panelCliente1.setjTextFieldDni(u.getDni());
+        panelCliente1.setjTextFieldCorreo(u.getCorreo());
+        panelCliente1.setjTextFieldClave(u.getContrasena());
+        panelCliente1.setjTextFieldTelefono(u.getTelefono());
+
+        if (tipo == "Socio") {
+            panelCliente1.activarSocio();
+            Socio socio = (Socio) u;
+            panelCliente1.setjTextFieldNumeroSocio(String.valueOf(socio.getId()));
+            panelCliente1.setjTextFieldListaServicios(socio.getInformacionCliente());
+        }
     }
 
     /**
@@ -38,10 +106,25 @@ public class ConsultarClientes extends javax.swing.JFrame {
         jLabel1.setText("Consula de usuarios");
 
         jButtonAnterior.setText("Anterior");
+        jButtonAnterior.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAnteriorActionPerformed(evt);
+            }
+        });
 
         jButtonSiguiente.setText("Siguiente");
+        jButtonSiguiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSiguienteActionPerformed(evt);
+            }
+        });
 
         jButtonBorrar.setText("Dar de baja");
+        jButtonBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBorrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -81,6 +164,40 @@ public class ConsultarClientes extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteActionPerformed
+        // TODO add your handling code here:
+        // TODO add your handling code here:
+        if (li.hasNext()) {
+            objUsr = li.next();
+            if (objUsr != null) {
+                presenta(objUsr);
+            } else {
+                JOptionPane.showMessageDialog(this, "No hay clientes.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_jButtonSiguienteActionPerformed
+
+    private void jButtonAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnteriorActionPerformed
+        // TODO add your handling code here:
+        // TODO add your handling code here:
+        if (li.hasPrevious()) {
+            objUsr = li.previous();
+            if (objUsr != null) {
+                presenta(objUsr);
+            } else {
+                JOptionPane.showMessageDialog(this, "No hay clientes.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_jButtonAnteriorActionPerformed
+
+    private void jButtonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "Cliente Eliminado con Exito.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+        // Aplicacion.bajaCliente(objUsr);
+        presenta(li.next());
+        li.remove();
+    }//GEN-LAST:event_jButtonBorrarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAnterior;
