@@ -92,9 +92,9 @@ public class Aplicacion {
     public void alquilarPista() {
 
     }
-
-    public void apuntarSocioClase() {
-
+    
+    public boolean apuntarSocioClase(Socio socio ,Clase clase) {
+        return clase.apuntarSocioClase(socio);
     }
 
     public void generarFactura() {

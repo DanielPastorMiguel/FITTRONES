@@ -78,14 +78,16 @@ public class Clase {
      *
      * @param s
      */
-    public void apuntarSocioClase(Socio s) {
+    public boolean apuntarSocioClase(Socio s) {
         if (this.plazasMax == this.sociosInscritos.size()) {
             suscribirse(s);
+            return false;
         } else {
             sociosInscritos.add(s);
             if (this.plazasMax == this.sociosInscritos.size()) {
                 notificarSuscriptores();
             }
+            return true;
         }
     }
 
