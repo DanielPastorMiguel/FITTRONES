@@ -11,7 +11,7 @@ import modelos.Usuarios.Socio;
  * @version 1.0
  * @created 06-ene.-2023 17:48:02
  */
-public class AlquilerPista implements Serializable{
+public class Pista implements Serializable{
 
     private HashMap alquilerLunes;
     private HashMap alquilerMartes;
@@ -26,7 +26,7 @@ public class AlquilerPista implements Serializable{
     public Cliente cliente;
     public Socio socio;
 
-    public AlquilerPista(HashMap alquilerLunes, HashMap alquilerMartes, HashMap alquilerMiercoles, HashMap alquilerJueves, HashMap alquilerViernes, String complementos, int numPista, String descripcion, IntEstadoPista estadoPista, Cliente cliente, Socio socio) {
+    public Pista(HashMap alquilerLunes, HashMap alquilerMartes, HashMap alquilerMiercoles, HashMap alquilerJueves, HashMap alquilerViernes, String complementos, int numPista, String descripcion, IntEstadoPista estadoPista, Cliente cliente, Socio socio) {
         this.alquilerLunes = alquilerLunes;
         this.alquilerMartes = alquilerMartes;
         this.alquilerMiercoles = alquilerMiercoles;
@@ -41,7 +41,7 @@ public class AlquilerPista implements Serializable{
         this.socio = socio;
     }
 
-    public AlquilerPista() {
+    public Pista() {
     }
 
     public HashMap getAlquilerLunes() {

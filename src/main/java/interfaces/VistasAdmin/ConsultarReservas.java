@@ -6,7 +6,7 @@ package interfaces.VistasAdmin;
 
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
-import modelos.AlquilerDecorator.AlquilerPista;
+import modelos.AlquilerDecorator.Pista;
 import utiles.ModeloTabla;
 
 /**
@@ -34,10 +34,10 @@ public class ConsultarReservas extends javax.swing.JFrame {
         tabla.setModel(modeloTabla);
     }
 
-    private void rellenarTablaProductos(DefaultTableModel modeloTabla, List<AlquilerPista> pistas, utiles.Enum.DiaEnum dia) {
+    private void rellenarTablaProductos(DefaultTableModel modeloTabla, List<Pista> pistas, utiles.Enum.DiaEnum dia) {
         try {
             Object[] filaTabla = new Object[5];
-            for (AlquilerPista pista : pistas) {
+            for (Pista pista : pistas) {
                 filaTabla[0] = pista.getNumPista();
                 //filaTabla[1] = pista.getTitulo();
                 filaTabla[2] = pista.getDescripcion();

@@ -7,7 +7,7 @@ package modelos.AlquilerDecorator;
  */
 public class Luces extends AlquilerPistaDecorador {
 
-    public Luces(AlquilerPista alquilerPista) {
+    public Luces(Pista alquilerPista) {
         super(alquilerPista);
     }
 

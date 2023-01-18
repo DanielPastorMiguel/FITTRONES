@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import modelos.FormulariosMediator.Mediador;
 import modelos.OrdenadoActividadesStrategy.IntEstrategiaOrdenadoActividades;
 import modelos.Usuarios.Usuario;
-import modelos.AlquilerDecorator.AlquilerPista;
+import modelos.AlquilerDecorator.Pista;
 import java.util.List;
 import modelos.Usuarios.Cliente;
 import modelos.Usuarios.Empleado;
@@ -30,14 +30,14 @@ public class Aplicacion {
     private static Aplicacion instancia;
 
     private IntEstrategiaOrdenadoActividades estrategiaOrdenadoActividades;
-    private AlquilerPista alquilerPista;
+    private Pista alquilerPista;
     private Aplicacion aplicacion;
     private Mediador mediador;
 
     private static List<Usuario> usuariosRegistrados = new ArrayList<>();
     private static List<Actividad> actividades = new ArrayList<>();
     private static List<Clase> clases = new ArrayList<>();
-    private static List<AlquilerPista> pistas = new ArrayList<>();
+    private static List<Pista> pistas = new ArrayList<>();
 
     private Sauna sauna = new Sauna();
     private Usuario usuarioLogueado;

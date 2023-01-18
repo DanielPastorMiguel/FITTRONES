@@ -3,7 +3,6 @@ package modelos;
 import java.io.Serializable;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import modelos.Usuarios.IntSuscriptor;
 import java.util.HashMap;
 import java.util.List;
 import modelos.Usuarios.Socio;
