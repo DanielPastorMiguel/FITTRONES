@@ -11,7 +11,7 @@ import modelos.Usuarios.Socio;
  * @version 1.0
  * @created 06-ene.-2023 17:48:02
  */
-public class Pista implements Serializable{
+public class Pista implements Serializable, Cloneable {
 
     private HashMap alquilerLunes;
     private HashMap alquilerMartes;
@@ -138,6 +138,23 @@ public class Pista implements Serializable{
 
     public void setSocio(Socio socio) {
         this.socio = socio;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        Pista otra = null;
+        try {
+            // Clona el objeto: copia superficial.
+            otra = (Pista) super.clone();
+            // Ahora hacemos copia profunda.
+            otra.alquilerLunes = (HashMap) alquilerLunes.clone();
+            otra.alquilerMartes = (HashMap) alquilerMartes.clone();
+            otra.alquilerMiercoles = (HashMap) alquilerMiercoles.clone();
+            otra.alquilerJueves = (HashMap) alquilerJueves.clone();
+            otra.alquilerViernes = (HashMap) alquilerViernes.clone();
+        } catch (CloneNotSupportedException e) {
+        }
+        return otra;
     }
 
 }//end AlquilerPista
