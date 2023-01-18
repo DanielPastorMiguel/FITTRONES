@@ -6,11 +6,12 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import modelos.FormulariosMediator.Mediador;
 import modelos.OrdenadoActividadesStrategy.IntEstrategiaOrdenadoActividades;
 import modelos.Usuarios.Usuario;
 import modelos.AlquilerDecorator.Pista;
 import java.util.List;
+import modelos.AlquilerDecorator.Luces;
+import modelos.AlquilerDecorator.Material;
 import modelos.Usuarios.Cliente;
 import modelos.Usuarios.Empleado;
 import modelos.Usuarios.Monitor;
@@ -30,16 +31,14 @@ public class Aplicacion {
     private static Aplicacion instancia;
 
     private IntEstrategiaOrdenadoActividades estrategiaOrdenadoActividades;
-    private Pista alquilerPista;
-    private Aplicacion aplicacion;
-    private Mediador mediador;
 
     private static List<Usuario> usuariosRegistrados = new ArrayList<>();
-    private static List<Actividad> actividades = new ArrayList<>();
-    private static List<Clase> clases = new ArrayList<>();
-    private static List<Pista> pistas = new ArrayList<>();
+    private static List<Actividad> listaActividades = new ArrayList<>();
+    private static List<Clase> listaClases = new ArrayList<>();
+    private static List<Pista> listaPistas = new ArrayList<>();
 
     private Sauna sauna = new Sauna();
+    
     private Usuario usuarioLogueado;
 
     /**
@@ -109,17 +108,47 @@ public class Aplicacion {
         return false;
     }
 
+    /**
+     * Añade luces a la pista
+     *
+     * @param p
+     * @return 
+     */
+    public Pista anadirLucesPista(Pista p) {
+        Pista pista;
+        pista = new Luces(p);
+        return pista;
+    }
+
+    /**
+     * Añade material a la pista
+     *
+     * @param p
+     * @return 
+     */
+    public Pista anadirMaterial(Pista p) {
+        Pista pista;
+        pista = new Material(p);
+        return pista;
+    }
+
+    /**
+     * Alquila una pista 
+     */
     public void alquilarPista() {
 
     }
 
+    /**
+     * Apunta un socio a una clase
+     * @param socio
+     * @param clase
+     * @return 
+     */
     public boolean apuntarSocioClase(Socio socio, Clase clase) {
         return clase.apuntarSocioClase(socio);
     }
 
-    public void generarFactura() {
-
-    }
 
     public void setUsuarioLogueado(Usuario usuarioLogueado) {
         this.usuarioLogueado = usuarioLogueado;
@@ -130,11 +159,11 @@ public class Aplicacion {
     }
 
     public void anadirActividad(Actividad act) {
-        actividades.add(act);
+        listaActividades.add(act);
     }
 
     public void anadirClase(Clase clase) {
-        clases.add(clase);
+        listaClases.add(clase);
     }
 
     public Usuario getUsuarioLogueado() {
@@ -146,15 +175,15 @@ public class Aplicacion {
     }
 
     public List<Actividad> getActividades() {
-        return actividades;
+        return listaActividades;
     }
 
     public List<Clase> getClases() {
-        return clases;
+        return listaClases;
     }
 
     public Clase getClase(String tipoClase, String nivel) {
-        for (Clase clase : clases) {
+        for (Clase clase : listaClases) {
             if (String.valueOf(clase.getTipo()).equals(tipoClase) && String.valueOf(clase.getNivel()).equals(nivel)) {
                 return clase;
             }
@@ -171,7 +200,7 @@ public class Aplicacion {
     }
 
     public void ejecutarEstrategiaOrdenadoActividades() {
-        estrategiaOrdenadoActividades.ordenarActividades(actividades);
+        estrategiaOrdenadoActividades.ordenarActividades(listaActividades);
     }
 
     public int getNumEmpleados() {
@@ -195,12 +224,13 @@ public class Aplicacion {
     }
 
     /**
-     * guarda los datos de las listas de la aplicacione en su archivo de datos correspondiente
+     * guarda los datos de las listas de la aplicacione en su archivo de datos
+     * correspondiente
      */
     public static void guardarDatos() {
         try {
             //si hay datos, los guardamos
-            if (!usuariosRegistrados.isEmpty() || !clases.isEmpty() || !actividades.isEmpty() || !pistas.isEmpty()) {
+            if (!usuariosRegistrados.isEmpty() || !listaClases.isEmpty() || !listaActividades.isEmpty() || !listaPistas.isEmpty()) {
                 /**
                  * ***** Serialización de los objetos ********
                  */
@@ -215,23 +245,23 @@ public class Aplicacion {
                 FileOutputStream ostreamClases = new FileOutputStream("clases.dat");
                 ObjectOutputStream oosClases = new ObjectOutputStream(ostreamClases);
                 //guardamos el array de las clases
-                oosClases.writeObject(clases);
+                oosClases.writeObject(listaClases);
                 ostreamClases.close();
 
                 //serializacion de las actividades
                 FileOutputStream ostreamAct = new FileOutputStream("actividades.dat");
                 ObjectOutputStream oosAct = new ObjectOutputStream(ostreamAct);
                 //guardamos el array de las actividades
-                oosAct.writeObject(actividades);
+                oosAct.writeObject(listaActividades);
                 ostreamAct.close();
-                
+
                 //serializacion de las pistas
                 FileOutputStream ostreamPistas = new FileOutputStream("actividades.dat");
                 ObjectOutputStream oosPistas = new ObjectOutputStream(ostreamPistas);
                 //guardamos el array de las pistas
-                oosPistas.writeObject(pistas);
+                oosPistas.writeObject(listaPistas);
                 ostreamPistas.close();
-                
+
             } else {
                 System.out.println("Error, no hay datos...");
             }
@@ -252,25 +282,25 @@ public class Aplicacion {
             ObjectInputStream oisUsr = new ObjectInputStream(istreamUsr);
             usuariosRegistrados = (ArrayList) oisUsr.readObject();
             istreamUsr.close();
-            
+
             //lectura de los objetos de tipo clases
             FileInputStream istreamClases = new FileInputStream("productos.dat");
             ObjectInputStream oisClase = new ObjectInputStream(istreamClases);
-            clases = (ArrayList) oisClase.readObject();
+            listaClases = (ArrayList) oisClase.readObject();
             istreamClases.close();
-            
+
             //lectura de los objetos de tipo actividades
-            FileInputStream istreamAct= new FileInputStream("actividades.dat");
+            FileInputStream istreamAct = new FileInputStream("actividades.dat");
             ObjectInputStream oisAct = new ObjectInputStream(istreamAct);
-            actividades = (ArrayList) oisAct.readObject();
+            listaActividades = (ArrayList) oisAct.readObject();
             istreamAct.close();
-            
-            //lectura de los objetos de tipo AlquilerPista
+
+            //lectura de los objetos de tipo pista
             FileInputStream istreamPistas = new FileInputStream("pistas.dat");
             ObjectInputStream oisPistas = new ObjectInputStream(istreamPistas);
-            pistas = (ArrayList) oisPistas.readObject();
+            listaPistas = (ArrayList) oisPistas.readObject();
             istreamPistas.close();
-            
+
         } catch (IOException ioe) {
             System.out.println("Error de tipo IO: " + ioe.getMessage());
         } catch (ClassNotFoundException cnf) {

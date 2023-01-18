@@ -2,7 +2,6 @@ package modelos.AlquilerDecorator;
 
 import java.io.Serializable;
 import java.util.HashMap;
-import modelos.AlquilerState.IntEstadoPista;
 import modelos.Usuarios.Cliente;
 import modelos.Usuarios.Socio;
 
@@ -18,27 +17,23 @@ public class Pista implements Serializable, Cloneable {
     private HashMap alquilerMiercoles;
     private HashMap alquilerJueves;
     private HashMap alquilerViernes;
-    private String complementos;
-    private int numPista;
-    private double precio;
-    private String descripcion;
-    public IntEstadoPista estadoPista;
-    public Cliente cliente;
-    public Socio socio;
 
-    public Pista(HashMap alquilerLunes, HashMap alquilerMartes, HashMap alquilerMiercoles, HashMap alquilerJueves, HashMap alquilerViernes, String complementos, int numPista, String descripcion, IntEstadoPista estadoPista, Cliente cliente, Socio socio) {
+    private String descripcion;
+    private Enum numPista;
+    private double precio;
+
+    public Pista(HashMap alquilerLunes, HashMap alquilerMartes, HashMap alquilerMiercoles, HashMap alquilerJueves, HashMap alquilerViernes, Enum numPista, String descripcion) {
+
         this.alquilerLunes = alquilerLunes;
         this.alquilerMartes = alquilerMartes;
         this.alquilerMiercoles = alquilerMiercoles;
         this.alquilerJueves = alquilerJueves;
         this.alquilerViernes = alquilerViernes;
-        this.complementos = complementos;
+
         this.numPista = numPista;
         this.precio = 10;
-        this.descripcion = descripcion; //Pista padel o  Pista futbol...
-        this.estadoPista = estadoPista;
-        this.cliente = cliente;
-        this.socio = socio;
+        this.descripcion = descripcion; //Pista padel o  Pista futbol... con material o luces o ambas
+
     }
 
     public Pista() {
@@ -84,19 +79,11 @@ public class Pista implements Serializable, Cloneable {
         this.alquilerViernes = alquilerViernes;
     }
 
-    public String getComplementos() {
-        return complementos;
-    }
-
-    public void setComplementos(String complementos) {
-        this.complementos = complementos;
-    }
-
-    public int getNumPista() {
+    public Enum getNumPista() {
         return numPista;
     }
 
-    public void setNumPista(int numPista) {
+    public void setNumPista(Enum numPista) {
         this.numPista = numPista;
     }
 
@@ -116,30 +103,6 @@ public class Pista implements Serializable, Cloneable {
         this.descripcion = descripcion;
     }
 
-    public IntEstadoPista getEstadoPista() {
-        return estadoPista;
-    }
-
-    public void setEstadoPista(IntEstadoPista estadoPista) {
-        this.estadoPista = estadoPista;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public Socio getSocio() {
-        return socio;
-    }
-
-    public void setSocio(Socio socio) {
-        this.socio = socio;
-    }
-
     @Override
     protected Object clone() throws CloneNotSupportedException {
         Pista otra = null;
@@ -157,4 +120,4 @@ public class Pista implements Serializable, Cloneable {
         return otra;
     }
 
-}//end AlquilerPista
+}//end pista
