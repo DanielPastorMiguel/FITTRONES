@@ -4,18 +4,27 @@
  */
 package interfaces.VistasAdmin;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author Octavian
  */
 public class InterfazAdmin extends javax.swing.JFrame {
 
+    private JFrame principal;
+
     /**
      * Creates new form InterfazAdmin
+     *
+     * @param ventana
      */
-    public InterfazAdmin() {
+    public InterfazAdmin(JFrame ventana) {
         initComponents();
         this.setLocationRelativeTo(null);
+        principal = ventana;
+        principal.setVisible(false);
+        this.setVisible(true);
 
     }
 
@@ -34,6 +43,7 @@ public class InterfazAdmin extends javax.swing.JFrame {
         jButtonConsultarReservas = new javax.swing.JButton();
         jButtonConsultarVentas = new javax.swing.JButton();
         jButtonVolver = new javax.swing.JButton();
+        jButtonCrearPista = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -80,6 +90,8 @@ public class InterfazAdmin extends javax.swing.JFrame {
             }
         });
 
+        jButtonCrearPista.setText("Crear nueva pista");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -96,7 +108,8 @@ public class InterfazAdmin extends javax.swing.JFrame {
                             .addComponent(jButtonAltaCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonConsultarReservas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonConsultarVentas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonVolver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jButtonVolver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonCrearPista, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(60, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -112,9 +125,11 @@ public class InterfazAdmin extends javax.swing.JFrame {
                 .addComponent(jButtonConsultarReservas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonConsultarVentas)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonCrearPista)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonVolver)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -122,44 +137,40 @@ public class InterfazAdmin extends javax.swing.JFrame {
 
     private void jButtonAltaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAltaClienteActionPerformed
         // TODO add your handling code here:
-        AltaCliente ac = new AltaCliente();
-        ac.setVisible(true);
+        AltaCliente ac = new AltaCliente(this);
 
-        this.dispose();
     }//GEN-LAST:event_jButtonAltaClienteActionPerformed
 
     private void jButtonConsultarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarClientesActionPerformed
         // TODO add your handling code here:
-        ConsultarClientes consulta = new ConsultarClientes();
-        consulta.setVisible(true);
+        ConsultarClientes consulta = new ConsultarClientes(this);
 
-        this.dispose();
+
     }//GEN-LAST:event_jButtonConsultarClientesActionPerformed
 
     private void jButtonConsultarReservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarReservasActionPerformed
         // TODO add your handling code here:
-        ConsultarReservas cr = new ConsultarReservas();
-        cr.setVisible(true);
+        ConsultarReservas cr = new ConsultarReservas(this);
 
-        this.dispose();
+
     }//GEN-LAST:event_jButtonConsultarReservasActionPerformed
 
     private void jButtonConsultarVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarVentasActionPerformed
         // TODO add your handling code here:
-        ConsultarVentas cv = new ConsultarVentas();
-        cv.setVisible(true);
+        ConsultarVentas cv = new ConsultarVentas(this);
 
-        this.dispose();
     }//GEN-LAST:event_jButtonConsultarVentasActionPerformed
 
     private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
+        principal.setVisible(true);
+                this.setVisible(false);
+
     }//GEN-LAST:event_jButtonVolverActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // TODO add your handling code here:
-        this.setVisible(false);
+        principal.setVisible(true);
     }//GEN-LAST:event_formWindowClosed
 
 
@@ -168,6 +179,7 @@ public class InterfazAdmin extends javax.swing.JFrame {
     private javax.swing.JButton jButtonConsultarClientes;
     private javax.swing.JButton jButtonConsultarReservas;
     private javax.swing.JButton jButtonConsultarVentas;
+    private javax.swing.JButton jButtonCrearPista;
     private javax.swing.JButton jButtonVolver;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables

@@ -109,7 +109,7 @@ public class Pista implements Serializable, Cloneable {
     }
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
+    public Object clone() throws CloneNotSupportedException {
         Pista otra = null;
         try {
             // Clona el objeto: copia superficial.
@@ -120,9 +120,10 @@ public class Pista implements Serializable, Cloneable {
             otra.alquilerMiercoles = (HashMap) alquilerMiercoles.clone();
             otra.alquilerJueves = (HashMap) alquilerJueves.clone();
             otra.alquilerViernes = (HashMap) alquilerViernes.clone();
+            otra.numPista = numPista + 1;
         } catch (CloneNotSupportedException e) {
         }
         return otra;
     }
 
-}//end AlquilerPista
+}//end pista

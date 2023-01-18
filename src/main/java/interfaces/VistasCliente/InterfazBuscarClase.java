@@ -18,13 +18,18 @@ import utiles.Enum;
  */
 public class InterfazBuscarClase extends javax.swing.JFrame {
 
+    private JFrame principal;
+
     /**
      * Creates new form InterfazBuscarEquipo
      */
-    public InterfazBuscarClase() {
+    public InterfazBuscarClase(JFrame ventana) {
         initComponents();
         inicializarDesplegables();
         this.setLocationRelativeTo(null);
+        principal = ventana;
+        principal.setVisible(false);
+        this.setVisible(true);
 
     }
 
@@ -181,7 +186,7 @@ public class InterfazBuscarClase extends javax.swing.JFrame {
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // TODO add your handling code here:
-        this.setVisible(false);
+        principal.setVisible(true);
     }//GEN-LAST:event_formWindowClosed
 
     /**

@@ -4,18 +4,25 @@
  */
 package interfaces.VistasAdmin;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author Octavian
  */
 public class AltaCliente extends javax.swing.JFrame {
 
+    private JFrame principal;
+
     /**
      * Creates new form AltaCliente
      */
-    public AltaCliente() {
+    public AltaCliente(JFrame ventana) {
         initComponents();
         this.setLocationRelativeTo(null);
+        principal = ventana;
+        principal.setVisible(false);
+        this.setVisible(true);
 
     }
 
@@ -44,6 +51,11 @@ public class AltaCliente extends javax.swing.JFrame {
         jLabel1.setText("Alta nuevo cliente");
 
         jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarActionPerformed(evt);
+            }
+        });
 
         jButtonAlta.setText("Dar de alta");
         jButtonAlta.setToolTipText("");
@@ -85,8 +97,16 @@ public class AltaCliente extends javax.swing.JFrame {
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // TODO add your handling code here:
-        this.setVisible(false);
+        principal.setVisible(true);
     }//GEN-LAST:event_formWindowClosed
+
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+        // TODO add your handling code here:
+        principal.setVisible(true);
+        this.setVisible(false);
+
+
+    }//GEN-LAST:event_jButtonCancelarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

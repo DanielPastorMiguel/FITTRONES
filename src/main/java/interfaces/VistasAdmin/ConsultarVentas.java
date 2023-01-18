@@ -4,18 +4,26 @@
  */
 package interfaces.VistasAdmin;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author Octavian
  */
 public class ConsultarVentas extends javax.swing.JFrame {
 
+    private JFrame principal;
+
     /**
      * Creates new form ConsultarVentas
      */
-    public ConsultarVentas() {
+    public ConsultarVentas(JFrame ventana) {
         initComponents();
         this.setLocationRelativeTo(null);
+        principal = ventana;
+        principal.setVisible(false);
+        this.setVisible(true);
+        
 
     }
 
@@ -112,7 +120,7 @@ public class ConsultarVentas extends javax.swing.JFrame {
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // TODO add your handling code here:
-        this.setVisible(false);
+        principal.setVisible(true);
     }//GEN-LAST:event_formWindowClosed
 
 

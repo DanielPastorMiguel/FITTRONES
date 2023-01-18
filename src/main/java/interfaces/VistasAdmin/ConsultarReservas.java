@@ -5,6 +5,7 @@
 package interfaces.VistasAdmin;
 
 import java.util.List;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import modelos.AlquilerDecorator.Pista;
 import utiles.ModeloTabla;
@@ -15,13 +16,18 @@ import utiles.ModeloTabla;
  */
 public class ConsultarReservas extends javax.swing.JFrame {
 
+    private JFrame principal;
+
     /**
      * Creates new form ConsultarReservas
      */
-    public ConsultarReservas() {
+    public ConsultarReservas(JFrame ventana) {
         initComponents();
         inicializarTabla();
         this.setLocationRelativeTo(null);
+        principal = ventana;
+        principal.setVisible(false);
+        this.setVisible(true);
 
     }
 
@@ -167,7 +173,7 @@ public class ConsultarReservas extends javax.swing.JFrame {
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // TODO add your handling code here:
-        this.setVisible(false);
+        principal.setVisible(true);
     }//GEN-LAST:event_formWindowClosed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
