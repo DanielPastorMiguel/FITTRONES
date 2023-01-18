@@ -1,5 +1,6 @@
 package modelos.AlquilerDecorator;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import modelos.AlquilerState.IntEstadoPista;
 import modelos.Usuarios.Cliente;
@@ -10,7 +11,7 @@ import modelos.Usuarios.Socio;
  * @version 1.0
  * @created 06-ene.-2023 17:48:02
  */
-public class AlquilerPista {
+public class Pista implements Serializable, Cloneable {
 
     private HashMap alquilerLunes;
     private HashMap alquilerMartes;
@@ -25,7 +26,7 @@ public class AlquilerPista {
     public Cliente cliente;
     public Socio socio;
 
-    public AlquilerPista(HashMap alquilerLunes, HashMap alquilerMartes, HashMap alquilerMiercoles, HashMap alquilerJueves, HashMap alquilerViernes, String complementos, int numPista, String descripcion, IntEstadoPista estadoPista, Cliente cliente, Socio socio) {
+    public Pista(HashMap alquilerLunes, HashMap alquilerMartes, HashMap alquilerMiercoles, HashMap alquilerJueves, HashMap alquilerViernes, String complementos, int numPista, String descripcion, IntEstadoPista estadoPista, Cliente cliente, Socio socio) {
         this.alquilerLunes = alquilerLunes;
         this.alquilerMartes = alquilerMartes;
         this.alquilerMiercoles = alquilerMiercoles;
@@ -40,7 +41,7 @@ public class AlquilerPista {
         this.socio = socio;
     }
 
-    public AlquilerPista() {
+    public Pista() {
     }
 
     public HashMap getAlquilerLunes() {
@@ -137,6 +138,23 @@ public class AlquilerPista {
 
     public void setSocio(Socio socio) {
         this.socio = socio;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        Pista otra = null;
+        try {
+            // Clona el objeto: copia superficial.
+            otra = (Pista) super.clone();
+            // Ahora hacemos copia profunda.
+            otra.alquilerLunes = (HashMap) alquilerLunes.clone();
+            otra.alquilerMartes = (HashMap) alquilerMartes.clone();
+            otra.alquilerMiercoles = (HashMap) alquilerMiercoles.clone();
+            otra.alquilerJueves = (HashMap) alquilerJueves.clone();
+            otra.alquilerViernes = (HashMap) alquilerViernes.clone();
+        } catch (CloneNotSupportedException e) {
+        }
+        return otra;
     }
 
 }//end AlquilerPista

@@ -1,11 +1,13 @@
 package modelos.DietaBuilder;
 
+import java.io.Serializable;
+
 /**
  * @author Daniel
  * @version 1.0
  * @created 06-ene.-2023 17:48:32
  */
-public class Plato {
+public class Plato implements Serializable{
 
     private int calorias;
     private String nombre;

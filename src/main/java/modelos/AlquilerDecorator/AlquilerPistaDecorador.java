@@ -5,19 +5,19 @@ package modelos.AlquilerDecorator;
  * @version 1.0
  * @created 06-ene.-2023 17:48:04
  */
-public abstract class AlquilerPistaDecorador extends AlquilerPista {
+public abstract class AlquilerPistaDecorador extends Pista {
 
-    public AlquilerPista alquilerPista;
+    public Pista alquilerPista;
 
-    public AlquilerPistaDecorador(AlquilerPista alquilerPista) {
+    public AlquilerPistaDecorador(Pista alquilerPista) {
         this.alquilerPista = alquilerPista;
     }
 
-    public AlquilerPista getAlquilerPista() {
+    public Pista getAlquilerPista() {
         return alquilerPista;
     }
 
-    public void setAlquilerPista(AlquilerPista alquilerPista) {
+    public void setAlquilerPista(Pista alquilerPista) {
         this.alquilerPista = alquilerPista;
     }
     

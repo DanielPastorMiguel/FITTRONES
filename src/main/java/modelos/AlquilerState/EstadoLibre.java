@@ -1,6 +1,6 @@
 package modelos.AlquilerState;
 
-import modelos.AlquilerDecorator.AlquilerPista;
+import modelos.AlquilerDecorator.Pista;
 
 /**
  * @author Daniel
@@ -14,7 +14,7 @@ public class EstadoLibre implements IntEstadoPista {
 	}
 
     @Override
-    public void alquilarPista(AlquilerPista pista) {
+    public void alquilarPista(Pista pista) {
         System.out.println("Liberando pista: " + pista.getNumPista() );
         
     }

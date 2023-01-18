@@ -1,5 +1,6 @@
 package modelos.Usuarios;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
@@ -7,7 +8,7 @@ import java.time.LocalDate;
  * @version 1.0
  * @created 06-ene.-2023 17:48:36
  */
-public class Usuario {
+public class Usuario implements Serializable {
 
     private String contrasena;
     private String correo;

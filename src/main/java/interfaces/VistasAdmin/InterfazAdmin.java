@@ -4,17 +4,28 @@
  */
 package interfaces.VistasAdmin;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author Octavian
  */
 public class InterfazAdmin extends javax.swing.JFrame {
 
+    private JFrame principal;
+
     /**
      * Creates new form InterfazAdmin
+     *
+     * @param ventana
      */
-    public InterfazAdmin() {
+    public InterfazAdmin(JFrame ventana) {
         initComponents();
+        this.setLocationRelativeTo(null);
+        principal = ventana;
+        principal.setVisible(false);
+        this.setVisible(true);
+
     }
 
     /**
@@ -34,6 +45,11 @@ public class InterfazAdmin extends javax.swing.JFrame {
         jButtonVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel1.setText("Bienvenido admin");
@@ -67,6 +83,11 @@ public class InterfazAdmin extends javax.swing.JFrame {
         });
 
         jButtonVolver.setText("Volver");
+        jButtonVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVolverActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -110,23 +131,41 @@ public class InterfazAdmin extends javax.swing.JFrame {
 
     private void jButtonAltaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAltaClienteActionPerformed
         // TODO add your handling code here:
-        AltaCliente ac = new AltaCliente();
+        AltaCliente ac = new AltaCliente(this);
+
     }//GEN-LAST:event_jButtonAltaClienteActionPerformed
 
     private void jButtonConsultarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarClientesActionPerformed
         // TODO add your handling code here:
         ConsultarClientes consulta = new ConsultarClientes(this);
+
+
     }//GEN-LAST:event_jButtonConsultarClientesActionPerformed
 
     private void jButtonConsultarReservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarReservasActionPerformed
         // TODO add your handling code here:
-        ConsultarReservas cr = new ConsultarReservas();
+        ConsultarReservas cr = new ConsultarReservas(this);
+
+
     }//GEN-LAST:event_jButtonConsultarReservasActionPerformed
 
     private void jButtonConsultarVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarVentasActionPerformed
         // TODO add your handling code here:
-        ConsultarVentas cv = new ConsultarVentas();
+        ConsultarVentas cv = new ConsultarVentas(this);
+
     }//GEN-LAST:event_jButtonConsultarVentasActionPerformed
+
+    private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverActionPerformed
+        // TODO add your handling code here:
+        principal.setVisible(true);
+                this.setVisible(false);
+
+    }//GEN-LAST:event_jButtonVolverActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+        principal.setVisible(true);
+    }//GEN-LAST:event_formWindowClosed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

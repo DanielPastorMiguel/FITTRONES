@@ -1,5 +1,6 @@
 package modelos;
 
+import java.io.Serializable;
 import java.time.LocalTime;
 import java.util.List;
 import modelos.Usuarios.Usuario;
@@ -9,7 +10,7 @@ import modelos.Usuarios.Usuario;
  * @version 1.0
  * @created 06-ene.-2023 17:48:00
  */
-public class Actividad {
+public class Actividad implements Serializable{
 
     private Enum dia;
     private Enum tipo;
