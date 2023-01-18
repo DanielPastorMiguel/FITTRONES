@@ -81,6 +81,7 @@ public class Clase implements Serializable {
      * Apunta el socio a la clase
      *
      * @param s
+     * @return 
      */
     public boolean apuntarSocioClase(Socio s) {
         if (this.plazasMax == this.sociosInscritos.size()) {

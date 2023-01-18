@@ -5,6 +5,7 @@ import java.util.HashMap;
 import modelos.AlquilerState.IntEstadoPista;
 import modelos.Usuarios.Cliente;
 import modelos.Usuarios.Socio;
+import modelos.Usuarios.Usuario;
 
 /**
  * @author Daniel
@@ -13,35 +14,30 @@ import modelos.Usuarios.Socio;
  */
 public class Pista implements Serializable, Cloneable {
 
-    private HashMap alquilerLunes;
-    private HashMap alquilerMartes;
-    private HashMap alquilerMiercoles;
-    private HashMap alquilerJueves;
-    private HashMap alquilerViernes;
-    private String complementos;
+    private HashMap<String, Usuario> alquilerLunes;
+    private HashMap<String, Usuario> alquilerMartes;
+    private HashMap<String, Usuario> alquilerMiercoles;
+    private HashMap<String, Usuario> alquilerJueves;
+    private HashMap<String, Usuario> alquilerViernes;
     private int numPista;
+    private String tipo;
     private double precio;
     private String descripcion;
-    public IntEstadoPista estadoPista;
-    public Cliente cliente;
-    public Socio socio;
 
-    public Pista(HashMap alquilerLunes, HashMap alquilerMartes, HashMap alquilerMiercoles, HashMap alquilerJueves, HashMap alquilerViernes, String complementos, int numPista, String descripcion, IntEstadoPista estadoPista, Cliente cliente, Socio socio) {
+    public Pista(HashMap alquilerLunes, HashMap alquilerMartes, HashMap alquilerMiercoles, HashMap alquilerJueves, HashMap alquilerViernes, int numPista, String descripcion, String tipo) {
         this.alquilerLunes = alquilerLunes;
         this.alquilerMartes = alquilerMartes;
         this.alquilerMiercoles = alquilerMiercoles;
         this.alquilerJueves = alquilerJueves;
         this.alquilerViernes = alquilerViernes;
-        this.complementos = complementos;
         this.numPista = numPista;
         this.precio = 10;
-        this.descripcion = descripcion; //Pista padel o  Pista futbol...
-        this.estadoPista = estadoPista;
-        this.cliente = cliente;
-        this.socio = socio;
+        this.descripcion = descripcion;
+        this.tipo=tipo;
     }
-
-    public Pista() {
+    
+    public Pista(){
+        
     }
 
     public HashMap getAlquilerLunes() {
@@ -72,6 +68,10 @@ public class Pista implements Serializable, Cloneable {
         return alquilerJueves;
     }
 
+    public String getTipo() {
+        return tipo;
+    }
+
     public void setAlquilerJueves(HashMap alquilerJueves) {
         this.alquilerJueves = alquilerJueves;
     }
@@ -82,14 +82,6 @@ public class Pista implements Serializable, Cloneable {
 
     public void setAlquilerViernes(HashMap alquilerViernes) {
         this.alquilerViernes = alquilerViernes;
-    }
-
-    public String getComplementos() {
-        return complementos;
-    }
-
-    public void setComplementos(String complementos) {
-        this.complementos = complementos;
     }
 
     public int getNumPista() {
@@ -114,30 +106,6 @@ public class Pista implements Serializable, Cloneable {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    public IntEstadoPista getEstadoPista() {
-        return estadoPista;
-    }
-
-    public void setEstadoPista(IntEstadoPista estadoPista) {
-        this.estadoPista = estadoPista;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public Socio getSocio() {
-        return socio;
-    }
-
-    public void setSocio(Socio socio) {
-        this.socio = socio;
     }
 
     @Override

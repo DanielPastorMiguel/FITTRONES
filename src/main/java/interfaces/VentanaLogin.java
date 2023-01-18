@@ -22,6 +22,10 @@ import modelos.Usuarios.Usuario;
 import utiles.Enum.LoginEnum;
 import utiles.Excepcion;
 import interfaces.VistasCliente.InterfazBuscarClase;
+import interfaces.VistasCliente.InterfazReservaPista;
+import modelos.AlquilerDecorator.Pista;
+import utiles.Enum.PistaFutbolEnum;
+import utiles.Enum.PistaPadelEnum;
 
 public class VentanaLogin extends javax.swing.JFrame {
     
@@ -75,6 +79,50 @@ public class VentanaLogin extends javax.swing.JFrame {
         Recepcionista r1 = new Recepcionista(utiles.Enum.TurnoEnum.MAÑANA, "123", "r1", "", LocalDate.of(1988, 5, 7), "", "");
         Recepcionista r2 = new Recepcionista(utiles.Enum.TurnoEnum.TARDE, "123", "r2", "", LocalDate.of(1985, 4, 7), "", "");
         
+        Pista pistaFutbol1 = new Pista(
+                new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", c2); put("19:00-20:00", c1); put("21:00-22:00", null);}},
+                new HashMap<>() {{put("16:00-17:00", s1); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", c3); put("21:00-22:00", null);}},
+                new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", c2); put("19:00-20:00", s3); put("21:00-22:00", null);}},
+                new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", s2); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", null);}},
+                new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", null);}},
+                1,
+                "",
+                "FUTBOL"
+        );
+        
+        Pista pistaFutbol2 = new Pista(
+                new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", c2); put("19:00-20:00", c1); put("21:00-22:00", null);}},
+                new HashMap<>() {{put("16:00-17:00", s1); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", null);}},
+                new HashMap<>() {{put("16:00-17:00", c2); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", s3);}},
+                new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", null);}},
+                new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", null);}},
+                2,
+                "",
+                "FUTBOL"
+        );
+        
+        Pista pistaPadel1 = new Pista(
+                new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", null);}},
+                new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", s1); put("18:00-19:00", null); put("19:00-20:00", c3); put("21:00-22:00", null);}},
+                new HashMap<>() {{put("16:00-17:00", s2); put("17:00-18:00", null); put("18:00-19:00", c2); put("19:00-20:00", s3); put("21:00-22:00", c3);}},
+                new HashMap<>() {{put("16:00-17:00", s1); put("17:00-18:00", s2); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", null);}},
+                new HashMap<>() {{put("16:00-17:00", s1); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", c2); put("21:00-22:00", null);}},
+                1,
+                "",
+                "PADEL"
+        );
+        
+        Pista pistaPadel2 = new Pista(
+                new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", c2); put("19:00-20:00", c1); put("21:00-22:00", null);}},
+                new HashMap<>() {{put("16:00-17:00", s1); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", c3); put("21:00-22:00", null);}},
+                new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", c2); put("19:00-20:00", s3); put("21:00-22:00", null);}},
+                new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", s2); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", null);}},
+                new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", null);}},
+                2,
+                "",
+                "PADEL"
+        );
+        
         try {
             app.registrarUsuario(c1);
             app.registrarUsuario(c2);
@@ -110,6 +158,11 @@ public class VentanaLogin extends javax.swing.JFrame {
             app.anadirClase(claseNatacion1);
             app.anadirClase(claseNatacion2);
             app.anadirClase(claseNatacion3);
+            
+            app.anadirPista(pistaFutbol1);
+            app.anadirPista(pistaFutbol2);
+            app.anadirPista(pistaPadel1);
+            app.anadirPista(pistaPadel2);
         }catch (Excepcion ex) {
             System.out.println("Excepcion: "+ex.toString());
         }
@@ -512,7 +565,7 @@ public class VentanaLogin extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        new InterfazBuscarClase().setVisible(true);
+        new InterfazReservaPista().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private LocalDate stringToDate(String fecha) {

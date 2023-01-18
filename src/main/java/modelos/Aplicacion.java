@@ -30,9 +30,6 @@ public class Aplicacion {
     private static Aplicacion instancia;
 
     private IntEstrategiaOrdenadoActividades estrategiaOrdenadoActividades;
-    private Pista alquilerPista;
-    private Aplicacion aplicacion;
-    private Mediador mediador;
 
     private static List<Usuario> usuariosRegistrados = new ArrayList<>();
     private static List<Actividad> actividades = new ArrayList<>();
@@ -136,6 +133,10 @@ public class Aplicacion {
     public void anadirClase(Clase clase) {
         clases.add(clase);
     }
+    
+    public void anadirPista(Pista pista){
+        pistas.add(pista);
+    }
 
     public Usuario getUsuarioLogueado() {
         return usuarioLogueado;
@@ -172,6 +173,26 @@ public class Aplicacion {
 
     public void ejecutarEstrategiaOrdenadoActividades() {
         estrategiaOrdenadoActividades.ordenarActividades(actividades);
+    }
+
+    public List<Pista> getPistas() {
+        return pistas;
+    }
+    
+    public List<Pista> getPistasFutbol() {
+        List<Pista> pf = new ArrayList<>();
+        for (Pista p : pistas){
+            if (p.getTipo().equals("FUTBOL")) pf.add(p);
+        }
+        return pf;
+    }
+    
+    public List<Pista> getPistasPadel() {
+        List<Pista> pf = new ArrayList<>();
+        for (Pista p : pistas){
+            if (p.getTipo().equals("PADEL")) pf.add(p);
+        }
+        return pf;
     }
 
     public int getNumEmpleados() {
