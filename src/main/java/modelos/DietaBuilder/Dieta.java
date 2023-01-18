@@ -1,11 +1,13 @@
 package modelos.DietaBuilder;
 
+import java.io.Serializable;
+
 /**
  * @author Daniel
  * @version 1.0
  * @created 06-ene.-2023 17:48:12
  */
-public class Dieta {
+public class Dieta implements Serializable{
 
     private Menu lunes;
     private Menu martes;

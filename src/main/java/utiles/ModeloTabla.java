@@ -1,7 +1,8 @@
 package utiles;
+import java.io.Serializable;
 import javax.swing.table.DefaultTableModel;
 
-public class ModeloTabla extends DefaultTableModel{
+public class ModeloTabla extends DefaultTableModel implements Serializable{
     
     public ModeloTabla(Object[][] data, Object[] columnNames) {
         super(data, columnNames);

@@ -1,5 +1,10 @@
 package modelos;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import modelos.FormulariosMediator.Mediador;
 import modelos.OrdenadoActividadesStrategy.IntEstrategiaOrdenadoActividades;
@@ -24,6 +29,19 @@ public class Aplicacion {
 
     private static Aplicacion instancia;
 
+    private IntEstrategiaOrdenadoActividades estrategiaOrdenadoActividades;
+    private AlquilerPista alquilerPista;
+    private Aplicacion aplicacion;
+    private Mediador mediador;
+
+    private static List<Usuario> usuariosRegistrados = new ArrayList<>();
+    private static List<Actividad> actividades = new ArrayList<>();
+    private static List<Clase> clases = new ArrayList<>();
+    private static List<AlquilerPista> pistas = new ArrayList<>();
+
+    private Sauna sauna = new Sauna();
+    private Usuario usuarioLogueado;
+
     /**
      * Patron Singleton
      *
@@ -38,18 +56,6 @@ public class Aplicacion {
 
     private Aplicacion() {
     }
-
-    private IntEstrategiaOrdenadoActividades estrategiaOrdenadoActividades;
-    private AlquilerPista alquilerPista;
-    private Aplicacion aplicacion;
-    private Mediador mediador;
-
-    private Usuario usuarioLogueado;
-    private List<Usuario> usuariosRegistrados = new ArrayList<>();
-    private List<Actividad> actividades = new ArrayList<>();
-    private List<Clase> clases = new ArrayList<>();
-    private List<AlquilerPista> pistas = new ArrayList<>();
-    private Sauna sauna = new Sauna();
 
     public void registrarUsuario(Usuario usuario) throws Excepcion {
         if (usuario == null) {
@@ -187,4 +193,90 @@ public class Aplicacion {
         }
         return num;
     }
+
+    /**
+     * guarda los datos de las listas de la aplicacione en su archivo de datos correspondiente
+     */
+    public static void guardarDatos() {
+        try {
+            //si hay datos, los guardamos
+            if (!usuariosRegistrados.isEmpty() || !clases.isEmpty() || !actividades.isEmpty() || !pistas.isEmpty()) {
+                /**
+                 * ***** Serialización de los objetos ********
+                 */
+                //serializacion de los usuarios
+                FileOutputStream ostreamUsers = new FileOutputStream("usuariosRegistrados.dat");
+                ObjectOutputStream oosUsers = new ObjectOutputStream(ostreamUsers);
+                //guardamos el array de los usuarios
+                oosUsers.writeObject(usuariosRegistrados);
+                ostreamUsers.close();
+
+                //serializacion de las clases
+                FileOutputStream ostreamClases = new FileOutputStream("clases.dat");
+                ObjectOutputStream oosClases = new ObjectOutputStream(ostreamClases);
+                //guardamos el array de las clases
+                oosClases.writeObject(clases);
+                ostreamClases.close();
+
+                //serializacion de las actividades
+                FileOutputStream ostreamAct = new FileOutputStream("actividades.dat");
+                ObjectOutputStream oosAct = new ObjectOutputStream(ostreamAct);
+                //guardamos el array de las actividades
+                oosAct.writeObject(actividades);
+                ostreamAct.close();
+                
+                //serializacion de las pistas
+                FileOutputStream ostreamPistas = new FileOutputStream("actividades.dat");
+                ObjectOutputStream oosPistas = new ObjectOutputStream(ostreamPistas);
+                //guardamos el array de las pistas
+                oosPistas.writeObject(pistas);
+                ostreamPistas.close();
+                
+            } else {
+                System.out.println("Error, no hay datos...");
+            }
+        } catch (IOException ioe) {
+            System.out.println("Error de IO: " + ioe.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error: " + e.toString());
+        }
+    }//fin guardar datos
+
+    /**
+     * carga los datos de sus archivos correspondientes
+     */
+    public static void cargarDatos() {
+        try {
+            //lectura de los objetos de tipo usuario
+            FileInputStream istreamUsr = new FileInputStream("clientes.dat");
+            ObjectInputStream oisUsr = new ObjectInputStream(istreamUsr);
+            usuariosRegistrados = (ArrayList) oisUsr.readObject();
+            istreamUsr.close();
+            
+            //lectura de los objetos de tipo clases
+            FileInputStream istreamClases = new FileInputStream("productos.dat");
+            ObjectInputStream oisClase = new ObjectInputStream(istreamClases);
+            clases = (ArrayList) oisClase.readObject();
+            istreamClases.close();
+            
+            //lectura de los objetos de tipo actividades
+            FileInputStream istreamAct= new FileInputStream("actividades.dat");
+            ObjectInputStream oisAct = new ObjectInputStream(istreamAct);
+            actividades = (ArrayList) oisAct.readObject();
+            istreamAct.close();
+            
+            //lectura de los objetos de tipo AlquilerPista
+            FileInputStream istreamPistas = new FileInputStream("pistas.dat");
+            ObjectInputStream oisPistas = new ObjectInputStream(istreamPistas);
+            pistas = (ArrayList) oisPistas.readObject();
+            istreamPistas.close();
+            
+        } catch (IOException ioe) {
+            System.out.println("Error de tipo IO: " + ioe.getMessage());
+        } catch (ClassNotFoundException cnf) {
+            System.out.println("Error de clase no encontrada: " + cnf.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }//fin cargar datos
 }//end Aplicacion

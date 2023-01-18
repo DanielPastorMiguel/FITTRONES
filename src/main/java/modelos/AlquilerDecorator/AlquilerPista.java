@@ -1,5 +1,6 @@
 package modelos.AlquilerDecorator;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import modelos.AlquilerState.IntEstadoPista;
 import modelos.Usuarios.Cliente;
@@ -10,7 +11,7 @@ import modelos.Usuarios.Socio;
  * @version 1.0
  * @created 06-ene.-2023 17:48:02
  */
-public class AlquilerPista {
+public class AlquilerPista implements Serializable{
 
     private HashMap alquilerLunes;
     private HashMap alquilerMartes;

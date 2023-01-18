@@ -1,5 +1,6 @@
 package modelos.Usuarios;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import modelos.proxyProteccion.IntCliente;
 import java.util.List;
@@ -15,7 +16,7 @@ import modelos.FabricaRutina.Rutina;
  * @version 1.0
  * @created 06-ene.-2023 17:48:35
  */
-public class Socio extends Usuario implements IntCliente, IntSuscriptor {
+public class Socio extends Usuario implements IntCliente, IntSuscriptor, Serializable {
 
     private final int id;
     public Clase clase;

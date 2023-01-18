@@ -1,5 +1,6 @@
 package modelos;
 
+import java.io.Serializable;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,7 +12,7 @@ import modelos.Usuarios.Socio;
  * @version 1.0
  * @created 06-ene.-2023 17:48:34
  */
-public class Sauna {
+public class Sauna implements Serializable{
 
     private HashMap<LocalTime, List<Socio>> alquilerLunes;
     private HashMap<LocalTime, List<Socio>> alquilerMartes;
