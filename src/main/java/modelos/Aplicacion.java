@@ -35,8 +35,9 @@ public class Aplicacion {
         }
         return instancia;
     }
-    private Aplicacion(){}
 
+    private Aplicacion() {
+    }
 
     private IntEstrategiaOrdenadoActividades estrategiaOrdenadoActividades;
     private AlquilerPista alquilerPista;
@@ -60,19 +61,31 @@ public class Aplicacion {
             throw new Excepcion("el correo introducido ya se encuentra registrado");
         }
     }
-    
+
     public Enum iniciarSesion(String correo, String contrasena) {
-        if (correo.equals("admin@fittrones.com") && contrasena.equals("admin")) return LoginEnum.ADMIN;
+        if (correo.equals("admin@fittrones.com") && contrasena.equals("admin")) {
+            return LoginEnum.ADMIN;
+        }
         for (Usuario usuario : usuariosRegistrados) {
             if (usuario.getCorreo().equals(correo)) {
                 if (usuario.getContrasena().equals(contrasena)) {
                     usuarioLogueado = usuario;
-                    
-                    if (usuario.getClass().equals(Cliente.class)) return LoginEnum.CLIENTE;
-                    if (usuario.getClass().equals(Socio.class)) return LoginEnum.SOCIO;
-                    if (usuario.getClass().equals(Recepcionista.class)) return LoginEnum.RECEPCIONISTA;
-                    if (usuario.getClass().equals(Profesor.class)) return LoginEnum.PROFESOR;
-                    if (usuario.getClass().equals(Monitor.class)) return LoginEnum.MONITOR;
+
+                    if (usuario.getClass().equals(Cliente.class)) {
+                        return LoginEnum.CLIENTE;
+                    }
+                    if (usuario.getClass().equals(Socio.class)) {
+                        return LoginEnum.SOCIO;
+                    }
+                    if (usuario.getClass().equals(Recepcionista.class)) {
+                        return LoginEnum.RECEPCIONISTA;
+                    }
+                    if (usuario.getClass().equals(Profesor.class)) {
+                        return LoginEnum.PROFESOR;
+                    }
+                    if (usuario.getClass().equals(Monitor.class)) {
+                        return LoginEnum.MONITOR;
+                    }
                 } else {
                     return LoginEnum.ERROR_CONTRASENA;
                 }
@@ -80,10 +93,12 @@ public class Aplicacion {
         }
         return LoginEnum.ERROR_CORREO;
     }
-    
-    private boolean existeCorreo(String correo){
-        for (Usuario usuario : usuariosRegistrados){
-            if (usuario.getCorreo().equals(correo)) return true;
+
+    private boolean existeCorreo(String correo) {
+        for (Usuario usuario : usuariosRegistrados) {
+            if (usuario.getCorreo().equals(correo)) {
+                return true;
+            }
         }
         return false;
     }
@@ -91,8 +106,8 @@ public class Aplicacion {
     public void alquilarPista() {
 
     }
-    
-    public boolean apuntarSocioClase(Socio socio ,Clase clase) {
+
+    public boolean apuntarSocioClase(Socio socio, Clase clase) {
         return clase.apuntarSocioClase(socio);
     }
 
@@ -107,12 +122,12 @@ public class Aplicacion {
     public Sauna getSauna() {
         return sauna;
     }
-    
-    public void anadirActividad(Actividad act){
+
+    public void anadirActividad(Actividad act) {
         actividades.add(act);
     }
-    
-    public void anadirClase(Clase clase){
+
+    public void anadirClase(Clase clase) {
         clases.add(clase);
     }
 
@@ -131,10 +146,12 @@ public class Aplicacion {
     public List<Clase> getClases() {
         return clases;
     }
-    
-    public Clase getClase(String tipoClase, String nivel){
-        for (Clase clase : clases){
-            if (String.valueOf(clase.getTipo()).equals(tipoClase) && String.valueOf(clase.getNivel()).equals(nivel)) return clase;
+
+    public Clase getClase(String tipoClase, String nivel) {
+        for (Clase clase : clases) {
+            if (String.valueOf(clase.getTipo()).equals(tipoClase) && String.valueOf(clase.getNivel()).equals(nivel)) {
+                return clase;
+            }
         }
         return null;
     }
@@ -150,19 +167,23 @@ public class Aplicacion {
     public void ejecutarEstrategiaOrdenadoActividades() {
         estrategiaOrdenadoActividades.ordenarActividades(actividades);
     }
-    
-    public int getNumEmpleados(){
+
+    public int getNumEmpleados() {
         int num = 0;
-        for (Usuario user : usuariosRegistrados){
-            if (user.getClass().equals(Empleado.class)) num++;
+        for (Usuario user : usuariosRegistrados) {
+            if (user.getClass().equals(Empleado.class)) {
+                num++;
+            }
         }
         return num;
     }
-    
-    public int getNumSocios(){
+
+    public int getNumSocios() {
         int num = 0;
-        for (Usuario user : usuariosRegistrados){
-            if (user.getClass().equals(Socio.class)) num++;
+        for (Usuario user : usuariosRegistrados) {
+            if (user.getClass().equals(Socio.class)) {
+                num++;
+            }
         }
         return num;
     }

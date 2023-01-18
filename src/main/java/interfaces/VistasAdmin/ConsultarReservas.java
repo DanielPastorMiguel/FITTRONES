@@ -21,6 +21,8 @@ public class ConsultarReservas extends javax.swing.JFrame {
     public ConsultarReservas() {
         initComponents();
         inicializarTabla();
+        this.setLocationRelativeTo(null);
+
     }
 
     private void inicializarTabla() {
@@ -68,6 +70,11 @@ public class ConsultarReservas extends javax.swing.JFrame {
         tabla = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel1.setText("Reservas");
@@ -157,6 +164,11 @@ public class ConsultarReservas extends javax.swing.JFrame {
     private void jButtonReservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReservarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonReservarActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_formWindowClosed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBuscar;
