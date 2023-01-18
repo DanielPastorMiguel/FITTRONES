@@ -2,7 +2,6 @@ package modelos.AlquilerDecorator;
 
 import java.io.Serializable;
 import java.util.HashMap;
-import modelos.AlquilerState.IntEstadoPista;
 import modelos.Usuarios.Cliente;
 import modelos.Usuarios.Socio;
 import modelos.Usuarios.Usuario;

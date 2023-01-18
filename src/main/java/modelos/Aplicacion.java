@@ -178,7 +178,7 @@ public class Aplicacion {
     }
     
     public void anadirPista(Pista pista){
-        pistas.add(pista);
+        listaPistas.add(pista);
     }
 
     public Usuario getUsuarioLogueado() {
@@ -219,12 +219,12 @@ public class Aplicacion {
     }
 
     public List<Pista> getPistas() {
-        return pistas;
+        return listaPistas;
     }
     
     public List<Pista> getPistasFutbol() {
         List<Pista> pf = new ArrayList<>();
-        for (Pista p : pistas){
+        for (Pista p : listaPistas){
             if (p.getTipo().equals("FUTBOL")) pf.add(p);
         }
         return pf;
@@ -232,7 +232,7 @@ public class Aplicacion {
     
     public List<Pista> getPistasPadel() {
         List<Pista> pf = new ArrayList<>();
-        for (Pista p : pistas){
+        for (Pista p : listaPistas){
             if (p.getTipo().equals("PADEL")) pf.add(p);
         }
         return pf;

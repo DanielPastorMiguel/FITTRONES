@@ -7,6 +7,7 @@ package interfaces.VistasCliente;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import modelos.Aplicacion;
 import modelos.Usuarios.Socio;
