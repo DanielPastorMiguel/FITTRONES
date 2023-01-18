@@ -5,11 +5,13 @@
 package interfaces.VistasAdmin;
 
 import java.awt.HeadlessException;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.ListIterator;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import modelos.Aplicacion;
+import modelos.IteratorClientes.Agregado;
+import modelos.IteratorClientes.AgregadoConcreto;
+import modelos.IteratorClientes.Iterador;
 import modelos.Usuarios.Socio;
 import modelos.Usuarios.Usuario;
 
@@ -20,8 +22,10 @@ import modelos.Usuarios.Usuario;
 public class ConsultarClientes extends javax.swing.JFrame {
 
     private Aplicacion aplicacion;
-    private List<Usuario> listaUsuarios = null;
-    private ListIterator<Usuario> li;
+    private List<Usuario> listaUsuarios = aplicacion.getUsuariosRegistrados();
+    ;
+    private Agregado agregado = new AgregadoConcreto((ArrayList) listaUsuarios);
+    private Iterador li = agregado.crearIterador();
     private Usuario objUsr;
 
     /**
@@ -35,8 +39,6 @@ public class ConsultarClientes extends javax.swing.JFrame {
 
     private void consultarUsuarios() {
         try {
-            listaUsuarios = aplicacion.getUsuariosRegistrados();
-            li = listaUsuarios.listIterator();
             //si no hay personas...
             if (listaUsuarios.size() < 1) {
                 JOptionPane.showMessageDialog(this, "No hay clientes.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
@@ -51,8 +53,8 @@ public class ConsultarClientes extends javax.swing.JFrame {
                 jButtonBorrar.setEnabled(true);
             }
             //presentamos el primner usuario
-            if (li.hasNext()) {
-                objUsr = (Usuario) li.next();
+            if (li.hayMas()) {
+                objUsr = (Usuario) li.siguiente();
             }
             if (objUsr != null) {
                 presenta(objUsr);
@@ -170,35 +172,23 @@ public class ConsultarClientes extends javax.swing.JFrame {
     private void jButtonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteActionPerformed
         // TODO add your handling code here:
         // TODO add your handling code here:
-        if (li.hasNext()) {
-            objUsr = li.next();
-            if (objUsr != null) {
-                presenta(objUsr);
-            } else {
-                JOptionPane.showMessageDialog(this, "No hay clientes.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
-            }
-        }
+        objUsr = (Usuario) li.siguiente();
+        presenta(objUsr);
     }//GEN-LAST:event_jButtonSiguienteActionPerformed
 
     private void jButtonAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnteriorActionPerformed
         // TODO add your handling code here:
         // TODO add your handling code here:
-        if (li.hasPrevious()) {
-            objUsr = li.previous();
-            if (objUsr != null) {
-                presenta(objUsr);
-            } else {
-                JOptionPane.showMessageDialog(this, "No hay clientes.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
-            }
-        }
+        objUsr = (Usuario) li.anterior();
+        presenta(objUsr);
+
     }//GEN-LAST:event_jButtonAnteriorActionPerformed
 
     private void jButtonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarActionPerformed
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(this, "Cliente Eliminado con Exito.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
         // Aplicacion.bajaCliente(objUsr);
-        presenta(li.next());
-        li.remove();
+        presenta((Usuario) li.siguiente());
     }//GEN-LAST:event_jButtonBorrarActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
