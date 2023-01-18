@@ -4,6 +4,7 @@
  */
 package interfaces.VistasAdmin;
 
+import java.awt.HeadlessException;
 import java.util.List;
 import java.util.ListIterator;
 import javax.swing.JFrame;
@@ -17,9 +18,8 @@ import modelos.Usuarios.Usuario;
  * @author Octavian
  */
 public class ConsultarClientes extends javax.swing.JFrame {
-    
+
     private Aplicacion aplicacion;
-    private JFrame principal;
     private List<Usuario> listaUsuarios = null;
     private ListIterator<Usuario> li;
     private Usuario objUsr;
@@ -27,13 +27,10 @@ public class ConsultarClientes extends javax.swing.JFrame {
     /**
      * Creates new form ConsultarClientes
      */
-    public ConsultarClientes(JFrame ventana) {
+    public ConsultarClientes() {
         initComponents();
         this.setLocationRelativeTo(null);
-        principal = ventana;
-        principal.setVisible(false);
         consultarUsuarios();
-        this.setVisible(true);
     }
 
     private void consultarUsuarios() {
@@ -62,7 +59,7 @@ public class ConsultarClientes extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "No hay clientes.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             }
-        } catch (Exception e) {
+        } catch (HeadlessException e) {
             JOptionPane.showMessageDialog(this, "Error: " + e.getMessage(), "Mensaje", JOptionPane.ERROR_MESSAGE);
             System.out.println("Error: " + e.toString());
         }
@@ -101,6 +98,11 @@ public class ConsultarClientes extends javax.swing.JFrame {
         jButtonBorrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel1.setText("Consula de usuarios");
@@ -198,6 +200,11 @@ public class ConsultarClientes extends javax.swing.JFrame {
         presenta(li.next());
         li.remove();
     }//GEN-LAST:event_jButtonBorrarActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_formWindowClosed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAnterior;

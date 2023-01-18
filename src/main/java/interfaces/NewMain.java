@@ -12,7 +12,6 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import modelos.Aplicacion;
 import modelos.Clase;
-import modelos.Sauna;
 import modelos.Usuarios.Profesor;
 import modelos.Usuarios.Recepcionista;
 import utiles.Excepcion;

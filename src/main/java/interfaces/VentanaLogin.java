@@ -407,6 +407,7 @@ public class VentanaLogin extends javax.swing.JFrame {
             System.out.println("admin");
             InterfazAdmin iadmin = new InterfazAdmin();
             iadmin.setVisible(true);
+            
             this.dispose();
         }
         else if (iniciarSesion == LoginEnum.SOCIO){
@@ -485,7 +486,8 @@ public class VentanaLogin extends javax.swing.JFrame {
         try {
             app.registrarUsuario(usuarioNuevo);
             app.setUsuarioLogueado(usuarioNuevo);
-            //VentanaPrincipal ventanaPrincipalCliente = new VentanaPrincipal(Usuario.USUARIO);
+            scrollLaminaRegistrarse.setVisible(false);
+            laminaLogin.setVisible(true);
             this.dispose();
         } catch (Excepcion ex) {
             JOptionPane.showMessageDialog(this, "Error, " + ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);

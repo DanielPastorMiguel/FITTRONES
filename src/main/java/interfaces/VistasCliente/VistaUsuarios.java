@@ -5,7 +5,6 @@
 package interfaces.VistasCliente;
 
 import interfaces.VistasAdmin.ConsultarReservas;
-import interfaces.VistasCliente.InterfazBuscarClase;
 
 /**
  *
@@ -18,6 +17,8 @@ public class VistaUsuarios extends javax.swing.JFrame {
      */
     public VistaUsuarios() {
         initComponents();
+        this.setLocationRelativeTo(null);
+
     }
 
     /**
@@ -37,6 +38,11 @@ public class VistaUsuarios extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jButtonBusquedaServicios.setText("Buscar servicios");
         jButtonBusquedaServicios.addActionListener(new java.awt.event.ActionListener() {
@@ -130,7 +136,13 @@ public class VistaUsuarios extends javax.swing.JFrame {
 
     private void jButtonCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarSesionActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
     }//GEN-LAST:event_jButtonCerrarSesionActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_formWindowClosed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
