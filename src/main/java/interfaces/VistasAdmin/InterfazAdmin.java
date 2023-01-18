@@ -4,18 +4,27 @@
  */
 package interfaces.VistasAdmin;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author Octavian
  */
 public class InterfazAdmin extends javax.swing.JFrame {
 
+    private JFrame principal;
+
     /**
      * Creates new form InterfazAdmin
+     *
+     * @param ventana
      */
-    public InterfazAdmin() {
+    public InterfazAdmin(JFrame ventana) {
         initComponents();
         this.setLocationRelativeTo(null);
+        principal = ventana;
+        principal.setVisible(false);
+        this.setVisible(true);
 
     }
 
@@ -122,44 +131,40 @@ public class InterfazAdmin extends javax.swing.JFrame {
 
     private void jButtonAltaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAltaClienteActionPerformed
         // TODO add your handling code here:
-        AltaCliente ac = new AltaCliente();
-        ac.setVisible(true);
+        AltaCliente ac = new AltaCliente(this);
 
-        this.dispose();
     }//GEN-LAST:event_jButtonAltaClienteActionPerformed
 
     private void jButtonConsultarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarClientesActionPerformed
         // TODO add your handling code here:
-        ConsultarClientes consulta = new ConsultarClientes();
-        consulta.setVisible(true);
+        ConsultarClientes consulta = new ConsultarClientes(this);
 
-        this.dispose();
+
     }//GEN-LAST:event_jButtonConsultarClientesActionPerformed
 
     private void jButtonConsultarReservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarReservasActionPerformed
         // TODO add your handling code here:
-        ConsultarReservas cr = new ConsultarReservas();
-        cr.setVisible(true);
+        ConsultarReservas cr = new ConsultarReservas(this);
 
-        this.dispose();
+
     }//GEN-LAST:event_jButtonConsultarReservasActionPerformed
 
     private void jButtonConsultarVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarVentasActionPerformed
         // TODO add your handling code here:
-        ConsultarVentas cv = new ConsultarVentas();
-        cv.setVisible(true);
+        ConsultarVentas cv = new ConsultarVentas(this);
 
-        this.dispose();
     }//GEN-LAST:event_jButtonConsultarVentasActionPerformed
 
     private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
+        principal.setVisible(true);
+                this.setVisible(false);
+
     }//GEN-LAST:event_jButtonVolverActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // TODO add your handling code here:
-        this.setVisible(false);
+        principal.setVisible(true);
     }//GEN-LAST:event_formWindowClosed
 
 

@@ -7,6 +7,7 @@ package interfaces.VistasAdmin;
 import java.awt.HeadlessException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import modelos.Aplicacion;
 import modelos.IteratorClientes.Agregado;
@@ -20,10 +21,11 @@ import modelos.Usuarios.Usuario;
  * @author Octavian
  */
 public class ConsultarClientes extends javax.swing.JFrame {
+    private JFrame principal;
 
     private Aplicacion aplicacion;
     private List<Usuario> listaUsuarios = aplicacion.getUsuariosRegistrados();
-    ;
+    
     private Agregado agregado = new AgregadoConcreto((ArrayList) listaUsuarios);
     private Iterador li = agregado.crearIterador();
     private Usuario objUsr;
@@ -31,9 +33,12 @@ public class ConsultarClientes extends javax.swing.JFrame {
     /**
      * Creates new form ConsultarClientes
      */
-    public ConsultarClientes() {
+    public ConsultarClientes(JFrame ventana) {
         initComponents();
         this.setLocationRelativeTo(null);
+         principal = ventana;
+        principal.setVisible(false);
+        this.setVisible(true);
         consultarUsuarios();
     }
 
@@ -193,7 +198,7 @@ public class ConsultarClientes extends javax.swing.JFrame {
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // TODO add your handling code here:
-        this.setVisible(false);
+        principal.setVisible(true);
     }//GEN-LAST:event_formWindowClosed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

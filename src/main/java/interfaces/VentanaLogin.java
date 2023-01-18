@@ -407,44 +407,32 @@ public class VentanaLogin extends javax.swing.JFrame {
         
         if (iniciarSesion == LoginEnum.ADMIN){
             System.out.println("admin");
-            InterfazAdmin iadmin = new InterfazAdmin();
-            iadmin.setVisible(true);
+            InterfazAdmin iadmin = new InterfazAdmin(this);
             
-            this.dispose();
         }
         else if (iniciarSesion == LoginEnum.SOCIO){
             System.out.println("socio");
-            VistaUsuarios vu = new VistaUsuarios();
-            vu.setVisible(true);
-            this.dispose();
+            VistaUsuarios vu = new VistaUsuarios(this);
         }
         else if (iniciarSesion == LoginEnum.CLIENTE){
             System.out.println("cliente");
-            VistaUsuarios vu = new VistaUsuarios();
-            vu.setVisible(true);
+            VistaUsuarios vu = new VistaUsuarios(this);
 
-            this.dispose();
         }
         else if (iniciarSesion == LoginEnum.MONITOR){
             System.out.println("monitor");
-            VistaUsuarios vu = new VistaUsuarios();
-            vu.setVisible(true);
+            VistaUsuarios vu = new VistaUsuarios(this);
 
-            this.dispose();
         }
         else if (iniciarSesion == LoginEnum.PROFESOR){
             System.out.println("profesor");
-            VistaUsuarios vu = new VistaUsuarios();
-            vu.setVisible(true);
+            VistaUsuarios vu = new VistaUsuarios(this);
 
-            this.dispose();
         }
         else if (iniciarSesion == LoginEnum.RECEPCIONISTA){
             System.out.println("recepcionista");
-            VistaUsuarios vu = new VistaUsuarios();
-            vu.setVisible(true);
+            VistaUsuarios vu = new VistaUsuarios(this);
 
-            this.dispose();
         }
         else if (iniciarSesion == LoginEnum.ERROR_CONTRASENA) {
             JOptionPane.showMessageDialog(this, "Contraseña incorrecta", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -490,7 +478,6 @@ public class VentanaLogin extends javax.swing.JFrame {
             app.setUsuarioLogueado(usuarioNuevo);
             scrollLaminaRegistrarse.setVisible(false);
             laminaLogin.setVisible(true);
-            this.dispose();
         } catch (Excepcion ex) {
             JOptionPane.showMessageDialog(this, "Error, " + ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
         }
@@ -514,14 +501,13 @@ public class VentanaLogin extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        new InterfazBuscarClase().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private LocalDate stringToDate(String fecha) {
         try {
             String[] fechaSplit = fecha.split("/");
             return LocalDate.of(Integer.parseInt(fechaSplit[2]), Integer.parseInt(fechaSplit[1]), Integer.parseInt(fechaSplit[0]));
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "La fecha introducida no es correcta, usar formato 'dia/mes/año'", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
         return null;

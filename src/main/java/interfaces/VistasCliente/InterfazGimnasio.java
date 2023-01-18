@@ -4,19 +4,25 @@
  */
 package interfaces.VistasCliente;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author Octavian
  */
 public class InterfazGimnasio extends javax.swing.JFrame {
 
+    private JFrame principal;
+
     /**
      * Creates new form InterfazGimnasio
      */
-    public InterfazGimnasio() {
+    public InterfazGimnasio(JFrame ventana) {
         initComponents();
         this.setLocationRelativeTo(null);
-
+        principal = ventana;
+        principal.setVisible(false);
+        this.setVisible(true);
     }
 
     /**
@@ -105,12 +111,16 @@ public class InterfazGimnasio extends javax.swing.JFrame {
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // TODO add your handling code here:
-        this.setVisible(false);
+        principal.setVisible(true);
+
     }//GEN-LAST:event_formWindowClosed
 
     private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverActionPerformed
         // TODO add your handling code here:
+        principal.setVisible(true);
         this.setVisible(false);
+
+
     }//GEN-LAST:event_jButtonVolverActionPerformed
 
 
