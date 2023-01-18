@@ -38,7 +38,7 @@ public class Aplicacion {
     private static List<Pista> listaPistas = new ArrayList<>();
 
     private Sauna sauna = new Sauna();
-    
+
     private Usuario usuarioLogueado;
 
     /**
@@ -112,7 +112,7 @@ public class Aplicacion {
      * Añade luces a la pista
      *
      * @param p
-     * @return 
+     * @return
      */
     public Pista anadirLucesPista(Pista p) {
         Pista pista;
@@ -124,7 +124,7 @@ public class Aplicacion {
      * Añade material a la pista
      *
      * @param p
-     * @return 
+     * @return
      */
     public Pista anadirMaterial(Pista p) {
         Pista pista;
@@ -133,7 +133,18 @@ public class Aplicacion {
     }
 
     /**
-     * Alquila una pista 
+     * Añade una nueva pista clonando la ultima que hay en la lista
+     * @throws CloneNotSupportedException 
+     */
+    public void anadirNuevaPista() throws CloneNotSupportedException {
+        Pista p, nueva;
+        p = listaPistas.get(listaPistas.size() - 1);
+        nueva = (Pista) p.clone();
+        listaPistas.add(nueva);
+    }
+
+    /**
+     * Alquila una pista
      */
     public void alquilarPista() {
 
@@ -141,14 +152,14 @@ public class Aplicacion {
 
     /**
      * Apunta un socio a una clase
+     *
      * @param socio
      * @param clase
-     * @return 
+     * @return
      */
     public boolean apuntarSocioClase(Socio socio, Clase clase) {
         return clase.apuntarSocioClase(socio);
     }
-
 
     public void setUsuarioLogueado(Usuario usuarioLogueado) {
         this.usuarioLogueado = usuarioLogueado;

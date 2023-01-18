@@ -43,6 +43,7 @@ public class InterfazAdmin extends javax.swing.JFrame {
         jButtonConsultarReservas = new javax.swing.JButton();
         jButtonConsultarVentas = new javax.swing.JButton();
         jButtonVolver = new javax.swing.JButton();
+        jButtonCrearPista = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -89,6 +90,8 @@ public class InterfazAdmin extends javax.swing.JFrame {
             }
         });
 
+        jButtonCrearPista.setText("Crear nueva pista");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -105,7 +108,8 @@ public class InterfazAdmin extends javax.swing.JFrame {
                             .addComponent(jButtonAltaCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonConsultarReservas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonConsultarVentas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonVolver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jButtonVolver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonCrearPista, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(60, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -121,9 +125,11 @@ public class InterfazAdmin extends javax.swing.JFrame {
                 .addComponent(jButtonConsultarReservas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonConsultarVentas)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonCrearPista)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonVolver)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -173,6 +179,7 @@ public class InterfazAdmin extends javax.swing.JFrame {
     private javax.swing.JButton jButtonConsultarClientes;
     private javax.swing.JButton jButtonConsultarReservas;
     private javax.swing.JButton jButtonConsultarVentas;
+    private javax.swing.JButton jButtonCrearPista;
     private javax.swing.JButton jButtonVolver;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
