@@ -2,8 +2,6 @@ package modelos.AlquilerDecorator;
 
 import java.io.Serializable;
 import java.util.HashMap;
-import modelos.Usuarios.Cliente;
-import modelos.Usuarios.Socio;
 
 /**
  * @author Daniel
@@ -19,10 +17,10 @@ public class Pista implements Serializable, Cloneable {
     private HashMap alquilerViernes;
 
     private String descripcion;
-    private Enum numPista;
+    private int numPista;
     private double precio;
 
-    public Pista(HashMap alquilerLunes, HashMap alquilerMartes, HashMap alquilerMiercoles, HashMap alquilerJueves, HashMap alquilerViernes, Enum numPista, String descripcion) {
+    public Pista(HashMap alquilerLunes, HashMap alquilerMartes, HashMap alquilerMiercoles, HashMap alquilerJueves, HashMap alquilerViernes, int numPista, String descripcion) {
 
         this.alquilerLunes = alquilerLunes;
         this.alquilerMartes = alquilerMartes;
@@ -79,11 +77,11 @@ public class Pista implements Serializable, Cloneable {
         this.alquilerViernes = alquilerViernes;
     }
 
-    public Enum getNumPista() {
+    public int getNumPista() {
         return numPista;
     }
 
-    public void setNumPista(Enum numPista) {
+    public void setNumPista(int numPista) {
         this.numPista = numPista;
     }
 
@@ -104,7 +102,7 @@ public class Pista implements Serializable, Cloneable {
     }
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
+    public Object clone() throws CloneNotSupportedException {
         Pista otra = null;
         try {
             // Clona el objeto: copia superficial.
@@ -115,6 +113,7 @@ public class Pista implements Serializable, Cloneable {
             otra.alquilerMiercoles = (HashMap) alquilerMiercoles.clone();
             otra.alquilerJueves = (HashMap) alquilerJueves.clone();
             otra.alquilerViernes = (HashMap) alquilerViernes.clone();
+            otra.numPista = numPista + 1;
         } catch (CloneNotSupportedException e) {
         }
         return otra;
