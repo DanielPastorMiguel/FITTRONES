@@ -552,11 +552,15 @@ public class VentanaLogin extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+<<<<<<< HEAD
 <<<<<<< Updated upstream
         new InterfazReservaPista().setVisible(true);
 =======
         //new InterfazBuscarClase().setVisible(true);
 >>>>>>> Stashed changes
+=======
+        new InterfazReservaPista().setVisible(true);
+>>>>>>> developer
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private LocalDate stringToDate(String fecha) {
