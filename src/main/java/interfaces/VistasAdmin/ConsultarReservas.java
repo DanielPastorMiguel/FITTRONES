@@ -5,8 +5,9 @@
 package interfaces.VistasAdmin;
 
 import java.util.List;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
-import modelos.AlquilerDecorator.AlquilerPista;
+import modelos.AlquilerDecorator.Pista;
 import utiles.ModeloTabla;
 
 /**
@@ -15,12 +16,19 @@ import utiles.ModeloTabla;
  */
 public class ConsultarReservas extends javax.swing.JFrame {
 
+    private JFrame principal;
+
     /**
      * Creates new form ConsultarReservas
      */
-    public ConsultarReservas() {
+    public ConsultarReservas(JFrame ventana) {
         initComponents();
         inicializarTabla();
+        this.setLocationRelativeTo(null);
+        principal = ventana;
+        principal.setVisible(false);
+        this.setVisible(true);
+
     }
 
     private void inicializarTabla() {
@@ -32,10 +40,10 @@ public class ConsultarReservas extends javax.swing.JFrame {
         tabla.setModel(modeloTabla);
     }
 
-    private void rellenarTablaProductos(DefaultTableModel modeloTabla, List<AlquilerPista> pistas, utiles.Enum.DiaEnum dia) {
+    private void rellenarTablaProductos(DefaultTableModel modeloTabla, List<Pista> pistas, utiles.Enum.DiaEnum dia) {
         try {
             Object[] filaTabla = new Object[5];
-            for (AlquilerPista pista : pistas) {
+            for (Pista pista : pistas) {
                 filaTabla[0] = pista.getNumPista();
                 //filaTabla[1] = pista.getTitulo();
                 filaTabla[2] = pista.getDescripcion();
@@ -68,6 +76,11 @@ public class ConsultarReservas extends javax.swing.JFrame {
         tabla = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel1.setText("Reservas");
@@ -99,7 +112,7 @@ public class ConsultarReservas extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Nº pista", "15-16", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7"
             }
         ));
         jScrollPane1.setViewportView(tabla);
@@ -157,6 +170,11 @@ public class ConsultarReservas extends javax.swing.JFrame {
     private void jButtonReservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReservarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonReservarActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+        principal.setVisible(true);
+    }//GEN-LAST:event_formWindowClosed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBuscar;

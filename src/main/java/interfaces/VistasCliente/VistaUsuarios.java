@@ -5,6 +5,7 @@
 package interfaces.VistasCliente;
 
 import interfaces.VistasAdmin.ConsultarReservas;
+import javax.swing.JFrame;
 
 /**
  *
@@ -12,11 +13,18 @@ import interfaces.VistasAdmin.ConsultarReservas;
  */
 public class VistaUsuarios extends javax.swing.JFrame {
 
+    private JFrame principal;
+
     /**
      * Creates new form VistaUsuarios
      */
-    public VistaUsuarios() {
+    public VistaUsuarios(JFrame ventana) {
         initComponents();
+        this.setLocationRelativeTo(null);
+        principal = ventana;
+        principal.setVisible(false);
+        this.setVisible(true);
+
     }
 
     /**
@@ -36,6 +44,11 @@ public class VistaUsuarios extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jButtonBusquedaServicios.setText("Buscar servicios");
         jButtonBusquedaServicios.addActionListener(new java.awt.event.ActionListener() {
@@ -107,29 +120,32 @@ public class VistaUsuarios extends javax.swing.JFrame {
 
     private void jButtonBusquedaServiciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBusquedaServiciosActionPerformed
         // TODO add your handling code here:
-        ConsultarReservas cr = new ConsultarReservas();
-        cr.setVisible(true);
-        this.dispose();
+        ConsultarReservas cr = new ConsultarReservas(this);
     }//GEN-LAST:event_jButtonBusquedaServiciosActionPerformed
 
     private void jButtonBusquedaEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBusquedaEquipoActionPerformed
         // TODO add your handling code here:
-        InterfazBuscarEquipo ibeq = new InterfazBuscarEquipo();
-        ibeq.setVisible(true);
-        this.dispose();
+        InterfazBuscarClase ibeq = new InterfazBuscarClase(this);
 
     }//GEN-LAST:event_jButtonBusquedaEquipoActionPerformed
 
     private void jButtonInterfazGimnasioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInterfazGimnasioActionPerformed
         // TODO add your handling code here:
-        InterfazGimnasio ig = new InterfazGimnasio();
-        ig.setVisible(true);
-        this.dispose();
+        InterfazGimnasio ig = new InterfazGimnasio(this);
     }//GEN-LAST:event_jButtonInterfazGimnasioActionPerformed
 
     private void jButtonCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarSesionActionPerformed
         // TODO add your handling code here:
+        principal.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButtonCerrarSesionActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+        principal.setVisible(true);
+        this.setVisible(false);
+
+    }//GEN-LAST:event_formWindowClosed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

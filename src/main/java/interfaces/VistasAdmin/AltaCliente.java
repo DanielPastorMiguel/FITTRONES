@@ -4,17 +4,26 @@
  */
 package interfaces.VistasAdmin;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author Octavian
  */
 public class AltaCliente extends javax.swing.JFrame {
 
+    private JFrame principal;
+
     /**
      * Creates new form AltaCliente
      */
-    public AltaCliente() {
+    public AltaCliente(JFrame ventana) {
         initComponents();
+        this.setLocationRelativeTo(null);
+        principal = ventana;
+        principal.setVisible(false);
+        this.setVisible(true);
+
     }
 
     /**
@@ -32,11 +41,21 @@ public class AltaCliente extends javax.swing.JFrame {
         jButtonAlta = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel1.setText("Alta nuevo cliente");
 
         jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarActionPerformed(evt);
+            }
+        });
 
         jButtonAlta.setText("Dar de alta");
         jButtonAlta.setToolTipText("");
@@ -76,7 +95,19 @@ public class AltaCliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+        principal.setVisible(true);
+    }//GEN-LAST:event_formWindowClosed
+
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+        // TODO add your handling code here:
+        principal.setVisible(true);
+        this.setVisible(false);
+
+
+    }//GEN-LAST:event_jButtonCancelarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAlta;

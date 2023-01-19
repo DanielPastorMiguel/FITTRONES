@@ -1,5 +1,6 @@
 package modelos;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -7,7 +8,7 @@ import java.util.Date;
  * @version 1.0
  * @created 06-ene.-2023 17:48:21
  */
-public class Factura {
+public class Factura implements Serializable {
 
     private int cif;
     private String concepto;

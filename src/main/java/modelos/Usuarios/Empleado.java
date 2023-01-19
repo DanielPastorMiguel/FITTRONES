@@ -1,5 +1,6 @@
 package modelos.Usuarios;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import modelos.Aplicacion;
 
@@ -8,7 +9,7 @@ import modelos.Aplicacion;
  * @version 1.0
  * @created 06-ene.-2023 17:48:16
  */
-public class Empleado extends Usuario {
+public class Empleado extends Usuario implements Serializable{
 
     private final int codEmpleado;
     private Enum turno;

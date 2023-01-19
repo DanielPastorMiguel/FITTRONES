@@ -1,5 +1,6 @@
 package modelos.FabricaRutina;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -7,7 +8,7 @@ import java.util.List;
  * @version 1.0
  * @created 06-ene.-2023 17:48:34
  */
-public class Rutina {
+public class Rutina implements Serializable{
 
     private List<Ejercicio> ejerciciosEmpuje;
     private List<Ejercicio> ejerciciosTiron;

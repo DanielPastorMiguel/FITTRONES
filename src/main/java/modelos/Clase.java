@@ -1,8 +1,8 @@
 package modelos;
 
+import java.io.Serializable;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import modelos.Usuarios.IntSuscriptor;
 import java.util.HashMap;
 import java.util.List;
 import modelos.Usuarios.Socio;
@@ -12,7 +12,7 @@ import modelos.Usuarios.Socio;
  * @version 1.0
  * @created 06-ene.-2023 17:48:07
  */
-public class Clase {
+public class Clase implements Serializable {
 
     private HashMap<Enum, LocalTime> horario;
     private int plazasMax;
@@ -31,6 +31,10 @@ public class Clase {
         this.plazasMax = plazasMax;
         this.tipo = tipo;
         this.sociosInscritos = sociosInscritos;
+    }
+    
+    public String getInformacion(){
+        return "horario: " + horario.toString();
     }
 
     public HashMap getHorario() {
@@ -77,6 +81,7 @@ public class Clase {
      * Apunta el socio a la clase
      *
      * @param s
+     * @return 
      */
     public boolean apuntarSocioClase(Socio s) {
         if (this.plazasMax == this.sociosInscritos.size()) {
