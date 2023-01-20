@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import modelos.OrdenadoActividadesStrategy.IntEstrategiaOrdenadoActividades;
 import modelos.Usuarios.Usuario;
 import modelos.AlquilerDecorator.Pista;
@@ -145,9 +146,49 @@ public class Aplicacion {
 
     /**
      * Alquila una pista
+     * @param deporte
+     * @param usuario
+     * @param dia
+     * @param hora
+     * @param numPista
      */
-    public void alquilarPista() {
-
+    public void alquilarPista(Usuario usuario, String deporte, String dia, String hora, int numPista) {
+        for (Pista p : listaPistas){
+            if (p.getTipo().equals(deporte)){
+                if (p.getNumPista() == numPista+1){
+                    HashMap alquilerMap;
+                    switch (dia) {
+                        case "LUNES":
+                            alquilerMap = p.getAlquilerLunes();
+                            alquilerMap.put(hora, usuario);
+                            p.setAlquilerLunes(alquilerMap);
+                            break;
+                        case "MARTES":
+                            alquilerMap = p.getAlquilerMartes();
+                            alquilerMap.put(hora, usuario);
+                            p.setAlquilerMartes(alquilerMap);
+                            break;
+                        case "MIERCOLES":
+                            alquilerMap = p.getAlquilerMiercoles();
+                            alquilerMap.put(hora, usuario);
+                            p.setAlquilerMiercoles(alquilerMap);
+                            break;
+                        case "JUEVES":
+                            alquilerMap = p.getAlquilerJueves();
+                            alquilerMap.put(hora, usuario);
+                            p.setAlquilerJueves(alquilerMap);
+                            break;
+                        case "VIERNES":
+                            alquilerMap = p.getAlquilerViernes();
+                            alquilerMap.put(hora, usuario);
+                            p.setAlquilerViernes(alquilerMap);
+                            break;
+                        default:
+                            alquilerMap = null;
+                    }
+                }
+            }
+        }
     }
 
     /**

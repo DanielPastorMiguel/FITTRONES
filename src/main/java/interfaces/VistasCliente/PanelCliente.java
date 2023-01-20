@@ -4,17 +4,49 @@
  */
 package interfaces.VistasCliente;
 
+import modelos.Aplicacion;
+import modelos.Usuarios.Socio;
+import modelos.Usuarios.Usuario;
+
 /**
  *
  * @author Octavian
  */
 public class PanelCliente extends javax.swing.JPanel {
 
+    private Aplicacion app = Aplicacion.getInstancia();
     /**
      * Creates new form PanelCliente
      */
     public PanelCliente() {
         initComponents();
+        inicializarCampos();
+    }
+    
+    private void inicializarCampos(){
+        jTextFieldNombre.setEditable(false);
+        jTextFieldCorreo.setEditable(false);
+        jTextFieldDni.setEditable(false);
+        jTextFieldClave.setEditable(false);
+        jTextFieldListaServicios.setEditable(false);
+        jTextFieldNumeroSocio.setEditable(false);
+        jTextFieldTelefono.setEditable(false);
+        
+        Usuario user = app.getUsuarioLogueado();
+        
+        jTextFieldNombre.setText(user.getNombre());
+        jTextFieldCorreo.setText(user.getCorreo());
+        jTextFieldDni.setText(user.getDni());
+        jTextFieldTelefono.setText(user.getTelefono());
+        jTextFieldClave.setText(user.getContrasena());
+        jTextFieldTelefono.setText(user.getTelefono());
+        if (user.getClass() == Socio.class) {
+            Socio s = (Socio) user;
+            jTextFieldNumeroSocio.setText(Integer.toString(s.getId()));
+        }else{
+            jTextFieldNumeroSocio.setVisible(false);
+            jLabel6.setVisible(false);
+        }
     }
 
     public String getjTextFieldClave() {

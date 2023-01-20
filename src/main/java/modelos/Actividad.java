@@ -19,11 +19,12 @@ public class Actividad implements Serializable{
     private int aforo;
     private List<Usuario> usuariosInscritos;
 
-    public Actividad(Enum dia, LocalTime hora, List<Usuario> usuariosInscritos, Enum tipo) {
+    public Actividad(Enum dia, LocalTime hora, List<Usuario> usuariosInscritos, Enum tipo, int aforo) {
         this.dia = dia;
         this.hora = hora;
         this.usuariosInscritos = usuariosInscritos;
         this.tipo = tipo;
+        this.aforo = aforo;
     }
 
     public Enum getDia() {

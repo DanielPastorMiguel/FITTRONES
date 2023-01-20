@@ -35,10 +35,9 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="182" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jButtonBaja" max="32767" attributes="0"/>
-                          <Component id="jButtonAlta" max="32767" attributes="0"/>
                           <Component id="jButtonBusquedaActividades" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jButtonVolver" min="-2" pref="129" max="-2" attributes="0"/>
+                          <Component id="jButtonVolver" max="32767" attributes="0"/>
+                          <Component id="jButton1" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -51,12 +50,10 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jButtonAlta" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               <Component id="jButtonBusquedaActividades" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jButtonBaja" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jButtonVolver" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="64" max="32767" attributes="0"/>
@@ -73,23 +70,13 @@
         <Property name="text" type="java.lang.String" value="Bienvenido a nuestro gym"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButtonAlta">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Darse de alta"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAltaActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButtonBaja">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Darse de baja"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JButton" name="jButtonBusquedaActividades">
       <Properties>
         <Property name="text" type="java.lang.String" value="Buscar actividades"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonBusquedaActividadesActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonVolver">
       <Properties>
@@ -98,6 +85,11 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonVolverActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ver mis actividades"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
