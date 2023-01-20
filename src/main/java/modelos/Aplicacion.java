@@ -146,8 +146,8 @@ public class Aplicacion {
     /**
      * Alquila una pista
      */
-    public void alquilarPista() {
-
+    public void alquilarPista(String tipo,int numero,Usuario usurio) {
+        
     }
 
     /**
