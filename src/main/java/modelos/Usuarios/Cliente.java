@@ -1,5 +1,6 @@
 package modelos.Usuarios;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import modelos.proxyProteccion.IntCliente;
 import modelos.proxyProteccion.ProxyProteccionClientes;
@@ -9,7 +10,7 @@ import modelos.proxyProteccion.ProxyProteccionClientes;
  * @version 1.0
  * @created 06-ene.-2023 17:48:08
  */
-public class Cliente extends Usuario implements IntCliente {
+public class Cliente extends Usuario implements Serializable, IntCliente {
 
     public ProxyProteccionClientes proxyProteccionClientes;
 

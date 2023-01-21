@@ -1,11 +1,13 @@
 package modelos.FabricaRutina;
 
+import java.io.Serializable;
+
 /**
  * @author Daniel
  * @version 1.0
  * @created 06-ene.-2023 17:48:13
  */
-public class Ejercicio {
+public class Ejercicio implements Serializable{
 
     private String nombre;
     private int repeticiones;

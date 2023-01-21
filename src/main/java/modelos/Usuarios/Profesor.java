@@ -1,5 +1,6 @@
 package modelos.Usuarios;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 import modelos.Clase;
@@ -9,7 +10,7 @@ import modelos.Clase;
  * @version 1.0
  * @created 06-ene.-2023 17:48:33
  */
-public class Profesor extends Empleado {
+public class Profesor extends Empleado implements Serializable{
 
     public List<Clase> clase;
 

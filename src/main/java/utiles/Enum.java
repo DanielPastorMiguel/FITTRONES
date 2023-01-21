@@ -1,6 +1,8 @@
 package utiles;
 
-public class Enum {
+import java.io.Serializable;
+
+public class Enum implements Serializable{
 
     public enum ActividadEnum {
         BODY_PUMP, BOXEO, SPINNING, YOGA, DEFENSA_PERSONAL;

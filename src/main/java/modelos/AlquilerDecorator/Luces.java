@@ -5,21 +5,21 @@ package modelos.AlquilerDecorator;
  * @version 1.0
  * @created 06-ene.-2023 17:48:29
  */
-public class Luces extends AlquilerPistaDecorador {
+public class Luces extends PistaDecorador {
 
-    public Luces(AlquilerPista alquilerPista) {
-        super(alquilerPista);
+    public Luces(Pista pista) {
+        super(pista);
     }
 
 
     @Override
     public String getDescripcion() {
-        return alquilerPista.getDescripcion() + ", con luces";
+        return pista.getDescripcion() + ", con luces";
     }
 
     @Override
     public double getPrecio() {
-        return alquilerPista.getPrecio() + 2.50;
+        return pista.getPrecio() + 2.50;
     }
 
 

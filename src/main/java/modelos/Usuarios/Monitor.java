@@ -1,5 +1,6 @@
 package modelos.Usuarios;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 import modelos.Actividad;
@@ -11,7 +12,7 @@ import modelos.DietaBuilder.DietaBuilder;
  * @version 1.0
  * @created 06-ene.-2023 17:48:31
  */
-public class Monitor extends Empleado {
+public class Monitor extends Empleado implements Serializable{
 
     private List<Socio> listaSocios;
     private List<Actividad> actividad;

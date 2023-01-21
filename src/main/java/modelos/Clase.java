@@ -1,8 +1,8 @@
 package modelos;
 
+import java.io.Serializable;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import modelos.Usuarios.IntSuscriptor;
 import java.util.HashMap;
 import java.util.List;
 import modelos.Usuarios.Socio;
@@ -12,7 +12,7 @@ import modelos.Usuarios.Socio;
  * @version 1.0
  * @created 06-ene.-2023 17:48:07
  */
-public class Clase {
+public class Clase implements Serializable {
 
     private HashMap<Enum, LocalTime> horario;
     private int plazasMax;
@@ -39,6 +39,10 @@ public class Clase {
 
     public HashMap getHorario() {
         return horario;
+    }
+    
+    public boolean estaInscrito(Socio s){
+        return sociosInscritos.contains(s);
     }
 
     public void setHorario(HashMap horario) {
@@ -81,17 +85,19 @@ public class Clase {
      * Apunta el socio a la clase
      *
      * @param s
+     * @return 1 si se ha añadido con exito, 0 si ya estaba inscrito y -1 si esta llena la clase
      */
-    public boolean apuntarSocioClase(Socio s) {
+    public int apuntarSocioClase(Socio s) {
+        if (sociosInscritos.contains(s)) return 0;
         if (this.plazasMax == this.sociosInscritos.size()) {
             suscribirse(s);
-            return false;
+            return -1;
         } else {
             sociosInscritos.add(s);
             if (this.plazasMax == this.sociosInscritos.size()) {
                 notificarSuscriptores();
             }
-            return true;
+            return 1;
         }
     }
 
@@ -102,9 +108,11 @@ public class Clase {
      */
     public void desapuntarSocioClase(Socio s) {
         if (this.plazasMax == this.sociosInscritos.size()) {
+            this.sociosInscritos.remove(s);
             notificarSuscriptores();
+        }else{
+            this.sociosInscritos.remove(s);
         }
-        this.sociosInscritos.remove(s);
     }
 
     /**
