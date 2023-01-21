@@ -21,11 +21,7 @@ import modelos.Usuarios.Socio;
 import modelos.Usuarios.Usuario;
 import utiles.Enum.LoginEnum;
 import utiles.Excepcion;
-import interfaces.VistasCliente.InterfazBuscarClase;
-import interfaces.VistasCliente.InterfazReservaPista;
 import modelos.AlquilerDecorator.Pista;
-import utiles.Enum.PistaFutbolEnum;
-import utiles.Enum.PistaPadelEnum;
 
 public class VentanaLogin extends javax.swing.JFrame {
     
@@ -60,7 +56,7 @@ public class VentanaLogin extends javax.swing.JFrame {
         Monitor m2 = new Monitor(new ArrayList<>(), new ArrayList<>(Arrays.asList(act2, act6, act8)), utiles.Enum.TurnoEnum.TARDE, "123", "m2", "", LocalDate.of(1993, 7, 2), "", "");
         Monitor m3 = new Monitor(new ArrayList<>(), new ArrayList<>(Arrays.asList(act5, act9)), utiles.Enum.TurnoEnum.MAÑANA, "123", "m3", "", LocalDate.of(1986, 2, 5), "", "");
             
-        Clase claseFutbol1 = new Clase(new HashMap<>() {{put(utiles.Enum.DiaEnum.MIERCOLES, LocalTime.of(19, 0));}}, utiles.Enum.NivelFutbolEnum.BENJAMIN, utiles.Enum.PistaFutbolEnum.PISTA1, utiles.Enum.ClaseEnum.FUTBOL, 10, new ArrayList<>());
+        Clase claseFutbol1 = new Clase(new HashMap<>() {{put(utiles.Enum.DiaEnum.MIERCOLES, LocalTime.of(19, 0));}}, utiles.Enum.NivelFutbolEnum.BENJAMIN, utiles.Enum.PistaFutbolEnum.PISTA1, utiles.Enum.ClaseEnum.FUTBOL, 1, new ArrayList<>());
         Clase claseFutbol2 = new Clase(new HashMap<>() {{put(utiles.Enum.DiaEnum.MARTES, LocalTime.of(19, 0)); put(utiles.Enum.DiaEnum.VIERNES, LocalTime.of(19, 0));}}, utiles.Enum.NivelFutbolEnum.CADETE, utiles.Enum.PistaFutbolEnum.PISTA1, utiles.Enum.ClaseEnum.FUTBOL, 13, new ArrayList<>());
         Clase claseFutbol3 = new Clase(new HashMap<>() {{put(utiles.Enum.DiaEnum.LUNES, LocalTime.of(19, 0)); put(utiles.Enum.DiaEnum.JUEVES, LocalTime.of(19, 0));}}, utiles.Enum.NivelFutbolEnum.SENIOR, utiles.Enum.PistaFutbolEnum.PISTA1, utiles.Enum.ClaseEnum.FUTBOL, 17, new ArrayList<>());
         
@@ -92,7 +88,7 @@ public class VentanaLogin extends javax.swing.JFrame {
         
         Pista pistaFutbol2 = new Pista(
                 new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", c2); put("19:00-20:00", c1); put("21:00-22:00", null);}},
-                new HashMap<>() {{put("16:00-17:00", s1); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", null);}},
+                new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", s1); put("19:00-20:00", null); put("21:00-22:00", null);}},
                 new HashMap<>() {{put("16:00-17:00", c2); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", s3);}},
                 new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", null);}},
                 new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", null);}},
@@ -106,7 +102,7 @@ public class VentanaLogin extends javax.swing.JFrame {
                 new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", s1); put("18:00-19:00", null); put("19:00-20:00", c3); put("21:00-22:00", null);}},
                 new HashMap<>() {{put("16:00-17:00", s2); put("17:00-18:00", null); put("18:00-19:00", c2); put("19:00-20:00", s3); put("21:00-22:00", c3);}},
                 new HashMap<>() {{put("16:00-17:00", s1); put("17:00-18:00", s2); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", null);}},
-                new HashMap<>() {{put("16:00-17:00", s1); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", c2); put("21:00-22:00", null);}},
+                new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", s1); put("19:00-20:00", c2); put("21:00-22:00", null);}},
                 1,
                 "",
                 "PADEL"
@@ -114,7 +110,7 @@ public class VentanaLogin extends javax.swing.JFrame {
         
         Pista pistaPadel2 = new Pista(
                 new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", c2); put("19:00-20:00", c1); put("21:00-22:00", null);}},
-                new HashMap<>() {{put("16:00-17:00", s1); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", c3); put("21:00-22:00", null);}},
+                new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", c3); put("21:00-22:00", null);}},
                 new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", c2); put("19:00-20:00", s3); put("21:00-22:00", null);}},
                 new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", s2); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", null);}},
                 new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", null);}},

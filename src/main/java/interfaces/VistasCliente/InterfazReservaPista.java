@@ -311,7 +311,7 @@ public class InterfazReservaPista extends javax.swing.JFrame {
         }
         
         if (pistaSeleccionada == null){
-            int eleccion=JOptionPane.showOptionDialog(this, "¿Esta seguro de que desea alquilar la pista? ", "Mensaje de confirmación", 0, 0, null, new String[]{"SI", "NO"}, this);     
+            int eleccion=JOptionPane.showOptionDialog(this, "¿Esta seguro de que desea alquilar la pista por "+app.getPista(String.valueOf(jComboBoxTipoPista.getSelectedItem()), pista).getPrecio()+"€?", "Mensaje de confirmación", 0, 0, null, new String[]{"SI", "NO"}, this);     
             if (eleccion==JOptionPane.YES_OPTION){
                 app.alquilarPista(app.getUsuarioLogueado(), String.valueOf(jComboBoxTipoPista.getSelectedItem()), String.valueOf(jComboBoxDia.getSelectedItem()), horas[hora], pista);
                 JOptionPane.showMessageDialog(this, "Ha alquilado la pista correctamente", "FITTRONES", JOptionPane.INFORMATION_MESSAGE);

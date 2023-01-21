@@ -4,6 +4,7 @@
  */
 package interfaces.VistasCliente;
 
+import javax.swing.JFrame;
 import modelos.Aplicacion;
 import modelos.Usuarios.Socio;
 import modelos.Usuarios.Usuario;
@@ -15,11 +16,13 @@ import modelos.Usuarios.Usuario;
 public class PanelCliente extends javax.swing.JPanel {
 
     private Aplicacion app = Aplicacion.getInstancia();
+    private JFrame anterior;
     /**
      * Creates new form PanelCliente
      */
-    public PanelCliente() {
+    public PanelCliente(JFrame anterior) {
         initComponents();
+        this.anterior = anterior;
         inicializarCampos();
     }
     
@@ -28,7 +31,7 @@ public class PanelCliente extends javax.swing.JPanel {
         jTextFieldCorreo.setEditable(false);
         jTextFieldDni.setEditable(false);
         jTextFieldClave.setEditable(false);
-        jTextFieldListaServicios.setEditable(false);
+        //jTextFieldListaServicios.setEditable(false);
         jTextFieldNumeroSocio.setEditable(false);
         jTextFieldTelefono.setEditable(false);
         
@@ -73,14 +76,6 @@ public class PanelCliente extends javax.swing.JPanel {
         this.jTextFieldDni.setText(jTextFieldDni);
     }
 
-    public String getjTextFieldListaServicios() {
-        return jTextFieldListaServicios.getText();
-    }
-
-    public void setjTextFieldListaServicios(String jTextFieldListaServicios) {
-        this.jTextFieldListaServicios.setText(jTextFieldListaServicios);
-    }
-
     public String getjTextFieldNombre() {
         return jTextFieldNombre.getText();
     }
@@ -112,15 +107,15 @@ public class PanelCliente extends javax.swing.JPanel {
         jTextFieldClave.setText("");
         jTextFieldTelefono.setText("");
         jTextFieldNumeroSocio.setText("");
-        jTextFieldListaServicios.setText("");
+        //jTextFieldListaServicios.setText("");
     }
     
     public void activarSocio(){
-        jTextFieldListaServicios.setVisible(true);
+        //jTextFieldListaServicios.setVisible(true);
         jTextFieldNumeroSocio.setVisible(true);
     }
       public void desactivarSocio(){
-        jTextFieldListaServicios.setVisible(false);
+        //jTextFieldListaServicios.setVisible(false);
         jTextFieldNumeroSocio.setVisible(false);
     }
 
@@ -139,14 +134,13 @@ public class PanelCliente extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jTextFieldNombre = new javax.swing.JTextField();
         jTextFieldDni = new javax.swing.JTextField();
         jTextFieldCorreo = new javax.swing.JTextField();
         jTextFieldClave = new javax.swing.JTextField();
         jTextFieldTelefono = new javax.swing.JTextField();
         jTextFieldNumeroSocio = new javax.swing.JTextField();
-        jTextFieldListaServicios = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         jLabel1.setText("Nombre");
 
@@ -160,7 +154,12 @@ public class PanelCliente extends javax.swing.JPanel {
 
         jLabel6.setText("Nº socio");
 
-        jLabel7.setText("Serv. adquiridos");
+        jButton1.setText("Ver servicios adquiridos");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -192,12 +191,12 @@ public class PanelCliente extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldNumeroSocio, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldListaServicios, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTextFieldNumeroSocio, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(13, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(77, 77, 77))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -227,26 +226,27 @@ public class PanelCliente extends javax.swing.JPanel {
                     .addComponent(jLabel6)
                     .addComponent(jTextFieldNumeroSocio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jTextFieldListaServicios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        new InterfazServiciosAdquiridos(anterior).setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField jTextFieldClave;
     private javax.swing.JTextField jTextFieldCorreo;
     private javax.swing.JTextField jTextFieldDni;
-    private javax.swing.JTextField jTextFieldListaServicios;
     private javax.swing.JTextField jTextFieldNombre;
     private javax.swing.JTextField jTextFieldNumeroSocio;
     private javax.swing.JTextField jTextFieldTelefono;

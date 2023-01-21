@@ -27,6 +27,10 @@ public class Actividad implements Serializable{
         this.aforo = aforo;
     }
 
+    public void inscribirSocio(Usuario u){
+        usuariosInscritos.add(u);
+    }
+    
     public Enum getDia() {
         return dia;
     }

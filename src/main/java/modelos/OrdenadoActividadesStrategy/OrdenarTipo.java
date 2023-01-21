@@ -22,7 +22,7 @@ public class OrdenarTipo implements IntEstrategiaOrdenadoActividades {
                 Actividad act1 = (Actividad) a1;
                 Actividad act2 = (Actividad) a2;
 
-                return act1.getTipo().compareTo(act2.getTipo());
+                return String.valueOf(act1.getTipo()).compareTo(String.valueOf(act2.getTipo()));
             }
         };
 

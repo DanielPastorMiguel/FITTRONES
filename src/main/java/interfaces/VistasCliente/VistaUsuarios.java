@@ -6,8 +6,10 @@ package interfaces.VistasCliente;
 
 import interfaces.VistasAdmin.ConsultarReservas;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import modelos.Aplicacion;
 import modelos.Usuarios.Cliente;
+import modelos.Usuarios.Socio;
 
 /**
  *
@@ -27,12 +29,24 @@ public class VistaUsuarios extends javax.swing.JFrame {
         principal.setVisible(false);
         this.setVisible(true);
         inicializarVista();
+        comprobarSuscripciones();
     }
 
     private void inicializarVista() {
         if (app.getUsuarioLogueado().getClass() == Cliente.class) {
             jButtonBusquedaEquipo.setVisible(false);
             jButtonInterfazGimnasio.setVisible(false);
+        }
+    }
+    
+    private void comprobarSuscripciones(){
+        if (app.getUsuarioLogueado().getClass() == Socio.class){
+            Socio s = (Socio) app.getUsuarioLogueado();
+            if (!s.getListaNotificaciones().isEmpty()){
+               for (String string : s.getListaNotificaciones()){
+                   JOptionPane.showMessageDialog(this, string, "FITTRONES", JOptionPane.INFORMATION_MESSAGE);
+               }
+            }
         }
     }
 

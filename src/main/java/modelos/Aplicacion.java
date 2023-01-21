@@ -190,15 +190,30 @@ public class Aplicacion {
             }
         }
     }
+    
+    public Pista getPista(String deporte, int numPista){
+        for (Pista p : listaPistas){
+            if (p.getTipo().equals(deporte) && p.getNumPista() == numPista+1) return p;
+        }
+        return null;
+    }
+    
+    public List<Actividad> getActividadesUsuario(Usuario user){
+        List<Actividad> lista = new ArrayList<>();
+        for (Actividad act : listaActividades){
+            if (act.getUsuariosInscritos().contains(user)) lista.add(act);
+        }
+        return lista;
+    }
 
     /**
      * Apunta un socio a una clase
      *
      * @param socio
      * @param clase
-     * @return
+     * @return 1 si se ha añadido corectamente, 0 si ya estaba apuntado y -1 si esta llena la clase
      */
-    public boolean apuntarSocioClase(Socio socio, Clase clase) {
+    public int apuntarSocioClase(Socio socio, Clase clase) {
         return clase.apuntarSocioClase(socio);
     }
 
@@ -225,7 +240,7 @@ public class Aplicacion {
     public Usuario getUsuarioLogueado() {
         return usuarioLogueado;
     }
-
+    
     public List<Usuario> getUsuariosRegistrados() {
         return usuariosRegistrados;
     }
