@@ -4,17 +4,22 @@
  */
 package interfaces.VistasMonitor;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author docto
  */
 public class VistaPrincipal extends javax.swing.JFrame {
 
+    private JFrame anterior;
     /**
      * Creates new form VistaPrincipal
      */
-    public VistaPrincipal() {
+    public VistaPrincipal(JFrame anterior) {
         initComponents();
+        this.anterior = anterior;
+        anterior.setVisible(false);
     }
 
     /**
@@ -31,7 +36,13 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jButtonDieta = new javax.swing.JButton();
         jButtonSociosAsignados = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -45,8 +56,18 @@ public class VistaPrincipal extends javax.swing.JFrame {
         });
 
         jButtonDieta.setText("Crear Dieta");
+        jButtonDieta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDietaActionPerformed(evt);
+            }
+        });
 
         jButtonSociosAsignados.setText("Socios Asignados");
+        jButtonSociosAsignados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSociosAsignadosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -76,11 +97,25 @@ public class VistaPrincipal extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonRutinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRutinaActionPerformed
-        // TODO add your handling code here:
+        new VistaRutina(this).setVisible(true);
     }//GEN-LAST:event_jButtonRutinaActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        anterior.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_formWindowClosed
+
+    private void jButtonDietaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDietaActionPerformed
+        new VistaDieta(this).setVisible(true);
+    }//GEN-LAST:event_jButtonDietaActionPerformed
+
+    private void jButtonSociosAsignadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSociosAsignadosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonSociosAsignadosActionPerformed
 
     
 

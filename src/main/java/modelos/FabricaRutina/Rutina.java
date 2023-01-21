@@ -20,4 +20,16 @@ public class Rutina implements Serializable{
         this.ejerciciosPierna = ejerciciosPierna;
     }
 
+    public List<Ejercicio> getEjerciciosEmpuje() {
+        return ejerciciosEmpuje;
+    }
+
+    public List<Ejercicio> getEjerciciosTiron() {
+        return ejerciciosTiron;
+    }
+
+    public List<Ejercicio> getEjerciciosPierna() {
+        return ejerciciosPierna;
+    }
+
 }//end Rutina

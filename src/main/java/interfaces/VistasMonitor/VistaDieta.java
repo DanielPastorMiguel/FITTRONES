@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import modelos.Usuarios.Socio;
 import modelos.Aplicacion;
 import modelos.DietaBuilder.Dieta;
@@ -22,13 +24,15 @@ import modelos.Usuarios.Monitor;
  */
 public class VistaDieta extends javax.swing.JFrame {
 
-   
+    private JFrame anterior;
     /**
      * Creates new form VistaDieta
      */
-    public VistaDieta() {
+    public VistaDieta(JFrame anterior) {
         initComponents();
-        inicializarDesplegableNombres(jComboNombres,app.getSocios());
+        this.anterior = anterior;
+        anterior.setVisible(false);
+        inicializarDesplegableNombres(jComboNombres, app.getSocios());
     }
     
     public void inicializarDesplegableNombres(JComboBox desplegableNombres,List<Socio> socios) {
@@ -61,7 +65,12 @@ public class VistaDieta extends javax.swing.JFrame {
         jComboTipoDieta = new javax.swing.JComboBox<>();
         jButtonCrear = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -126,13 +135,11 @@ public class VistaDieta extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboNombresActionPerformed
 
     private void jButtonCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearActionPerformed
-       if ((String)jComboTipoDieta.getSelectedItem() == "Definición"){
+       if (String.valueOf(jComboTipoDieta.getSelectedItem()).equals("Definición")){
            Monitor monitor = (Monitor)app.getUsuarioLogueado();
            monitor.setDietaBuilder(def);
            monitor.crearListaDietas();
            dieta = monitor.getListaDietas();
-           
-           
        }else{
            Monitor monitor = (Monitor)app.getUsuarioLogueado();
            monitor.setDietaBuilder(vo);
@@ -140,7 +147,15 @@ public class VistaDieta extends javax.swing.JFrame {
            dieta = monitor.getListaDietas();
        }
        app.getSocio((String)jComboNombres.getSelectedItem()).setDieta(dieta);
+       JOptionPane.showMessageDialog(this, "Se ha creado la dieta correctamente", "FITTRONES", JOptionPane.INFORMATION_MESSAGE);
+       anterior.setVisible(true);
+       this.dispose();
     }//GEN-LAST:event_jButtonCrearActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        anterior.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_formWindowClosed
 
     
 

@@ -2,6 +2,7 @@ package interfaces;
 
 import interfaces.VistasAdmin.InterfazAdmin;
 import interfaces.VistasCliente.VistaUsuarios;
+import interfaces.VistasMonitor.VistaPrincipal;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -481,7 +482,7 @@ public class VentanaLogin extends javax.swing.JFrame {
 
         }
         else if (iniciarSesion == LoginEnum.MONITOR){
-            new VistaUsuarios(this).setVisible(true);
+            new VistaPrincipal(this).setVisible(true);
 
         }
         else if (iniciarSesion == LoginEnum.PROFESOR){

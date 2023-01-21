@@ -1,15 +1,14 @@
 package interfaces.VistasCliente;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import modelos.Aplicacion;
 import modelos.Usuarios.Cliente;
 import modelos.Usuarios.Recepcionista;
 import modelos.Usuarios.Socio;
 import modelos.Usuarios.Usuario;
-import modelos.proxyProteccion.ProxyProteccionClientes;
 
 public class InterfazVerPerfil extends javax.swing.JFrame {
 
@@ -41,20 +40,28 @@ public class InterfazVerPerfil extends javax.swing.JFrame {
         if (anterior.getClass() == VistaUsuarios.class) {
             jButtonSiguiente.setVisible(false);
             if (usuario.getClass() == Cliente.class) {
+                jButtonDieta.setVisible(false);
+                jButtonRutina.setVisible(false);
                 Cliente c = (Cliente) usuario;
                 info = c.getInformacionCliente();
             } else if (usuario.getClass() == Socio.class) {
+                jButtonDieta.setVisible(true);
+                jButtonRutina.setVisible(true);
                 Socio s = (Socio) usuario;
                 info = s.getInformacionCliente();
             }
         }else{ //recepcionista
             jButtonSiguiente.setVisible(true);
             if (usuario.getClass() == Cliente.class) {
+                jButtonDieta.setVisible(false);
+                jButtonRutina.setVisible(false);
                 Cliente c = (Cliente) usuario;
                 Recepcionista r = (Recepcionista) app.getUsuarioLogueado();
                 r.setUsuario(c);
                 info = r.getInformacionCliente();
             } else if (usuario.getClass() == Socio.class) {
+                jButtonDieta.setVisible(true);
+                jButtonRutina.setVisible(true);
                 Socio s = (Socio) usuario;
                 Recepcionista r = (Recepcionista) app.getUsuarioLogueado();
                 r.setUsuario(s);
@@ -107,6 +114,8 @@ public class InterfazVerPerfil extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jTextFieldFechaNacimiento = new javax.swing.JTextField();
         jButtonSiguiente = new javax.swing.JButton();
+        jButtonRutina = new javax.swing.JButton();
+        jButtonDieta = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -233,7 +242,7 @@ public class InterfazVerPerfil extends javax.swing.JFrame {
                     .addComponent(jTextFieldNumeroSocio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButtonVerServicios)
-                .addGap(32, 32, 32))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         jButtonSiguiente.setText("Siguiente");
@@ -243,30 +252,54 @@ public class InterfazVerPerfil extends javax.swing.JFrame {
             }
         });
 
+        jButtonRutina.setText("Ver rutina");
+        jButtonRutina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRutinaActionPerformed(evt);
+            }
+        });
+
+        jButtonDieta.setText("Ver dieta");
+        jButtonDieta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDietaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButtonAtras)
                         .addGap(151, 151, 151)
                         .addComponent(jButtonSiguiente)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(74, 74, 74)
+                .addComponent(jButtonRutina)
+                .addGap(42, 42, 42)
+                .addComponent(jButtonDieta)
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addContainerGap(14, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonRutina)
+                    .addComponent(jButtonDieta))
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAtras)
                     .addComponent(jButtonSiguiente))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pack();
@@ -291,7 +324,7 @@ public class InterfazVerPerfil extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosed
 
     private void jButtonVerServiciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerServiciosActionPerformed
-        new InterfazServiciosAdquiridos(this, usuario).setVisible(true);
+        new InterfazServiciosAdquiridos(this, usuario, "SERVICIOS").setVisible(true);
     }//GEN-LAST:event_jButtonVerServiciosActionPerformed
 
     private void jButtonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteActionPerformed
@@ -301,9 +334,23 @@ public class InterfazVerPerfil extends javax.swing.JFrame {
         inicializarComponentes();
     }//GEN-LAST:event_jButtonSiguienteActionPerformed
 
+    private void jButtonRutinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRutinaActionPerformed
+        Socio s = (Socio) usuario;
+        if (s.getRutina() == null) JOptionPane.showMessageDialog(this, "Error, no dispone de rutina, pida a un monitor de sala una si la desea", "FITTRONES", JOptionPane.ERROR_MESSAGE);
+        else new InterfazServiciosAdquiridos(this, usuario, "RUTINA").setVisible(true);
+    }//GEN-LAST:event_jButtonRutinaActionPerformed
+
+    private void jButtonDietaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDietaActionPerformed
+        Socio s = (Socio) usuario;
+        if (s.getDieta()== null) JOptionPane.showMessageDialog(this, "Error, no dispone de dieta, pida a un monitor de sala una si la desea", "FITTRONES", JOptionPane.ERROR_MESSAGE);
+        else new InterfazServiciosAdquiridos(this, usuario, "DIETA").setVisible(true);
+    }//GEN-LAST:event_jButtonDietaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAtras;
+    private javax.swing.JButton jButtonDieta;
+    private javax.swing.JButton jButtonRutina;
     private javax.swing.JButton jButtonSiguiente;
     private javax.swing.JButton jButtonVerServicios;
     private javax.swing.JLabel jLabel1;
