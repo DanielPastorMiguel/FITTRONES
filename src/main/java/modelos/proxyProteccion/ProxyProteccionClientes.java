@@ -12,27 +12,20 @@ public class ProxyProteccionClientes implements IntCliente {
 
     private Cliente cliente;
     private Socio socio;
-    String datosUsuario;
+    String datosUsuario = "";
 
-    public ProxyProteccionClientes() {
-    }
+    public ProxyProteccionClientes() {}
 
     public void setCliente(Cliente c) {
         this.cliente = c;
         String datosCliente = c.getInformacionCliente();
-        String[] datos = datosCliente.split(";", 5);
-        for (String s : datos) {
-            datosUsuario = datosUsuario.concat(s);
-        }
+        datosUsuario = datosCliente.substring(0,datosCliente.lastIndexOf("Contraseña")-1);
     }
 
     public void setSocio(Socio s) {
         this.socio = s;
         String datosSocio = s.getInformacionCliente();
-        String[] datos = datosSocio.split(";", 5);
-        for (String st : datos) {
-            datosUsuario = datosUsuario.concat(st);
-        }
+        datosUsuario = datosSocio.substring(0,datosSocio.lastIndexOf("Contraseña")-1);
     }
 
     @Override

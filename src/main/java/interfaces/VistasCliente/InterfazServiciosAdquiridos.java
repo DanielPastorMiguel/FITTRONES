@@ -1,7 +1,6 @@
 package interfaces.VistasCliente;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -17,13 +16,15 @@ public class InterfazServiciosAdquiridos extends javax.swing.JFrame {
     private JFrame anterior;
     private ModeloTabla modeloTabla;
     private Aplicacion app = Aplicacion.getInstancia();
+    private Usuario usuario;
     private List<List<Object>> listaTabla = new ArrayList<>();
     
-    public InterfazServiciosAdquiridos(JFrame anterior) {
+    public InterfazServiciosAdquiridos(JFrame anterior, Usuario usuario) {
         initComponents();
         this.anterior = anterior;
+        this.usuario = usuario;
         inicializarTabla();
-        rellenarTabla(app.getUsuarioLogueado());
+        rellenarTabla(usuario);
     }
     
     private void inicializarTabla() {
@@ -97,8 +98,10 @@ public class InterfazServiciosAdquiridos extends javax.swing.JFrame {
     
     private void rellenarTabla(Usuario user) {
         List lista = new ArrayList();
-        for (Clase clase : app.getClases()){
-            if (clase.estaInscrito((Socio) user)) lista.add(clase);
+        if (user.getClass() == Socio.class){
+            for (Clase clase : app.getClases()){
+                if (clase.estaInscrito((Socio) user)) lista.add(clase);
+            }
         }
         for (Pista pista : app.getPistas()){
             if (pista.aAlquilado(user)) lista.add(pista);
@@ -106,14 +109,7 @@ public class InterfazServiciosAdquiridos extends javax.swing.JFrame {
         try {
             Object[] filaTabla = new Object[5];
             for (Object servicio : lista) {
-                if (servicio.getClass() == Pista.class){
-                    Pista p = (Pista) servicio;
-                    List<String[]> datos = getDatosPistaAlquiladaUser(p, user);
-                    for (String[] datosString : datos){
-                        listaTabla.add(List.of(p, datosString));
-                        modeloTabla.addRow(datosString);
-                    }
-                }else{
+                if (servicio.getClass() == Clase.class){
                     Clase c = (Clase) servicio;
                     filaTabla[0] = "Clase";
                     filaTabla[1] = String.valueOf(c.getTipo());
@@ -122,6 +118,13 @@ public class InterfazServiciosAdquiridos extends javax.swing.JFrame {
                     filaTabla[4] = String.valueOf(c.getNumPista());
                     listaTabla.add(List.of(c, filaTabla));
                     modeloTabla.addRow(filaTabla);
+                }else{
+                    Pista p = (Pista) servicio;
+                    List<String[]> datos = getDatosPistaAlquiladaUser(p, user);
+                    for (String[] datosString : datos){
+                        listaTabla.add(List.of(p, datosString));
+                        modeloTabla.addRow(datosString);
+                    }
                 }
             }
         } catch (Exception e) {
@@ -188,11 +191,11 @@ public class InterfazServiciosAdquiridos extends javax.swing.JFrame {
             Clase c = (Clase) servicio;
             int eleccion = JOptionPane.showOptionDialog(this, "¿Esta seguro de que desea desapuntarse de la clase  " + c.getTipo() + ":  " + c.getNivel()+"?", "Mensaje de confirmación", 0, 0, null, new String[]{"SI", "NO"}, this);
                 if (eleccion == JOptionPane.YES_OPTION) {
-                    c.desapuntarSocioClase((Socio) app.getUsuarioLogueado());
+                    c.desapuntarSocioClase((Socio) usuario);
                     JOptionPane.showMessageDialog(this, "Se ha desapuntado correctamente", "FITTRONES", JOptionPane.INFORMATION_MESSAGE);
                     vaciarTabla();
                     listaTabla =  new ArrayList<>();
-                    rellenarTabla(app.getUsuarioLogueado());
+                    rellenarTabla(usuario);
                 }
             
         }

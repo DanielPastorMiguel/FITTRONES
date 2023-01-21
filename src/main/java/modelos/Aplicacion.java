@@ -198,6 +198,14 @@ public class Aplicacion {
         return null;
     }
     
+    public List<Usuario> getClientesYSocios(){
+        List<Usuario> lista = new ArrayList<>();
+        for (Usuario user : usuariosRegistrados){
+            if (user.getClass() == Cliente.class || user.getClass() == Socio.class) lista.add(user);
+        }
+        return lista;
+    }
+    
     public List<Actividad> getActividadesUsuario(Usuario user){
         List<Actividad> lista = new ArrayList<>();
         for (Actividad act : listaActividades){

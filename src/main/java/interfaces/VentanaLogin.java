@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import modelos.Actividad;
+import modelos.AlquilerDecorator.Luces;
+import modelos.AlquilerDecorator.Material;
 import modelos.Aplicacion;
 import modelos.Clase;
 import modelos.Usuarios.Cliente;
@@ -111,13 +113,35 @@ public class VentanaLogin extends javax.swing.JFrame {
         Pista pistaPadel2 = new Pista(
                 new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", c2); put("19:00-20:00", c1); put("21:00-22:00", null);}},
                 new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", c3); put("21:00-22:00", null);}},
-                new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", c2); put("19:00-20:00", s3); put("21:00-22:00", null);}},
+                new HashMap<>() {{put("16:00-17:00", s1); put("17:00-18:00", null); put("18:00-19:00", c2); put("19:00-20:00", s3); put("21:00-22:00", null);}},
                 new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", s2); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", null);}},
                 new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", null);}},
                 2,
                 "",
                 "PADEL"
         );
+        
+        Pista pistaPadel3Decorator = new Luces(new Pista(
+                new HashMap<>() {{put("16:00-17:00", c2); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", c1); put("21:00-22:00", null);}},
+                new HashMap<>() {{put("16:00-17:00", s1); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", null);}},
+                new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", s3); put("19:00-20:00", null); put("21:00-22:00", null);}},
+                new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", s2); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", null);}},
+                new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", null);}},
+                3,
+                "",
+                "PADEL"
+        ));
+        
+        Pista pistaPadel4Decorator = new Material(new Luces(new Pista(
+                new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", s3); put("19:00-20:00", null); put("21:00-22:00", c1);}},
+                new HashMap<>() {{put("16:00-17:00", s1); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", null);}},
+                new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", s2); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", c2);}},
+                new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", null);}},
+                new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", s2); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", c3);}},
+                4,
+                "",
+                "PADEL"
+        )));
         
         try {
             app.registrarUsuario(c1);
@@ -159,6 +183,8 @@ public class VentanaLogin extends javax.swing.JFrame {
             app.anadirPista(pistaFutbol2);
             app.anadirPista(pistaPadel1);
             app.anadirPista(pistaPadel2);
+            app.anadirPista(pistaPadel3Decorator);
+            app.anadirPista(pistaPadel4Decorator);
         }catch (Excepcion ex) {
             System.out.println("Excepcion: "+ex.toString());
         }
@@ -439,27 +465,31 @@ public class VentanaLogin extends javax.swing.JFrame {
     private void botonIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIniciarSesionActionPerformed
         Enum iniciarSesion = app.iniciarSesion(campoCorreo.getText(), arrayCharToString(campoContrasenna.getPassword()));
         
+        if (iniciarSesion != LoginEnum.ERROR_CONTRASENA && iniciarSesion != LoginEnum.ERROR_CORREO) {
+            campoCorreo.setBackground(Color.white);
+            campoContrasenna.setBackground(Color.white);
+        }
         if (iniciarSesion == LoginEnum.ADMIN){
-            InterfazAdmin iadmin = new InterfazAdmin(this);
+            new InterfazAdmin(this).setVisible(true);
             
         }
         else if (iniciarSesion == LoginEnum.SOCIO){
-            VistaUsuarios vu = new VistaUsuarios(this);
+            new VistaUsuarios(this).setVisible(true);
         }
         else if (iniciarSesion == LoginEnum.CLIENTE){
-            VistaUsuarios vu = new VistaUsuarios(this);
+            new VistaUsuarios(this).setVisible(true);
 
         }
         else if (iniciarSesion == LoginEnum.MONITOR){
-            VistaUsuarios vu = new VistaUsuarios(this);
+            new VistaUsuarios(this).setVisible(true);
 
         }
         else if (iniciarSesion == LoginEnum.PROFESOR){
-            VistaUsuarios vu = new VistaUsuarios(this);
+            new VistaUsuarios(this).setVisible(true);
 
         }
         else if (iniciarSesion == LoginEnum.RECEPCIONISTA){
-            VistaUsuarios vu = new VistaUsuarios(this);
+            new InterfazAdmin(this).setVisible(true);
 
         }
         else if (iniciarSesion == LoginEnum.ERROR_CONTRASENA) {

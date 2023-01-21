@@ -34,7 +34,7 @@ public class InterfazReservaPista extends javax.swing.JFrame {
 
     private void inicializarTabla() {
         tabla.getTableHeader().setReorderingAllowed(false);
-        String[] columnas = {"Nº Pista", "16:00-17:00", "17:00-18:00", "18:00-19:00", "19:00-20:00", "20:00-21:00", "21:00-22:00"};
+        String[] columnas = {"Nº Pista", "16:00-17:00", "17:00-18:00", "18:00-19:00", "19:00-20:00", "20:00-21:00", "21:00-22:00", "Extras"};
 
         modeloTabla = new ModeloTabla(null, columnas);
 
@@ -43,7 +43,7 @@ public class InterfazReservaPista extends javax.swing.JFrame {
 
     private void rellenarTabla(DefaultTableModel modeloTabla, List<Pista> pistas, utiles.Enum.DiaEnum dia) {
         try {
-            Object[] filaTabla = new Object[7];
+            Object[] filaTabla = new Object[8];
             for (Pista pista : pistas) {
                 filaTabla[0] = pista.getNumPista();
                 switch (String.valueOf(dia)) {
@@ -120,6 +120,7 @@ public class InterfazReservaPista extends javax.swing.JFrame {
                     default:
                         break;
                 }
+                filaTabla[7] = pista.getDescripcion();
                 modeloTabla.addRow(filaTabla);
             }
         } catch (Exception e) {
@@ -208,7 +209,7 @@ public class InterfazReservaPista extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 811, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 811, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(83, 83, 83)
                         .addComponent(jLabel2)
@@ -224,7 +225,7 @@ public class InterfazReservaPista extends javax.swing.JFrame {
                                 .addComponent(jComboBoxDia, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(52, 52, 52)
                                 .addComponent(jButton1)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -265,62 +266,64 @@ public class InterfazReservaPista extends javax.swing.JFrame {
         int pista = tabla.rowAtPoint(evt.getPoint());
         int hora = tabla.columnAtPoint(evt.getPoint()) - 1;
         
-        String[] horas = {"16:00-17:00", "17:00-18:00", "18:00-19:00", "19:00-20:00", "20:00-21:00", "21:00-22:00"};
+        if(hora != -1 && hora != 6){
+            String[] horas = {"16:00-17:00", "17:00-18:00", "18:00-19:00", "19:00-20:00", "20:00-21:00", "21:00-22:00"};
         
-        Object pistaSeleccionada = null; 
-        if(String.valueOf(jComboBoxTipoPista.getSelectedItem()).equals("PADEL")){
-            switch (String.valueOf(jComboBoxDia.getSelectedItem())) {
-                    case "LUNES":
-                        pistaSeleccionada = app.getPistasPadel().get(pista).getAlquilerLunes().get(horas[hora]);
-                        break;
-                    case "MARTES":
-                        pistaSeleccionada = app.getPistasPadel().get(pista).getAlquilerMartes().get(horas[hora]);
-                        break;
-                    case "MIERCOLES":
-                        pistaSeleccionada = app.getPistasPadel().get(pista).getAlquilerMiercoles().get(horas[hora]);
-                        break;
-                    case "JUEVES":
-                        pistaSeleccionada = app.getPistasPadel().get(pista).getAlquilerJueves().get(horas[hora]);
-                        break;
-                    case "VIERNES":
-                        pistaSeleccionada = app.getPistasPadel().get(pista).getAlquilerViernes().get(horas[hora]);
-                        break;
-                    default:
-                        break;
-            }
-        }else{
-            switch (String.valueOf(jComboBoxDia.getSelectedItem())) {
-                    case "LUNES":
-                        pistaSeleccionada = app.getPistasFutbol().get(pista).getAlquilerLunes().get(horas[hora]);
-                        break;
-                    case "MARTES":
-                        pistaSeleccionada = app.getPistasFutbol().get(pista).getAlquilerMartes().get(horas[hora]);
-                        break;
-                    case "MIERCOLES":
-                        pistaSeleccionada = app.getPistasFutbol().get(pista).getAlquilerMiercoles().get(horas[hora]); 
-                        break;
-                    case "JUEVES":
-                        pistaSeleccionada = app.getPistasFutbol().get(pista).getAlquilerJueves().get(horas[hora]);
-                        break;
-                    case "VIERNES":
-                        pistaSeleccionada = app.getPistasFutbol().get(pista).getAlquilerViernes().get(horas[hora]);
-                        break;
-                    default:
-                        break;
-            }
-        }
+            Object pistaSeleccionada = null; 
+            if(String.valueOf(jComboBoxTipoPista.getSelectedItem()).equals("PADEL")){
+                switch (String.valueOf(jComboBoxDia.getSelectedItem())) {
+                        case "LUNES":
+                            pistaSeleccionada = app.getPistasPadel().get(pista).getAlquilerLunes().get(horas[hora]);
+                            break;
+                        case "MARTES":
+                            pistaSeleccionada = app.getPistasPadel().get(pista).getAlquilerMartes().get(horas[hora]);
+                            break;
+                        case "MIERCOLES":
+                            pistaSeleccionada = app.getPistasPadel().get(pista).getAlquilerMiercoles().get(horas[hora]);
+                            break;
+                        case "JUEVES":
+                            pistaSeleccionada = app.getPistasPadel().get(pista).getAlquilerJueves().get(horas[hora]);
+                            break;
+                        case "VIERNES":
+                            pistaSeleccionada = app.getPistasPadel().get(pista).getAlquilerViernes().get(horas[hora]);
+                            break;
+                        default:
+                            break;
+                }
+            }else{
+                switch (String.valueOf(jComboBoxDia.getSelectedItem())) {
+                        case "LUNES":
+                            pistaSeleccionada = app.getPistasFutbol().get(pista).getAlquilerLunes().get(horas[hora]);
+                            break;
+                        case "MARTES":
+                            pistaSeleccionada = app.getPistasFutbol().get(pista).getAlquilerMartes().get(horas[hora]);
+                            break;
+                        case "MIERCOLES":
+                            pistaSeleccionada = app.getPistasFutbol().get(pista).getAlquilerMiercoles().get(horas[hora]); 
+                            break;
+                        case "JUEVES":
+                            pistaSeleccionada = app.getPistasFutbol().get(pista).getAlquilerJueves().get(horas[hora]);
+                            break;
+                        case "VIERNES":
+                            pistaSeleccionada = app.getPistasFutbol().get(pista).getAlquilerViernes().get(horas[hora]);
+                            break;
+                        default:
+                            break;
+                }
+            }   
         
-        if (pistaSeleccionada == null){
-            int eleccion=JOptionPane.showOptionDialog(this, "¿Esta seguro de que desea alquilar la pista por "+app.getPista(String.valueOf(jComboBoxTipoPista.getSelectedItem()), pista).getPrecio()+"€?", "Mensaje de confirmación", 0, 0, null, new String[]{"SI", "NO"}, this);     
-            if (eleccion==JOptionPane.YES_OPTION){
-                app.alquilarPista(app.getUsuarioLogueado(), String.valueOf(jComboBoxTipoPista.getSelectedItem()), String.valueOf(jComboBoxDia.getSelectedItem()), horas[hora], pista);
-                JOptionPane.showMessageDialog(this, "Ha alquilado la pista correctamente", "FITTRONES", JOptionPane.INFORMATION_MESSAGE);
-                vaciarTabla();
-                if(String.valueOf(jComboBoxTipoPista.getSelectedItem()).equals("PADEL")) rellenarTabla(modeloTabla, app.getPistasPadel(), utiles.Enum.DiaEnum.valueOf(String.valueOf(jComboBoxDia.getSelectedItem())));
-                else rellenarTabla(modeloTabla, app.getPistasFutbol(), utiles.Enum.DiaEnum.valueOf(String.valueOf(jComboBoxDia.getSelectedItem())));
+            if (pistaSeleccionada == null){
+                int eleccion=JOptionPane.showOptionDialog(this, "¿Esta seguro de que desea alquilar la pista por "+app.getPista(String.valueOf(jComboBoxTipoPista.getSelectedItem()), pista).getPrecio()+"€?", "Mensaje de confirmación", 0, 0, null, new String[]{"SI", "NO"}, this);     
+                if (eleccion==JOptionPane.YES_OPTION){
+                    app.alquilarPista(app.getUsuarioLogueado(), String.valueOf(jComboBoxTipoPista.getSelectedItem()), String.valueOf(jComboBoxDia.getSelectedItem()), horas[hora], pista);
+                    JOptionPane.showMessageDialog(this, "Ha alquilado la pista correctamente", "FITTRONES", JOptionPane.INFORMATION_MESSAGE);
+                    vaciarTabla();
+                    if(String.valueOf(jComboBoxTipoPista.getSelectedItem()).equals("PADEL")) rellenarTabla(modeloTabla, app.getPistasPadel(), utiles.Enum.DiaEnum.valueOf(String.valueOf(jComboBoxDia.getSelectedItem())));
+                    else rellenarTabla(modeloTabla, app.getPistasFutbol(), utiles.Enum.DiaEnum.valueOf(String.valueOf(jComboBoxDia.getSelectedItem())));
+                }
+            }else{
+                JOptionPane.showMessageDialog(this, "La pista se encuentra reservada a la hora seleccionada, por favor, seleccione una hora libre", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
-        }else{
-            JOptionPane.showMessageDialog(this, "La pista se encuentra reservada a la hora seleccionada, por favor, seleccione una hora libre", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_tablaMousePressed
 

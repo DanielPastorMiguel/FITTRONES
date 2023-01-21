@@ -14,7 +14,7 @@ public class Luces extends PistaDecorador {
 
     @Override
     public String getDescripcion() {
-        return pista.getDescripcion() + ", con luces";
+        return pista.getDescripcion() + " + luces";
     }
 
     @Override
