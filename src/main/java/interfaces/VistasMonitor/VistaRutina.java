@@ -4,6 +4,14 @@
  */
 package interfaces.VistasMonitor;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
+import modelos.Aplicacion;
+import modelos.Usuarios.Usuario;
+import modelos.FabricaRutina.*;
+import modelos.Usuarios.Socio;
 /**
  *
  * @author docto
@@ -15,6 +23,24 @@ public class VistaRutina extends javax.swing.JFrame {
      */
     public VistaRutina() {
         initComponents();
+        inicializarDesplegableNombres(jComboBoxNombre, app.getSocios());
+    }
+    
+    public void inicializarDesplegableNombres(JComboBox desplegableNombres,List<Socio> socios) {
+        ArrayList<String> nombres = new ArrayList<>();
+        
+        if(socios.size() != 0){
+            for (int i=0;i<socios.size();i++){
+                nombres.add(socios.get(i).getCorreo());
+            } 
+    }
+
+        String[] array = new String[nombres.size()];
+        for (int i = 0; i < nombres.size(); i++) {
+            array[i] = nombres.get(i);
+        }
+
+        jComboBoxNombre.setModel(new DefaultComboBoxModel<>(array));
     }
 
     /**
@@ -38,10 +64,20 @@ public class VistaRutina extends javax.swing.JFrame {
         jLabel1.setText("Rutina");
 
         jComboBoxNombre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxNombreActionPerformed(evt);
+            }
+        });
 
         jComboBoxTipoRutina.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Principiante", "Intermedio", "Avanzado" }));
 
         jButtonCrear.setText("Crear");
+        jButtonCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCrearActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -78,7 +114,26 @@ public class VistaRutina extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jComboBoxNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxNombreActionPerformed
+
+    private void jButtonCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearActionPerformed
+        Rutina rutina;
+        if ((String)jComboBoxTipoRutina.getSelectedItem() == "Principiante"){
+            rutina = fp.crearEjercicios();
+                       
+        }else if((String)jComboBoxTipoRutina.getSelectedItem() == "Intermedio"){
+            rutina = fi.crearEjercicios();
+            //Falta añadir la dieta el socio elegido
+        }else{
+            rutina = fa.crearEjercicios();
+        }
+        app.getSocio((String)jComboBoxNombre.getSelectedItem()).setRutina(rutina);
+    }//GEN-LAST:event_jButtonCrearActionPerformed
 
     
 
@@ -88,4 +143,9 @@ public class VistaRutina extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBoxTipoRutina;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
+private Aplicacion app = Aplicacion.getInstancia();
+private FactoriaAvanzado fa = new FactoriaAvanzado();
+private FactoriaIntermedio fi = new FactoriaIntermedio();
+private FactoriaPrincipiante fp = new FactoriaPrincipiante();
+
 }

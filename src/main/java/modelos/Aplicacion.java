@@ -36,6 +36,7 @@ public class Aplicacion {
     private static List<Actividad> listaActividades = new ArrayList<>();
     private static List<Clase> listaClases = new ArrayList<>();
     private static List<Pista> listaPistas = new ArrayList<>();
+    
 
     private Sauna sauna = new Sauna();
 
@@ -180,6 +181,7 @@ public class Aplicacion {
     public void anadirPista(Pista pista){
         listaPistas.add(pista);
     }
+       
 
     public Usuario getUsuarioLogueado() {
         return usuarioLogueado;
@@ -204,6 +206,25 @@ public class Aplicacion {
             }
         }
         return null;
+    }
+    
+    public List<Socio> getSocios(){
+        List<Socio> listasocios = new ArrayList<>() ;
+        for(Usuario user : usuariosRegistrados){
+            if(user.getClass()== Socio.class){
+                listasocios.add((Socio)user);
+            }
+        }       
+        return listasocios;
+    }
+    
+    public Socio getSocio(String correo){
+        for (Socio s: getSocios()){
+            if (s.getCorreo().equals(correo)){
+                return s;
+            }
+        } 
+     return null;   
     }
 
     /**

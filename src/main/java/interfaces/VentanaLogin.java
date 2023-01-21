@@ -23,6 +23,8 @@ import utiles.Enum.LoginEnum;
 import utiles.Excepcion;
 import interfaces.VistasCliente.InterfazBuscarClase;
 import interfaces.VistasCliente.InterfazReservaPista;
+import interfaces.VistasMonitor.VistaDieta;
+import interfaces.VistasMonitor.VistaRutina;
 import modelos.AlquilerDecorator.Pista;
 import utiles.Enum.PistaFutbolEnum;
 import utiles.Enum.PistaPadelEnum;
@@ -552,15 +554,11 @@ public class VentanaLogin extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-        new InterfazReservaPista().setVisible(true);
-=======
-        //new InterfazBuscarClase().setVisible(true);
->>>>>>> Stashed changes
-=======
-        new InterfazReservaPista().setVisible(true);
->>>>>>> developer
+
+        //new VistaDieta().setVisible(true);
+        new VistaRutina().setVisible(true);
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private LocalDate stringToDate(String fecha) {

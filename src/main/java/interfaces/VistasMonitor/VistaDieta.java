@@ -4,17 +4,47 @@
  */
 package interfaces.VistasMonitor;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
+import modelos.Usuarios.Socio;
+import modelos.Aplicacion;
+import modelos.DietaBuilder.Dieta;
+import modelos.DietaBuilder.DietaDefinicionBuilder;
+import modelos.DietaBuilder.DietaVolumenBuilder;
+import modelos.Usuarios.Usuario;
+import modelos.Usuarios.Monitor;
+
 /**
  *
  * @author docto
  */
 public class VistaDieta extends javax.swing.JFrame {
 
+   
     /**
      * Creates new form VistaDieta
      */
     public VistaDieta() {
         initComponents();
+        inicializarDesplegableNombres(jComboNombres,app.getSocios());
+    }
+    
+    public void inicializarDesplegableNombres(JComboBox desplegableNombres,List<Socio> socios) {
+        ArrayList<String> nombres = new ArrayList<>();
+        
+        
+        for (int i=0;i<socios.size();i++){
+            nombres.add(socios.get(i).getCorreo());
+        } 
+
+        String[] array = new String[nombres.size()];
+        for (int i = 0; i < nombres.size(); i++) {
+            array[i] = nombres.get(i);
+        }
+
+        jComboNombres.setModel(new DefaultComboBoxModel<>(array));
     }
 
     /**
@@ -38,10 +68,20 @@ public class VistaDieta extends javax.swing.JFrame {
         jLabel1.setText("Dieta");
 
         jComboNombres.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboNombres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboNombresActionPerformed(evt);
+            }
+        });
 
         jComboTipoDieta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Definición", "Volumen" }));
 
         jButtonCrear.setText("Crear");
+        jButtonCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCrearActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -78,7 +118,29 @@ public class VistaDieta extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jComboNombresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboNombresActionPerformed
+        
+    }//GEN-LAST:event_jComboNombresActionPerformed
+
+    private void jButtonCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearActionPerformed
+       if ((String)jComboTipoDieta.getSelectedItem() == "Definición"){
+           Monitor monitor = (Monitor)app.getUsuarioLogueado();
+           monitor.setDietaBuilder(def);
+           monitor.crearListaDietas();
+           dieta = monitor.getListaDietas();
+           
+           
+       }else{
+           Monitor monitor = (Monitor)app.getUsuarioLogueado();
+           monitor.setDietaBuilder(vo);
+           monitor.crearListaDietas();
+           dieta = monitor.getListaDietas();
+       }
+       app.getSocio((String)jComboNombres.getSelectedItem()).setDieta(dieta);
+    }//GEN-LAST:event_jButtonCrearActionPerformed
 
     
 
@@ -88,4 +150,8 @@ public class VistaDieta extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboTipoDieta;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
+ private Aplicacion app = Aplicacion.getInstancia();
+ private DietaDefinicionBuilder def = new DietaDefinicionBuilder();
+ private DietaVolumenBuilder vo = new DietaVolumenBuilder();
+ private Dieta dieta;
 }
