@@ -26,12 +26,14 @@ public class InterfazVerPerfil extends javax.swing.JFrame {
     public InterfazVerPerfil(JFrame anterior, Usuario usuario) {
         initComponents();
         this.anterior = anterior;
+        anterior.setVisible(false);
         this.usuario = usuario;
         inicializarComponentes();
     }
     public InterfazVerPerfil(JFrame anterior, List<Usuario> listaUsuarios) {
         initComponents();
         this.anterior = anterior;
+        anterior.setVisible(false);
         this.listaUsuarios = listaUsuarios;
         i=0;
         max = listaUsuarios.size();
