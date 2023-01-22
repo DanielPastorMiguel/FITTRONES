@@ -4,7 +4,6 @@
  */
 package interfaces.VistasCliente;
 
-import interfaces.VistasAdmin.ConsultarReservas;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import modelos.Aplicacion;

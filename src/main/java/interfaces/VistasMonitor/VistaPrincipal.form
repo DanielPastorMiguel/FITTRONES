@@ -33,7 +33,6 @@
                   <Component id="jLabel1" pref="164" max="32767" attributes="0"/>
                   <Component id="jButtonRutina" max="32767" attributes="0"/>
                   <Component id="jButtonDieta" max="32767" attributes="0"/>
-                  <Component id="jButtonSociosAsignados" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="115" max="-2" attributes="0"/>
           </Group>
@@ -44,13 +43,11 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" pref="50" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
               <Component id="jButtonRutina" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
               <Component id="jButtonDieta" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-              <Component id="jButtonSociosAsignados" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="59" max="32767" attributes="0"/>
+              <EmptySpace pref="76" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -79,14 +76,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonDietaActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButtonSociosAsignados">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Socios Asignados"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSociosAsignadosActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

@@ -1,0 +1,9 @@
+Id factura: 0
+Usuario: s1
+Codigo socio: 1
+Concepto: Alquiler pista FUTBOL
+Fecha: 2023-01-22
+Descuento socio: 10.0%
+Descuento joven: 12.0%
+
+Precio: 12.09

@@ -14,17 +14,19 @@ import modelos.DietaBuilder.DietaBuilder;
  */
 public class Monitor extends Empleado implements Serializable{
 
-    private List<Socio> listaSocios;
+    private List<Usuario> listaSocios;
     private List<Actividad> actividad;
     private DietaBuilder dietaBuilder;
 
-    public Monitor(List<Socio> listaSocios, List<Actividad> actividad, Enum turno, String contrasena, String correo, String dni, LocalDate fechaNacimiento, String nombre, String telefono) {
+    public Monitor(List<Usuario> listaSocios, List<Actividad> actividad, Enum turno, String contrasena, String correo, String dni, LocalDate fechaNacimiento, String nombre, String telefono) {
         super(turno, contrasena, correo, dni, fechaNacimiento, nombre, telefono);
         this.listaSocios = listaSocios;
         this.actividad = actividad;
     }
 
-   
+    public List<Usuario> getListaSocios() {
+        return listaSocios;
+    }
 
     public void añadirSocio(Socio s) {
         listaSocios.add(s);

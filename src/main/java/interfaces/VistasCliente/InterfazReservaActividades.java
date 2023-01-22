@@ -5,9 +5,7 @@
 package interfaces.VistasCliente;
 
 import java.util.List;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import modelos.Actividad;
 import modelos.Aplicacion;
@@ -47,8 +45,10 @@ public class InterfazReservaActividades extends javax.swing.JFrame {
         if (estado.equals("RESERVAR")){
             jComboBoxOrdenado.setSelectedIndex(0);
             jLabelOrdenar.setText("Ordenar");
-        } 
-        else{
+        } else if(estado.equals("ADMIN")){
+            jComboBoxOrdenado.setSelectedIndex(0);
+            jLabelOrdenar.setText("Ordenar");
+        } else{
             jComboBoxOrdenado.setVisible(false);
             jLabelOrdenar.setText("Mis actividades");
             rellenarTabla(app.getActividadesUsuario(app.getUsuarioLogueado()));
