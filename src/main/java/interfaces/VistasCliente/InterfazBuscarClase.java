@@ -189,11 +189,14 @@ public class InterfazBuscarClase extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "La clase tiene el aforo completo. Te avisaremos cuando haya una plaza libre", "ERROR", JOptionPane.ERROR_MESSAGE);
                 break;
         }
+        principal.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // TODO add your handling code here:
         principal.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_formWindowClosed
 
     /**

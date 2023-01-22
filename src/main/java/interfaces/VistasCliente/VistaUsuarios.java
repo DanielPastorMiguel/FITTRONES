@@ -4,7 +4,6 @@
  */
 package interfaces.VistasCliente;
 
-import interfaces.VistasAdmin.ConsultarReservas;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import modelos.Aplicacion;
@@ -196,7 +195,7 @@ public class VistaUsuarios extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.setVisible(false);
-        InterfazVerPerfil vp = new InterfazVerPerfil(this);
+        InterfazVerPerfil vp = new InterfazVerPerfil(this, app.getUsuarioLogueado());
         vp.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -5,22 +5,21 @@ package modelos.DescuentosComposite;
  * @version 1.0
  * @created 06-ene.-2023 17:48:11
  */
-public class DescuentoJoven extends Descuento {
+public class DescuentoLunes extends Descuento {
 
-    public DescuentoJoven(double porcentajeDesccuento, String tipoDescuento) {
+    public DescuentoLunes(double porcentajeDesccuento, String tipoDescuento) {
         super(porcentajeDesccuento, tipoDescuento);
     }
     
-    public DescuentoJoven(){}
+    public DescuentoLunes(){}
 
     @Override
     public String getDescripcion() {
-        return "Descuento joven: "+getPorcentajeDescuento()+"%";
-    }
-    
-    @Override
-    public double getPorcentajeDescuento() {
-        return 12;
+        return "Descuento lunes: "+getPorcentajeDescuento()+"%";
     }
 
-}//end DescuentoJoven
+    @Override
+    public double getPorcentajeDescuento() {
+        return 5;
+    }
+}//end DescuentoLunes

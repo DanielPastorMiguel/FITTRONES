@@ -12,7 +12,6 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import modelos.Aplicacion;
 import modelos.Clase;
-import modelos.Usuarios.Profesor;
 import modelos.Usuarios.Recepcionista;
 import utiles.Excepcion;
 
@@ -21,7 +20,7 @@ public class NewMain {
     public static void main(String[] args) {
 
         Aplicacion app = Aplicacion.getInstancia();
-
+        
         Cliente c1 = new Cliente("123", "c1", "", LocalDate.of(2001, 5, 7), "", "");
         Cliente c2 = new Cliente("123", "c2", "", LocalDate.of(2002, 5, 17), "", "");
         Cliente c3 = new Cliente("123", "c3", "", LocalDate.of(2000, 7, 2), "", "");
@@ -56,10 +55,6 @@ public class NewMain {
         Clase claseNatacion2 = new Clase(new HashMap<>() {{put(DiaEnum.MARTES, LocalTime.of(19, 0)); put(DiaEnum.VIERNES, LocalTime.of(19, 0));}}, NivelPadelNatacionEnum.INTERMEDIO, PistaNatacionEnum.PISTA1, ClaseEnum.NATACION, 5, new ArrayList<>());
         Clase claseNatacion3 = new Clase(new HashMap<>() {{put(DiaEnum.LUNES, LocalTime.of(19, 0)); put(DiaEnum.JUEVES, LocalTime.of(19, 0));}}, NivelPadelNatacionEnum.AVANZADO, PistaNatacionEnum.PISTA1, ClaseEnum.NATACION, 5, new ArrayList<>());
         
-        Profesor p1 = new Profesor(TurnoEnum.TARDE, "123", "p1", "", LocalDate.of(1985, 5, 10), "", "", new ArrayList<>(Arrays.asList(claseFutbol1, claseFutbol2, claseFutbol3)));
-        Profesor p2 = new Profesor(TurnoEnum.TARDE, "123", "p2", "", LocalDate.of(1987, 5, 8), "", "", new ArrayList<>(Arrays.asList(clasePadel1, clasePadel2, clasePadel3)));
-        Profesor p3 = new Profesor(TurnoEnum.TARDE, "123", "p3", "", LocalDate.of(1985, 5, 3), "", "", new ArrayList<>(Arrays.asList(claseNatacion1, claseNatacion2, claseNatacion3)));
-        
         Recepcionista r1 = new Recepcionista(TurnoEnum.MAÑANA, "123", "r1", "", LocalDate.of(1988, 5, 7), "", "");
         Recepcionista r2 = new Recepcionista(TurnoEnum.TARDE, "123", "r2", "", LocalDate.of(1985, 4, 7), "", "");
         
@@ -73,9 +68,6 @@ public class NewMain {
             app.registrarUsuario(m1);
             app.registrarUsuario(m2);
             app.registrarUsuario(m3);
-            app.registrarUsuario(p1);
-            app.registrarUsuario(p2);
-            app.registrarUsuario(p3);
             app.registrarUsuario(r1);
             app.registrarUsuario(r2);
             
@@ -106,6 +98,6 @@ public class NewMain {
             System.out.println(app.getClases().size());            
         } catch (Excepcion ex) {
             System.out.println("Excepcion: "+ex.toString());
-        }
+        }   
     }
 }

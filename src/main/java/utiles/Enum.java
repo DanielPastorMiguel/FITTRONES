@@ -53,6 +53,6 @@ public class Enum implements Serializable{
     }
     
     public enum LoginEnum {
-        CLIENTE, SOCIO, MONITOR, RECEPCIONISTA, PROFESOR, ERROR_CORREO, ERROR_CONTRASENA, ADMIN;
+        CLIENTE, SOCIO, MONITOR, RECEPCIONISTA, ERROR_CORREO, ERROR_CONTRASENA, ADMIN;
     }
 }

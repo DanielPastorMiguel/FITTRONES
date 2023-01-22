@@ -2,6 +2,7 @@ package interfaces;
 
 import interfaces.VistasAdmin.InterfazAdmin;
 import interfaces.VistasCliente.VistaUsuarios;
+import interfaces.VistasMonitor.VistaPrincipal;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -11,11 +12,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import modelos.Actividad;
+import modelos.AlquilerDecorator.Luces;
+import modelos.AlquilerDecorator.Material;
 import modelos.Aplicacion;
 import modelos.Clase;
 import modelos.Usuarios.Cliente;
 import modelos.Usuarios.Monitor;
-import modelos.Usuarios.Profesor;
 import modelos.Usuarios.Recepcionista;
 import modelos.Usuarios.Socio;
 import modelos.Usuarios.Usuario;
@@ -26,7 +28,7 @@ import modelos.AlquilerDecorator.Pista;
 public class VentanaLogin extends javax.swing.JFrame {
     
     public VentanaLogin() {
-        //Aplicacion.cargarDatos();
+        //app.cargarDatos();
         initComponents();
         scrollLaminaRegistrarse.setVisible(false);
         inicializarDatos();
@@ -68,10 +70,6 @@ public class VentanaLogin extends javax.swing.JFrame {
         Clase claseNatacion2 = new Clase(new HashMap<>() {{put(utiles.Enum.DiaEnum.MARTES, LocalTime.of(19, 0)); put(utiles.Enum.DiaEnum.VIERNES, LocalTime.of(19, 0));}}, utiles.Enum.NivelPadelNatacionEnum.INTERMEDIO, utiles.Enum.PistaNatacionEnum.PISTA1, utiles.Enum.ClaseEnum.NATACION, 5, new ArrayList<>());
         Clase claseNatacion3 = new Clase(new HashMap<>() {{put(utiles.Enum.DiaEnum.LUNES, LocalTime.of(19, 0)); put(utiles.Enum.DiaEnum.JUEVES, LocalTime.of(19, 0));}}, utiles.Enum.NivelPadelNatacionEnum.AVANZADO, utiles.Enum.PistaNatacionEnum.PISTA1, utiles.Enum.ClaseEnum.NATACION, 5, new ArrayList<>());
         
-        Profesor p1 = new Profesor(utiles.Enum.TurnoEnum.TARDE, "123", "p1", "", LocalDate.of(1985, 5, 10), "", "", new ArrayList<>(Arrays.asList(claseFutbol1, claseFutbol2, claseFutbol3)));
-        Profesor p2 = new Profesor(utiles.Enum.TurnoEnum.TARDE, "123", "p2", "", LocalDate.of(1987, 5, 8), "", "", new ArrayList<>(Arrays.asList(clasePadel1, clasePadel2, clasePadel3)));
-        Profesor p3 = new Profesor(utiles.Enum.TurnoEnum.TARDE, "123", "p3", "", LocalDate.of(1985, 5, 3), "", "", new ArrayList<>(Arrays.asList(claseNatacion1, claseNatacion2, claseNatacion3)));
-        
         Recepcionista r1 = new Recepcionista(utiles.Enum.TurnoEnum.MAÑANA, "123", "r1", "", LocalDate.of(1988, 5, 7), "", "");
         Recepcionista r2 = new Recepcionista(utiles.Enum.TurnoEnum.TARDE, "123", "r2", "", LocalDate.of(1985, 4, 7), "", "");
         
@@ -111,13 +109,35 @@ public class VentanaLogin extends javax.swing.JFrame {
         Pista pistaPadel2 = new Pista(
                 new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", c2); put("19:00-20:00", c1); put("21:00-22:00", null);}},
                 new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", c3); put("21:00-22:00", null);}},
-                new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", c2); put("19:00-20:00", s3); put("21:00-22:00", null);}},
+                new HashMap<>() {{put("16:00-17:00", s1); put("17:00-18:00", null); put("18:00-19:00", c2); put("19:00-20:00", s3); put("21:00-22:00", null);}},
                 new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", s2); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", null);}},
                 new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", null);}},
                 2,
                 "",
                 "PADEL"
         );
+        
+        Pista pistaPadel3Decorator = new Luces(new Pista(
+                new HashMap<>() {{put("16:00-17:00", c2); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", c1); put("21:00-22:00", null);}},
+                new HashMap<>() {{put("16:00-17:00", s1); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", null);}},
+                new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", s3); put("19:00-20:00", null); put("21:00-22:00", null);}},
+                new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", s2); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", null);}},
+                new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", null);}},
+                3,
+                "",
+                "PADEL"
+        ));
+        
+        Pista pistaPadel4Decorator = new Material(new Luces(new Pista(
+                new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", s3); put("19:00-20:00", null); put("21:00-22:00", c1);}},
+                new HashMap<>() {{put("16:00-17:00", s1); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", null);}},
+                new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", s2); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", c2);}},
+                new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", null);}},
+                new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", s2); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", c3);}},
+                4,
+                "",
+                "PADEL"
+        )));
         
         try {
             app.registrarUsuario(c1);
@@ -129,9 +149,6 @@ public class VentanaLogin extends javax.swing.JFrame {
             app.registrarUsuario(m1);
             app.registrarUsuario(m2);
             app.registrarUsuario(m3);
-            app.registrarUsuario(p1);
-            app.registrarUsuario(p2);
-            app.registrarUsuario(p3);
             app.registrarUsuario(r1);
             app.registrarUsuario(r2);
             
@@ -159,6 +176,8 @@ public class VentanaLogin extends javax.swing.JFrame {
             app.anadirPista(pistaFutbol2);
             app.anadirPista(pistaPadel1);
             app.anadirPista(pistaPadel2);
+            app.anadirPista(pistaPadel3Decorator);
+            app.anadirPista(pistaPadel4Decorator);
         }catch (Excepcion ex) {
             System.out.println("Excepcion: "+ex.toString());
         }
@@ -439,28 +458,24 @@ public class VentanaLogin extends javax.swing.JFrame {
     private void botonIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIniciarSesionActionPerformed
         Enum iniciarSesion = app.iniciarSesion(campoCorreo.getText(), arrayCharToString(campoContrasenna.getPassword()));
         
+        if (iniciarSesion != LoginEnum.ERROR_CONTRASENA && iniciarSesion != LoginEnum.ERROR_CORREO) {
+            campoCorreo.setBackground(Color.white);
+            campoContrasenna.setBackground(Color.white);
+        }
         if (iniciarSesion == LoginEnum.ADMIN){
-            InterfazAdmin iadmin = new InterfazAdmin(this);
-            
+            new InterfazAdmin(this).setVisible(true);   
         }
         else if (iniciarSesion == LoginEnum.SOCIO){
-            VistaUsuarios vu = new VistaUsuarios(this);
+            new VistaUsuarios(this).setVisible(true);
         }
         else if (iniciarSesion == LoginEnum.CLIENTE){
-            VistaUsuarios vu = new VistaUsuarios(this);
-
+            new VistaUsuarios(this).setVisible(true);
         }
         else if (iniciarSesion == LoginEnum.MONITOR){
-            VistaUsuarios vu = new VistaUsuarios(this);
-
-        }
-        else if (iniciarSesion == LoginEnum.PROFESOR){
-            VistaUsuarios vu = new VistaUsuarios(this);
-
+            new VistaPrincipal(this).setVisible(true);
         }
         else if (iniciarSesion == LoginEnum.RECEPCIONISTA){
-            VistaUsuarios vu = new VistaUsuarios(this);
-
+            new InterfazAdmin(this).setVisible(true);
         }
         else if (iniciarSesion == LoginEnum.ERROR_CONTRASENA) {
             JOptionPane.showMessageDialog(this, "Contraseña incorrecta", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -524,7 +539,7 @@ public class VentanaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_campoCorreoKeyTyped
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        //Aplicacion.guardarDatos();
+        //app.guardarDatos();
     }//GEN-LAST:event_formWindowClosing
 
     private LocalDate stringToDate(String fecha) {

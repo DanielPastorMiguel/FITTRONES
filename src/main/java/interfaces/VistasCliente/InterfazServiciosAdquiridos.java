@@ -1,13 +1,15 @@
 package interfaces.VistasCliente;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import modelos.AlquilerDecorator.Pista;
 import modelos.Aplicacion;
 import modelos.Clase;
+import modelos.DietaBuilder.Menu;
+import modelos.DietaBuilder.Plato;
+import modelos.FabricaRutina.Ejercicio;
 import modelos.Usuarios.Socio;
 import modelos.Usuarios.Usuario;
 import utiles.ModeloTabla;
@@ -17,21 +19,30 @@ public class InterfazServiciosAdquiridos extends javax.swing.JFrame {
     private JFrame anterior;
     private ModeloTabla modeloTabla;
     private Aplicacion app = Aplicacion.getInstancia();
+    private Usuario usuario;
     private List<List<Object>> listaTabla = new ArrayList<>();
+    private String tipo;
     
-    public InterfazServiciosAdquiridos(JFrame anterior) {
+    public InterfazServiciosAdquiridos(JFrame anterior, Usuario usuario, String tipo) {
         initComponents();
         this.anterior = anterior;
-        inicializarTabla();
-        rellenarTabla(app.getUsuarioLogueado());
+        this.usuario = usuario;
+        this.tipo = tipo;
+        if (tipo.equals("SERVICIOS")){
+            inicializarTablaServicios();
+            rellenarTablaServicios(usuario);
+        }else{
+            inicializarTablaMonitor(tipo);
+            rellenarTablaMonitor(tipo);
+        }
+        
     }
     
-    private void inicializarTabla() {
+    private void inicializarTablaServicios() {
         tabla.getTableHeader().setReorderingAllowed(false);
         String[] columnas = {"Tipo", "Deporte", "Dia", "Hora", "Num Pista"};
 
         modeloTabla = new ModeloTabla(null, columnas);
-
         tabla.setModel(modeloTabla);
     }
     
@@ -95,10 +106,12 @@ public class InterfazServiciosAdquiridos extends javax.swing.JFrame {
         return lista;
     }
     
-    private void rellenarTabla(Usuario user) {
+    private void rellenarTablaServicios(Usuario user) {
         List lista = new ArrayList();
-        for (Clase clase : app.getClases()){
-            if (clase.estaInscrito((Socio) user)) lista.add(clase);
+        if (user.getClass() == Socio.class){
+            for (Clase clase : app.getClases()){
+                if (clase.estaInscrito((Socio) user)) lista.add(clase);
+            }
         }
         for (Pista pista : app.getPistas()){
             if (pista.aAlquilado(user)) lista.add(pista);
@@ -106,14 +119,7 @@ public class InterfazServiciosAdquiridos extends javax.swing.JFrame {
         try {
             Object[] filaTabla = new Object[5];
             for (Object servicio : lista) {
-                if (servicio.getClass() == Pista.class){
-                    Pista p = (Pista) servicio;
-                    List<String[]> datos = getDatosPistaAlquiladaUser(p, user);
-                    for (String[] datosString : datos){
-                        listaTabla.add(List.of(p, datosString));
-                        modeloTabla.addRow(datosString);
-                    }
-                }else{
+                if (servicio.getClass() == Clase.class){
                     Clase c = (Clase) servicio;
                     filaTabla[0] = "Clase";
                     filaTabla[1] = String.valueOf(c.getTipo());
@@ -122,11 +128,80 @@ public class InterfazServiciosAdquiridos extends javax.swing.JFrame {
                     filaTabla[4] = String.valueOf(c.getNumPista());
                     listaTabla.add(List.of(c, filaTabla));
                     modeloTabla.addRow(filaTabla);
+                }else{
+                    Pista p = (Pista) servicio;
+                    List<String[]> datos = getDatosPistaAlquiladaUser(p, user);
+                    for (String[] datosString : datos){
+                        listaTabla.add(List.of(p, datosString));
+                        modeloTabla.addRow(datosString);
+                    }
                 }
             }
         } catch (Exception e) {
             System.out.println(e.toString());
         }
+    }
+    
+    private void inicializarTablaMonitor(String tipo){
+        tabla.getTableHeader().setReorderingAllowed(false);
+        String[] columnas = new String[4];
+        if (tipo.equals("RUTINA")){
+            columnas[0] = "Tipo";
+            columnas[1] = "Nombre";
+            columnas[2] = "Series";
+            columnas[3] = "Repeticiones";
+        }else{
+            columnas[0] = "Dia";
+            columnas[1] = "Tipo";
+            columnas[2] = "Plato";
+            columnas[3] = "Calorias";
+        }
+        modeloTabla = new ModeloTabla(null, columnas);
+        tabla.setModel(modeloTabla);
+    }
+    
+    private void rellenarTablaMonitor(String tipo){
+        Socio s = (Socio) usuario;
+        if (tipo.equals("RUTINA")){
+            anadirEjercicio(s.getRutina().getEjerciciosEmpuje());
+            anadirEjercicio(s.getRutina().getEjerciciosTiron());
+            anadirEjercicio(s.getRutina().getEjerciciosPierna());
+        }else{
+            anadirMenu(s.getDieta().getLunes(), "Lunes");
+            anadirMenu(s.getDieta().getMartes(), "Martes");
+            anadirMenu(s.getDieta().getMiercoles(), "Miercoles");
+            anadirMenu(s.getDieta().getJueves(), "Jueves");
+            anadirMenu(s.getDieta().getViernes(), "Viernes");
+            anadirMenu(s.getDieta().getSabado(), "Sabado");
+            anadirMenu(s.getDieta().getDomingo(), "Domingo");
+        }
+    }
+    
+    private void anadirEjercicio(List<Ejercicio> lista){
+        Object[] filaTabla = new Object[4];
+        for (Ejercicio ej : lista) {
+            filaTabla[0] = String.valueOf(ej.getTipo());
+            filaTabla[1] = ej.getNombre();
+            filaTabla[2] = String.valueOf(ej.getSeries());
+            filaTabla[3] = String.valueOf(ej.getRepeticiones());
+            modeloTabla.addRow(filaTabla);
+        }
+    }
+    
+    private void anadirMenu(Menu menu, String dia){
+        anadirPlato(dia, "Desayuno", menu.getDesayuno());
+        anadirPlato(dia, "Comida", menu.getComida());
+        anadirPlato(dia, "Merienda", menu.getMerienda());
+        anadirPlato(dia, "Cena", menu.getCena());
+    }
+    
+    private void anadirPlato(String dia, String tipo, Plato plato){
+        Object[] filaTabla = new Object[4];
+        filaTabla[0] = dia;
+        filaTabla[1] = tipo;
+        filaTabla[2] = plato.getNombre();
+        filaTabla[3] = plato.getCalorias();
+        modeloTabla.addRow(filaTabla);
     }
     
     private void vaciarTabla() {
@@ -181,20 +256,21 @@ public class InterfazServiciosAdquiridos extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void tablaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMousePressed
-        int indiceServicio = tabla.rowAtPoint(evt.getPoint());
-        Object servicio = listaTabla.get(indiceServicio).get(0);
-        Object[] fila = (Object[]) listaTabla.get(indiceServicio).get(1);
-        if (String.valueOf(fila[0]).equals("Clase")){
-            Clase c = (Clase) servicio;
-            int eleccion = JOptionPane.showOptionDialog(this, "¿Esta seguro de que desea desapuntarse de la clase  " + c.getTipo() + ":  " + c.getNivel()+"?", "Mensaje de confirmación", 0, 0, null, new String[]{"SI", "NO"}, this);
-                if (eleccion == JOptionPane.YES_OPTION) {
-                    c.desapuntarSocioClase((Socio) app.getUsuarioLogueado());
-                    JOptionPane.showMessageDialog(this, "Se ha desapuntado correctamente", "FITTRONES", JOptionPane.INFORMATION_MESSAGE);
-                    vaciarTabla();
-                    listaTabla =  new ArrayList<>();
-                    rellenarTabla(app.getUsuarioLogueado());
-                }
-            
+        if (tipo.equals("SERVICIOS")){
+            int indiceServicio = tabla.rowAtPoint(evt.getPoint());
+            Object servicio = listaTabla.get(indiceServicio).get(0);
+            Object[] fila = (Object[]) listaTabla.get(indiceServicio).get(1);
+            if (String.valueOf(fila[0]).equals("Clase")){
+                Clase c = (Clase) servicio;
+                int eleccion = JOptionPane.showOptionDialog(this, "¿Esta seguro de que desea desapuntarse de la clase  " + c.getTipo() + ":  " + c.getNivel()+"?", "Mensaje de confirmación", 0, 0, null, new String[]{"SI", "NO"}, this);
+                    if (eleccion == JOptionPane.YES_OPTION) {
+                        c.desapuntarSocioClase((Socio) usuario);
+                        JOptionPane.showMessageDialog(this, "Se ha desapuntado correctamente", "FITTRONES", JOptionPane.INFORMATION_MESSAGE);
+                        vaciarTabla();
+                        listaTabla =  new ArrayList<>();
+                        rellenarTablaServicios(usuario);
+                    }        
+            }
         }
     }//GEN-LAST:event_tablaMousePressed
 

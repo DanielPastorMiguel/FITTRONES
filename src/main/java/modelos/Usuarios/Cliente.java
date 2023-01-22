@@ -3,7 +3,6 @@ package modelos.Usuarios;
 import java.io.Serializable;
 import java.time.LocalDate;
 import modelos.proxyProteccion.IntCliente;
-import modelos.proxyProteccion.ProxyProteccionClientes;
 
 /**
  * @author Daniel
@@ -12,14 +11,13 @@ import modelos.proxyProteccion.ProxyProteccionClientes;
  */
 public class Cliente extends Usuario implements Serializable, IntCliente {
 
-    public ProxyProteccionClientes proxyProteccionClientes;
-
     public Cliente(String contrasena, String correo, String dni, LocalDate fechaNacimiento, String nombre, String telefono) {
         super(contrasena, correo, dni, fechaNacimiento, nombre, telefono);
     }
 
+    @Override
     public String getInformacionCliente() {
-        String datos = "Nombre: " + getNombre() + "; Correo: " + getCorreo() + "; Dni: " + getDni() + "; Fecha nacimiento: " + getFechaNacimiento() + "; Telefono: " + getTelefono() + "; Contraseña: " + getContrasena();
+        String datos = "Nombre: " + getNombre() + ";Correo: " + getCorreo() + ";Dni: " + getDni() + ";Fecha nacimiento: " + getFechaNacimiento() + ";Telefono: " + getTelefono() + ";Contraseña: " + getContrasena();
         return datos;
     }
 

@@ -16,19 +16,8 @@ public abstract class Descuento {
         this.porcentajeDescuento = porcentajeDesccuento;
         this.descripcion = tipoDescuento;
     }
-
-    public double getPorcentajeDescuento() {
-        return porcentajeDescuento;
-    }
-
-    public void setPorcentajeDescuento(double porcentajeDescuento) {
-        this.porcentajeDescuento = porcentajeDescuento;
-    }
-
-    public void setDescripcion(String tipoDescuento) {
-        this.descripcion = tipoDescuento;
-    }
-
+    
+    public Descuento(){}
 
     /* ------------------- MÉTODOS ABSTRACTOS -------------*/
     
@@ -39,23 +28,10 @@ public abstract class Descuento {
      */
     public abstract String getDescripcion();
 
-
     /**
-     *
-     * @param descuento
-     */
-    public abstract void añadirDescuento(Descuento descuento);
-
-    /**
-     *
-     * @param descuento
-     */
-    public abstract void eliminarDescuento(Descuento descuento);
-
-    /**
-     * Devuelve todos los descuentos
+     * Devuelve el porcentaje de descuentos
      *
      * @return
      */
-    public abstract int getAllPorcentajeDescuentos();
+    public abstract double getPorcentajeDescuento();
 }
