@@ -64,7 +64,7 @@ public class IteradorConcreto implements Iterador {
     @Override
     public boolean hayMas() {
         boolean resultado = true;
-        if (agregado.elementos.isEmpty() || indice == agregado.elementos.size()) {
+        if ( agregado.elementos.isEmpty() || indice >= agregado.elementos.size()) {
             resultado = false;
         }
         return resultado;

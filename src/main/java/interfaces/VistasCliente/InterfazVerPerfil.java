@@ -1,10 +1,14 @@
 package interfaces.VistasCliente;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import modelos.Aplicacion;
+import modelos.IteratorClientes.Agregado;
+import modelos.IteratorClientes.AgregadoConcreto;
+import modelos.IteratorClientes.Iterador;
 import modelos.Usuarios.Cliente;
 import modelos.Usuarios.Recepcionista;
 import modelos.Usuarios.Socio;
@@ -33,6 +37,8 @@ public class InterfazVerPerfil extends javax.swing.JFrame {
         max = listaUsuarios.size();
         this.usuario = listaUsuarios.get(i);
         inicializarComponentes();
+        agregado = new AgregadoConcreto((ArrayList) listaUsuarios);
+        iterador =  agregado.crearIterador();
     }
 
     private void inicializarComponentes() {
@@ -307,7 +313,7 @@ public class InterfazVerPerfil extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtrasActionPerformed
-        if (anterior.getClass() == VistaUsuarios.class) {
+        /*if (anterior.getClass() == VistaUsuarios.class) {
             this.setVisible(false);
             anterior.setVisible(true);
         }else{
@@ -315,7 +321,11 @@ public class InterfazVerPerfil extends javax.swing.JFrame {
             else i--;
             usuario = listaUsuarios.get(i);
             inicializarComponentes();
-        }
+        }*/
+        
+        iterador.anterior();
+        usuario = (Usuario) iterador.elementoActual();
+        inicializarComponentes();
     }//GEN-LAST:event_jButtonAtrasActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
@@ -328,10 +338,16 @@ public class InterfazVerPerfil extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonVerServiciosActionPerformed
 
     private void jButtonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteActionPerformed
-        if (i == max-1) i=0;
-        else i++;
-        usuario = listaUsuarios.get(i);
-        inicializarComponentes();
+        /*if (i == max-1) i=0;
+        else i++;*/
+       
+        if (!iterador.hayMas()){
+            JOptionPane.showMessageDialog(this, "No hay más usuarios", "FITTRONES", JOptionPane.ERROR_MESSAGE);
+        }else{
+            iterador.siguiente();
+        }
+        usuario = (Usuario) iterador.elementoActual();
+        inicializarComponentes();      
     }//GEN-LAST:event_jButtonSiguienteActionPerformed
 
     private void jButtonRutinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRutinaActionPerformed
@@ -369,5 +385,6 @@ public class InterfazVerPerfil extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldNumeroSocio;
     private javax.swing.JTextField jTextFieldTelefono;
     // End of variables declaration//GEN-END:variables
-
+private Agregado agregado ;
+private Iterador iterador ;
 }
