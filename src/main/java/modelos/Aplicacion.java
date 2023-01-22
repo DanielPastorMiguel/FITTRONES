@@ -28,7 +28,6 @@ import modelos.DescuentosComposite.DescuentoSocio;
 import modelos.Usuarios.Cliente;
 import modelos.Usuarios.Empleado;
 import modelos.Usuarios.Monitor;
-import modelos.Usuarios.Profesor;
 import modelos.Usuarios.Recepcionista;
 import modelos.Usuarios.Socio;
 import utiles.Excepcion;
@@ -50,8 +49,6 @@ public class Aplicacion {
     private static List<Clase> listaClases = new ArrayList<>();
     private static List<Pista> listaPistas = new ArrayList<>();
     private static List<Factura> listaFacturas = new ArrayList<>();
-
-    private Sauna sauna = new Sauna();
 
     private Usuario usuarioLogueado;
 
@@ -98,9 +95,6 @@ public class Aplicacion {
                     }
                     if (usuario.getClass().equals(Recepcionista.class)) {
                         return LoginEnum.RECEPCIONISTA;
-                    }
-                    if (usuario.getClass().equals(Profesor.class)) {
-                        return LoginEnum.PROFESOR;
                     }
                     if (usuario.getClass().equals(Monitor.class)) {
                         return LoginEnum.MONITOR;
@@ -320,10 +314,6 @@ public class Aplicacion {
         this.usuarioLogueado = usuarioLogueado;
     }
 
-    public Sauna getSauna() {
-        return sauna;
-    }
-
     public void anadirActividad(Actividad act) {
         listaActividades.add(act);
     }
@@ -439,7 +429,7 @@ public class Aplicacion {
     /**
      * guarda los datos de las listas de la aplicacione en su archivo de datos correspondiente
      */
-    public static void guardarDatos() {
+    public void guardarDatos() {
         try {
             //si hay datos, los guardamos
             if (!usuariosRegistrados.isEmpty() || !listaClases.isEmpty() || !listaActividades.isEmpty() || !listaPistas.isEmpty()) {
@@ -447,32 +437,39 @@ public class Aplicacion {
                  * ***** Serialización de los objetos ********
                  */
                 //serializacion de los usuarios
-                FileOutputStream ostreamUsers = new FileOutputStream("usuariosRegistrados.dat");
+                FileOutputStream ostreamUsers = new FileOutputStream("src/main/java/datosSerializados/usuariosRegistrados.dat");
                 ObjectOutputStream oosUsers = new ObjectOutputStream(ostreamUsers);
                 //guardamos el array de los usuarios
                 oosUsers.writeObject(usuariosRegistrados);
                 ostreamUsers.close();
 
                 //serializacion de las clases
-                FileOutputStream ostreamClases = new FileOutputStream("clases.dat");
+                FileOutputStream ostreamClases = new FileOutputStream("src/main/java/datosSerializados/clases.dat");
                 ObjectOutputStream oosClases = new ObjectOutputStream(ostreamClases);
                 //guardamos el array de las clases
                 oosClases.writeObject(listaClases);
                 ostreamClases.close();
 
                 //serializacion de las actividades
-                FileOutputStream ostreamAct = new FileOutputStream("actividades.dat");
+                FileOutputStream ostreamAct = new FileOutputStream("src/main/java/datosSerializados/actividades.dat");
                 ObjectOutputStream oosAct = new ObjectOutputStream(ostreamAct);
                 //guardamos el array de las actividades
                 oosAct.writeObject(listaActividades);
                 ostreamAct.close();
 
                 //serializacion de las pistas
-                FileOutputStream ostreamPistas = new FileOutputStream("actividades.dat");
+                FileOutputStream ostreamPistas = new FileOutputStream("src/main/java/datosSerializados/pistas.dat");
                 ObjectOutputStream oosPistas = new ObjectOutputStream(ostreamPistas);
                 //guardamos el array de las pistas
                 oosPistas.writeObject(listaPistas);
                 ostreamPistas.close();
+                
+                //serializacion de las facturas
+                FileOutputStream ostreamFacturas = new FileOutputStream("src/main/java/datosSerializados/facturas.dat");
+                ObjectOutputStream oosFacturas = new ObjectOutputStream(ostreamFacturas);
+                //guardamos el array de las pistas
+                oosFacturas.writeObject(listaFacturas);
+                ostreamFacturas.close();
 
             } else {
                 System.out.println("Error, no hay datos...");
@@ -487,31 +484,37 @@ public class Aplicacion {
     /**
      * carga los datos de sus archivos correspondientes
      */
-    public static void cargarDatos() {
+    public void cargarDatos() {
         try {
             //lectura de los objetos de tipo usuario
-            FileInputStream istreamUsr = new FileInputStream("clientes.dat");
+            FileInputStream istreamUsr = new FileInputStream("src/main/java/datosSerializados/usuariosRegistrados.dat");
             ObjectInputStream oisUsr = new ObjectInputStream(istreamUsr);
             usuariosRegistrados = (ArrayList) oisUsr.readObject();
             istreamUsr.close();
 
             //lectura de los objetos de tipo clases
-            FileInputStream istreamClases = new FileInputStream("productos.dat");
+            FileInputStream istreamClases = new FileInputStream("src/main/java/datosSerializados/clases.dat");
             ObjectInputStream oisClase = new ObjectInputStream(istreamClases);
             listaClases = (ArrayList) oisClase.readObject();
             istreamClases.close();
 
             //lectura de los objetos de tipo actividades
-            FileInputStream istreamAct = new FileInputStream("actividades.dat");
+            FileInputStream istreamAct = new FileInputStream("src/main/java/datosSerializados/actividades.dat");
             ObjectInputStream oisAct = new ObjectInputStream(istreamAct);
             listaActividades = (ArrayList) oisAct.readObject();
             istreamAct.close();
 
             //lectura de los objetos de tipo pista
-            FileInputStream istreamPistas = new FileInputStream("pistas.dat");
+            FileInputStream istreamPistas = new FileInputStream("src/main/java/datosSerializados/pistas.dat");
             ObjectInputStream oisPistas = new ObjectInputStream(istreamPistas);
             listaPistas = (ArrayList) oisPistas.readObject();
             istreamPistas.close();
+            
+            //lectura de los objetos de tipo factura
+            FileInputStream istreamFacturas = new FileInputStream("src/main/java/datosSerializados/facturas.dat");
+            ObjectInputStream oisFacturas = new ObjectInputStream(istreamFacturas);
+            listaPistas = (ArrayList) oisFacturas.readObject();
+            istreamFacturas.close();
 
         } catch (IOException ioe) {
             System.out.println("Error de tipo IO: " + ioe.getMessage());

@@ -18,7 +18,6 @@ import modelos.Aplicacion;
 import modelos.Clase;
 import modelos.Usuarios.Cliente;
 import modelos.Usuarios.Monitor;
-import modelos.Usuarios.Profesor;
 import modelos.Usuarios.Recepcionista;
 import modelos.Usuarios.Socio;
 import modelos.Usuarios.Usuario;
@@ -29,7 +28,7 @@ import modelos.AlquilerDecorator.Pista;
 public class VentanaLogin extends javax.swing.JFrame {
     
     public VentanaLogin() {
-        //Aplicacion.cargarDatos();
+        //app.cargarDatos();
         initComponents();
         scrollLaminaRegistrarse.setVisible(false);
         inicializarDatos();
@@ -70,10 +69,6 @@ public class VentanaLogin extends javax.swing.JFrame {
         Clase claseNatacion1 = new Clase(new HashMap<>() {{put(utiles.Enum.DiaEnum.MIERCOLES, LocalTime.of(19, 0));}}, utiles.Enum.NivelPadelNatacionEnum.PRINCIPIANTE, utiles.Enum.PistaNatacionEnum.PISTA1, utiles.Enum.ClaseEnum.NATACION, 5, new ArrayList<>());
         Clase claseNatacion2 = new Clase(new HashMap<>() {{put(utiles.Enum.DiaEnum.MARTES, LocalTime.of(19, 0)); put(utiles.Enum.DiaEnum.VIERNES, LocalTime.of(19, 0));}}, utiles.Enum.NivelPadelNatacionEnum.INTERMEDIO, utiles.Enum.PistaNatacionEnum.PISTA1, utiles.Enum.ClaseEnum.NATACION, 5, new ArrayList<>());
         Clase claseNatacion3 = new Clase(new HashMap<>() {{put(utiles.Enum.DiaEnum.LUNES, LocalTime.of(19, 0)); put(utiles.Enum.DiaEnum.JUEVES, LocalTime.of(19, 0));}}, utiles.Enum.NivelPadelNatacionEnum.AVANZADO, utiles.Enum.PistaNatacionEnum.PISTA1, utiles.Enum.ClaseEnum.NATACION, 5, new ArrayList<>());
-        
-        Profesor p1 = new Profesor(utiles.Enum.TurnoEnum.TARDE, "123", "p1", "", LocalDate.of(1985, 5, 10), "", "", new ArrayList<>(Arrays.asList(claseFutbol1, claseFutbol2, claseFutbol3)));
-        Profesor p2 = new Profesor(utiles.Enum.TurnoEnum.TARDE, "123", "p2", "", LocalDate.of(1987, 5, 8), "", "", new ArrayList<>(Arrays.asList(clasePadel1, clasePadel2, clasePadel3)));
-        Profesor p3 = new Profesor(utiles.Enum.TurnoEnum.TARDE, "123", "p3", "", LocalDate.of(1985, 5, 3), "", "", new ArrayList<>(Arrays.asList(claseNatacion1, claseNatacion2, claseNatacion3)));
         
         Recepcionista r1 = new Recepcionista(utiles.Enum.TurnoEnum.MAÑANA, "123", "r1", "", LocalDate.of(1988, 5, 7), "", "");
         Recepcionista r2 = new Recepcionista(utiles.Enum.TurnoEnum.TARDE, "123", "r2", "", LocalDate.of(1985, 4, 7), "", "");
@@ -154,9 +149,6 @@ public class VentanaLogin extends javax.swing.JFrame {
             app.registrarUsuario(m1);
             app.registrarUsuario(m2);
             app.registrarUsuario(m3);
-            app.registrarUsuario(p1);
-            app.registrarUsuario(p2);
-            app.registrarUsuario(p3);
             app.registrarUsuario(r1);
             app.registrarUsuario(r2);
             
@@ -482,9 +474,6 @@ public class VentanaLogin extends javax.swing.JFrame {
         else if (iniciarSesion == LoginEnum.MONITOR){
             new VistaPrincipal(this).setVisible(true);
         }
-        else if (iniciarSesion == LoginEnum.PROFESOR){
-            new VistaUsuarios(this).setVisible(true);
-        }
         else if (iniciarSesion == LoginEnum.RECEPCIONISTA){
             new InterfazAdmin(this).setVisible(true);
         }
@@ -550,7 +539,7 @@ public class VentanaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_campoCorreoKeyTyped
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        //Aplicacion.guardarDatos();
+        //app.guardarDatos();
     }//GEN-LAST:event_formWindowClosing
 
     private LocalDate stringToDate(String fecha) {

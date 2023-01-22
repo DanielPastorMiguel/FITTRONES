@@ -1,5 +1,6 @@
 package modelos.proxyProteccion;
 
+import java.io.Serializable;
 import modelos.Usuarios.Cliente;
 import modelos.Usuarios.Socio;
 
@@ -8,7 +9,7 @@ import modelos.Usuarios.Socio;
  * @version 1.0
  * @created 06-ene.-2023 17:48:33
  */
-public class ProxyProteccionClientes implements IntCliente {
+public class ProxyProteccionClientes implements Serializable, IntCliente {
 
     private Cliente cliente;
     private Socio socio;
