@@ -313,19 +313,24 @@ public class InterfazVerPerfil extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtrasActionPerformed
-        /*if (anterior.getClass() == VistaUsuarios.class) {
+        if (anterior.getClass() == VistaUsuarios.class) {
             this.setVisible(false);
             anterior.setVisible(true);
         }else{
+            /*
             if (i==0) i=max-1;
             else i--;
             usuario = listaUsuarios.get(i);
             inicializarComponentes();
-        }*/
-        
-        iterador.anterior();
-        usuario = (Usuario) iterador.elementoActual();
-        inicializarComponentes();
+            */
+            if (!iterador.hayMenos()){
+                iterador.ultimo();
+            }else{
+                iterador.anterior();
+            }
+            usuario = (Usuario) iterador.elementoActual();
+            inicializarComponentes();
+        }
     }//GEN-LAST:event_jButtonAtrasActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
@@ -342,7 +347,7 @@ public class InterfazVerPerfil extends javax.swing.JFrame {
         else i++;*/
        
         if (!iterador.hayMas()){
-            JOptionPane.showMessageDialog(this, "No hay más usuarios", "FITTRONES", JOptionPane.ERROR_MESSAGE);
+            iterador.primero();
         }else{
             iterador.siguiente();
         }

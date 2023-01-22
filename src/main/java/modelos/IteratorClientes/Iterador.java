@@ -17,6 +17,13 @@ public interface Iterador {
      * @throws IndexOutOfBoundsException
      */
     Object primero() throws IndexOutOfBoundsException;
+    
+    /**
+     * Devuelve el ultimo elemento de la lista.
+     * @return Ultimo elemento de la lista.
+     * @throws IndexOutOfBoundsException 
+     */
+    Object ultimo() throws IndexOutOfBoundsException;
 
     /**
      * Devuelve el siguiente elemento de la lista.
@@ -40,6 +47,12 @@ public interface Iterador {
      * @return true si hay más elementos en la lista, false en caso contrario.
      */
     boolean hayMas();
+    
+    /**
+     * Devuelve true si hay más elementos en la lista recorriendola hacia atras. False en caso contrario.
+     * @return Devuelve true si hay más elementos en la lista recorriendola hacia atras. False en caso contrario.
+     */
+    boolean hayMenos();
 
     /**
      * Devuelve el elemento actual de la lista.
