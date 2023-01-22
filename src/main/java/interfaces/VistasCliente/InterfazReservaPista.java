@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelos.AlquilerDecorator.Pista;
 import modelos.Aplicacion;
+import modelos.DescuentosComposite.Descuento;
 import utiles.Excepcion;
 import utiles.ModeloTabla;
 
@@ -313,13 +314,22 @@ public class InterfazReservaPista extends javax.swing.JFrame {
             }   
         
             if (pistaSeleccionada == null){
-                int eleccion=JOptionPane.showOptionDialog(this, "¿Esta seguro de que desea alquilar la pista por "+app.getPista(String.valueOf(jComboBoxTipoPista.getSelectedItem()), pista).getPrecio()+"€?", "Mensaje de confirmación", 0, 0, null, new String[]{"SI", "NO"}, this);     
+                Descuento descuento = app.getDescuento(app.getUsuarioLogueado());
+                String descripcionDescuento = descuento.getDescripcion();
+                double porcentajeDescuento = descuento.getPorcentajeDescuento();
+                double precioBase = app.getPista(String.valueOf(jComboBoxTipoPista.getSelectedItem()), pista).getPrecio();
+                double precioFinal = Double.parseDouble(String.format("%.2f", precioBase*(1-porcentajeDescuento/100)).replace(',', '.'));
+                JOptionPane.showMessageDialog(this, "El precio base de la pista es de "+precioBase+"€\n"+descripcionDescuento+"\nEl porcentaje de descuento final es de "+porcentajeDescuento+"%", "FITTRONES", JOptionPane.INFORMATION_MESSAGE);
+                
+                int eleccion=JOptionPane.showOptionDialog(this, "¿Esta seguro de que desea alquilar la pista por "+precioFinal+"€?", "Mensaje de confirmación", 0, 0, null, new String[]{"SI", "NO"}, this);     
                 if (eleccion==JOptionPane.YES_OPTION){
                     app.alquilarPista(app.getUsuarioLogueado(), String.valueOf(jComboBoxTipoPista.getSelectedItem()), String.valueOf(jComboBoxDia.getSelectedItem()), horas[hora], pista);
                     JOptionPane.showMessageDialog(this, "Ha alquilado la pista correctamente", "FITTRONES", JOptionPane.INFORMATION_MESSAGE);
                     vaciarTabla();
                     if(String.valueOf(jComboBoxTipoPista.getSelectedItem()).equals("PADEL")) rellenarTabla(modeloTabla, app.getPistasPadel(), utiles.Enum.DiaEnum.valueOf(String.valueOf(jComboBoxDia.getSelectedItem())));
                     else rellenarTabla(modeloTabla, app.getPistasFutbol(), utiles.Enum.DiaEnum.valueOf(String.valueOf(jComboBoxDia.getSelectedItem())));
+                    
+                    app.generarFactura("Alquiler pista "+String.valueOf(jComboBoxTipoPista.getSelectedItem()), descuento, app.getUsuarioLogueado(), precioFinal);
                 }
             }else{
                 JOptionPane.showMessageDialog(this, "La pista se encuentra reservada a la hora seleccionada, por favor, seleccione una hora libre", "ERROR", JOptionPane.ERROR_MESSAGE);

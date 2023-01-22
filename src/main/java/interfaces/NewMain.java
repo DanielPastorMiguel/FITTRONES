@@ -9,6 +9,7 @@ import modelos.Usuarios.Monitor;
 import modelos.Usuarios.Socio;
 import utiles.Enum.*;
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.HashMap;
 import modelos.Aplicacion;
 import modelos.Clase;
@@ -21,7 +22,7 @@ public class NewMain {
     public static void main(String[] args) {
 
         Aplicacion app = Aplicacion.getInstancia();
-
+        
         Cliente c1 = new Cliente("123", "c1", "", LocalDate.of(2001, 5, 7), "", "");
         Cliente c2 = new Cliente("123", "c2", "", LocalDate.of(2002, 5, 17), "", "");
         Cliente c3 = new Cliente("123", "c3", "", LocalDate.of(2000, 7, 2), "", "");
@@ -106,6 +107,6 @@ public class NewMain {
             System.out.println(app.getClases().size());            
         } catch (Excepcion ex) {
             System.out.println("Excepcion: "+ex.toString());
-        }
+        }   
     }
 }

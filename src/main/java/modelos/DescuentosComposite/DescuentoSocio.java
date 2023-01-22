@@ -7,25 +7,19 @@ package modelos.DescuentosComposite;
  */
 public class DescuentoSocio extends Descuento {
 
-    public DescuentoSocio(double porcentajeDesccuento, String tipoDescuento) {
-        super(porcentajeDesccuento, tipoDescuento);
+    public DescuentoSocio(double porcentajeDescuento, String tipoDescuento) {
+        super(porcentajeDescuento, tipoDescuento);
     }
-
-    @Override
-    public void añadirDescuento(Descuento descuento) {
-    }
-
-    @Override
-    public void eliminarDescuento(Descuento descuento) {
-    }
+    
+    public DescuentoSocio(){}
 
     @Override
     public String getDescripcion() {
-        return "Descuento socio";
+        return "Descuento socio: "+getPorcentajeDescuento()+"%";
     }
 
     @Override
-    public int getAllPorcentajeDescuentos() {
+    public double getPorcentajeDescuento() {
         return 10;
     }
 }//end DescuentoSocio

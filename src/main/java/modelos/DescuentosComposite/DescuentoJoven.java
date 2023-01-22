@@ -10,22 +10,17 @@ public class DescuentoJoven extends Descuento {
     public DescuentoJoven(double porcentajeDesccuento, String tipoDescuento) {
         super(porcentajeDesccuento, tipoDescuento);
     }
-
-    @Override
-    public void añadirDescuento(Descuento descuento) {
-    }
-
-    @Override
-    public void eliminarDescuento(Descuento descuento) {
-    }
-
-    @Override
-    public int getAllPorcentajeDescuentos() {
-        return 12;
-    }
+    
+    public DescuentoJoven(){}
 
     @Override
     public String getDescripcion() {
-        return "Descuento joven";
+        return "Descuento joven: "+getPorcentajeDescuento()+"%";
     }
+    
+    @Override
+    public double getPorcentajeDescuento() {
+        return 12;
+    }
+
 }//end DescuentoJoven

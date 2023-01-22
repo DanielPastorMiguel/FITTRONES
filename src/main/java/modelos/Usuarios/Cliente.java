@@ -3,7 +3,6 @@ package modelos.Usuarios;
 import java.io.Serializable;
 import java.time.LocalDate;
 import modelos.proxyProteccion.IntCliente;
-import modelos.proxyProteccion.ProxyProteccionClientes;
 
 /**
  * @author Daniel
@@ -11,8 +10,6 @@ import modelos.proxyProteccion.ProxyProteccionClientes;
  * @created 06-ene.-2023 17:48:08
  */
 public class Cliente extends Usuario implements Serializable, IntCliente {
-
-    public ProxyProteccionClientes proxyProteccionClientes;
 
     public Cliente(String contrasena, String correo, String dni, LocalDate fechaNacimiento, String nombre, String telefono) {
         super(contrasena, correo, dni, fechaNacimiento, nombre, telefono);

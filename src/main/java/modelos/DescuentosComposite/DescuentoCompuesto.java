@@ -2,7 +2,6 @@ package modelos.DescuentosComposite;
 
 import java.util.ArrayList;
 import java.util.List;
-import modelos.Usuarios.Socio;
 
 /**
  * @author Daniel
@@ -17,13 +16,20 @@ public class DescuentoCompuesto extends Descuento {
         super(porcentajeDesccuento, tipoDescuento);
         listaDescuentos = new ArrayList<>();
     }
+    
+    public DescuentoCompuesto(){
+        listaDescuentos = new ArrayList<>();
+    }
+
+    public List<Descuento> getListaDescuentos() {
+        return listaDescuentos;
+    }
 
     /**
      * Añade un nuevo descuento
      *
      * @param descuento
      */
-    @Override
     public void añadirDescuento(Descuento descuento) {
         listaDescuentos.add(descuento);
     }
@@ -33,9 +39,21 @@ public class DescuentoCompuesto extends Descuento {
      *
      * @param descuento
      */
-    @Override
     public void eliminarDescuento(Descuento descuento) {
         listaDescuentos.remove(descuento);
+    }
+    
+    /**
+     * Devuelve la descripcion de los descuentos aplicados
+     * @return 
+     */
+    @Override
+    public String getDescripcion() {
+        String descripcion = "";
+        for(Descuento d: listaDescuentos){
+            descripcion += d.getDescripcion() + "\n";
+        }
+        return descripcion;
     }
 
     /**
@@ -43,22 +61,12 @@ public class DescuentoCompuesto extends Descuento {
      * @return 
      */
     @Override
-    public int getAllPorcentajeDescuentos() {
-        int porcentaje = getAllPorcentajeDescuentos();
+    public double getPorcentajeDescuento() {
+        double porcentaje = 0;
         for(Descuento d: listaDescuentos) {
-            porcentaje += d.getAllPorcentajeDescuentos();
+            porcentaje += d.getPorcentajeDescuento();
         }
         return porcentaje;
-
-    }
-
-    @Override
-    public String getDescripcion() {
-        String descripcion = this.toString();
-        for(Descuento d: listaDescuentos){
-            descripcion += "\n\t### " + d.getDescripcion();
-        }
-        return descripcion;
     }
 
 }//end DescuentoCompuesto
