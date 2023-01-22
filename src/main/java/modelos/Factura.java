@@ -1,7 +1,9 @@
 package modelos;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
+import modelos.DescuentosComposite.Descuento;
+import modelos.Usuarios.Usuario;
 
 /**
  * @author Daniel
@@ -10,35 +12,27 @@ import java.util.Date;
  */
 public class Factura implements Serializable {
 
-    private int cif;
+    private int id;
     private String concepto;
-    private int descuento;
-    private int dni;
-    private Date fecha;
-    private int nombre;
-    private int precio;
-    public Aplicacion aplicacion;
+    private Descuento descuento;
+    private Usuario usuario;
+    private LocalDate fecha;
+    private double precio;
 
     public Factura() {
     }
 
-    public Factura(int cif, String concepto, int descuento, int dni, Date fecha, int nombre, int precio, Aplicacion aplicacion) {
-        this.cif = cif;
+    public Factura(int id, String concepto, Descuento descuento, Usuario usuario, LocalDate fecha, double precio) {
+        this.id = id;
         this.concepto = concepto;
         this.descuento = descuento;
-        this.dni = dni;
+        this.usuario = usuario;
         this.fecha = fecha;
-        this.nombre = nombre;
         this.precio = precio;
-        this.aplicacion = aplicacion;
     }
 
-    public int getCif() {
-        return cif;
-    }
-
-    public void setCif(int cif) {
-        this.cif = cif;
+    public int getId() {
+        return id;
     }
 
     public String getConcepto() {
@@ -49,57 +43,36 @@ public class Factura implements Serializable {
         this.concepto = concepto;
     }
 
-    public int getDescuento() {
+    public Descuento getDescuento() {
         return descuento;
     }
 
-    public void setDescuento(int descuento) {
+    public void setDescuento(Descuento descuento) {
         this.descuento = descuento;
     }
 
-    public int getDni() {
-        return dni;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setDni(int dni) {
-        this.dni = dni;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
-    public Date getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 
-    public int getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(int nombre) {
-        this.nombre = nombre;
-    }
-
-    public int getPrecio() {
+    public double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(int precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
-    }
-
-    public Aplicacion getAplicacion() {
-        return aplicacion;
-    }
-
-    public void setAplicacion(Aplicacion aplicacion) {
-        this.aplicacion = aplicacion;
-    }
-
-    @Override
-    public String toString() {
-        return "Factura{" + "cif=" + cif + ", concepto=" + concepto + ", descuento=" + descuento + ", dni=" + dni + ", fecha=" + fecha + ", nombre=" + nombre + ", precio=" + precio + ", aplicacion=" + aplicacion + '}';
-    }
+    }  
 
 }//end Factura

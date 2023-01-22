@@ -2,6 +2,7 @@ package interfaces;
 
 import interfaces.VistasAdmin.InterfazAdmin;
 import interfaces.VistasCliente.VistaUsuarios;
+import interfaces.VistasMonitor.VistaPrincipal;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -11,6 +12,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import modelos.Actividad;
+import modelos.AlquilerDecorator.Luces;
+import modelos.AlquilerDecorator.Material;
 import modelos.Aplicacion;
 import modelos.Clase;
 import modelos.Usuarios.Cliente;
@@ -21,13 +24,7 @@ import modelos.Usuarios.Socio;
 import modelos.Usuarios.Usuario;
 import utiles.Enum.LoginEnum;
 import utiles.Excepcion;
-import interfaces.VistasCliente.InterfazBuscarClase;
-import interfaces.VistasCliente.InterfazReservaPista;
-import interfaces.VistasMonitor.VistaDieta;
-import interfaces.VistasMonitor.VistaRutina;
 import modelos.AlquilerDecorator.Pista;
-import utiles.Enum.PistaFutbolEnum;
-import utiles.Enum.PistaPadelEnum;
 
 public class VentanaLogin extends javax.swing.JFrame {
     
@@ -48,21 +45,21 @@ public class VentanaLogin extends javax.swing.JFrame {
         Socio s2 = new Socio("123", "s2", "", LocalDate.of(1998, 12, 3), "", "");
         Socio s3 = new Socio("123", "s3", "", LocalDate.of(2000, 2, 5), "", "");
 
-        Actividad act1 = new Actividad(utiles.Enum.DiaEnum.LUNES, LocalTime.of(10, 30), new ArrayList<>(), utiles.Enum.ActividadEnum.BODY_PUMP);
-        Actividad act2 = new Actividad(utiles.Enum.DiaEnum.LUNES, LocalTime.of(17, 0), new ArrayList<>(), utiles.Enum.ActividadEnum.BOXEO);
-        Actividad act3 = new Actividad(utiles.Enum.DiaEnum.MARTES, LocalTime.of(10, 30), new ArrayList<>(), utiles.Enum.ActividadEnum.SPINNING);
-        Actividad act4 = new Actividad(utiles.Enum.DiaEnum.MARTES, LocalTime.of(17, 0), new ArrayList<>(), utiles.Enum.ActividadEnum.BODY_PUMP);
-        Actividad act5 = new Actividad(utiles.Enum.DiaEnum.MIERCOLES, LocalTime.of(10, 30), new ArrayList<>(), utiles.Enum.ActividadEnum.YOGA);
-        Actividad act6 = new Actividad(utiles.Enum.DiaEnum.MIERCOLES, LocalTime.of(17, 0), new ArrayList<>(), utiles.Enum.ActividadEnum.BOXEO);
-        Actividad act7 = new Actividad(utiles.Enum.DiaEnum.JUEVES, LocalTime.of(10, 30), new ArrayList<>(), utiles.Enum.ActividadEnum.SPINNING);
-        Actividad act8 = new Actividad(utiles.Enum.DiaEnum.JUEVES, LocalTime.of(17, 0), new ArrayList<>(), utiles.Enum.ActividadEnum.DEFENSA_PERSONAL);
-        Actividad act9 = new Actividad(utiles.Enum.DiaEnum.VIERNES, LocalTime.of(12, 0), new ArrayList<>(), utiles.Enum.ActividadEnum.YOGA);
+        Actividad act1 = new Actividad(utiles.Enum.DiaEnum.LUNES, LocalTime.of(10, 30), new ArrayList<>(), utiles.Enum.ActividadEnum.BODY_PUMP, 5);
+        Actividad act2 = new Actividad(utiles.Enum.DiaEnum.LUNES, LocalTime.of(17, 0), new ArrayList<>(), utiles.Enum.ActividadEnum.BOXEO, 4);
+        Actividad act3 = new Actividad(utiles.Enum.DiaEnum.MARTES, LocalTime.of(10, 30), new ArrayList<>(), utiles.Enum.ActividadEnum.SPINNING, 7);
+        Actividad act4 = new Actividad(utiles.Enum.DiaEnum.MARTES, LocalTime.of(17, 0), new ArrayList<>(), utiles.Enum.ActividadEnum.BODY_PUMP, 5);
+        Actividad act5 = new Actividad(utiles.Enum.DiaEnum.MIERCOLES, LocalTime.of(10, 30), new ArrayList<>(), utiles.Enum.ActividadEnum.YOGA, 8);
+        Actividad act6 = new Actividad(utiles.Enum.DiaEnum.MIERCOLES, LocalTime.of(17, 0), new ArrayList<>(), utiles.Enum.ActividadEnum.BOXEO, 4);
+        Actividad act7 = new Actividad(utiles.Enum.DiaEnum.JUEVES, LocalTime.of(10, 30), new ArrayList<>(), utiles.Enum.ActividadEnum.SPINNING, 7);
+        Actividad act8 = new Actividad(utiles.Enum.DiaEnum.JUEVES, LocalTime.of(17, 0), new ArrayList<>(), utiles.Enum.ActividadEnum.DEFENSA_PERSONAL, 5);
+        Actividad act9 = new Actividad(utiles.Enum.DiaEnum.VIERNES, LocalTime.of(12, 0), new ArrayList<>(), utiles.Enum.ActividadEnum.YOGA, 8);
 
         Monitor m1 = new Monitor(new ArrayList<>(), new ArrayList<>(Arrays.asList(act1, act4, act3, act7)), utiles.Enum.TurnoEnum.MAÑANA, "123", "m1", "", LocalDate.of(1990, 5, 12), "", "");
         Monitor m2 = new Monitor(new ArrayList<>(), new ArrayList<>(Arrays.asList(act2, act6, act8)), utiles.Enum.TurnoEnum.TARDE, "123", "m2", "", LocalDate.of(1993, 7, 2), "", "");
         Monitor m3 = new Monitor(new ArrayList<>(), new ArrayList<>(Arrays.asList(act5, act9)), utiles.Enum.TurnoEnum.MAÑANA, "123", "m3", "", LocalDate.of(1986, 2, 5), "", "");
             
-        Clase claseFutbol1 = new Clase(new HashMap<>() {{put(utiles.Enum.DiaEnum.MIERCOLES, LocalTime.of(19, 0));}}, utiles.Enum.NivelFutbolEnum.BENJAMIN, utiles.Enum.PistaFutbolEnum.PISTA1, utiles.Enum.ClaseEnum.FUTBOL, 10, new ArrayList<>());
+        Clase claseFutbol1 = new Clase(new HashMap<>() {{put(utiles.Enum.DiaEnum.MIERCOLES, LocalTime.of(19, 0));}}, utiles.Enum.NivelFutbolEnum.BENJAMIN, utiles.Enum.PistaFutbolEnum.PISTA1, utiles.Enum.ClaseEnum.FUTBOL, 1, new ArrayList<>());
         Clase claseFutbol2 = new Clase(new HashMap<>() {{put(utiles.Enum.DiaEnum.MARTES, LocalTime.of(19, 0)); put(utiles.Enum.DiaEnum.VIERNES, LocalTime.of(19, 0));}}, utiles.Enum.NivelFutbolEnum.CADETE, utiles.Enum.PistaFutbolEnum.PISTA1, utiles.Enum.ClaseEnum.FUTBOL, 13, new ArrayList<>());
         Clase claseFutbol3 = new Clase(new HashMap<>() {{put(utiles.Enum.DiaEnum.LUNES, LocalTime.of(19, 0)); put(utiles.Enum.DiaEnum.JUEVES, LocalTime.of(19, 0));}}, utiles.Enum.NivelFutbolEnum.SENIOR, utiles.Enum.PistaFutbolEnum.PISTA1, utiles.Enum.ClaseEnum.FUTBOL, 17, new ArrayList<>());
         
@@ -94,7 +91,7 @@ public class VentanaLogin extends javax.swing.JFrame {
         
         Pista pistaFutbol2 = new Pista(
                 new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", c2); put("19:00-20:00", c1); put("21:00-22:00", null);}},
-                new HashMap<>() {{put("16:00-17:00", s1); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", null);}},
+                new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", s1); put("19:00-20:00", null); put("21:00-22:00", null);}},
                 new HashMap<>() {{put("16:00-17:00", c2); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", s3);}},
                 new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", null);}},
                 new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", null);}},
@@ -108,7 +105,7 @@ public class VentanaLogin extends javax.swing.JFrame {
                 new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", s1); put("18:00-19:00", null); put("19:00-20:00", c3); put("21:00-22:00", null);}},
                 new HashMap<>() {{put("16:00-17:00", s2); put("17:00-18:00", null); put("18:00-19:00", c2); put("19:00-20:00", s3); put("21:00-22:00", c3);}},
                 new HashMap<>() {{put("16:00-17:00", s1); put("17:00-18:00", s2); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", null);}},
-                new HashMap<>() {{put("16:00-17:00", s1); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", c2); put("21:00-22:00", null);}},
+                new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", s1); put("19:00-20:00", c2); put("21:00-22:00", null);}},
                 1,
                 "",
                 "PADEL"
@@ -116,14 +113,36 @@ public class VentanaLogin extends javax.swing.JFrame {
         
         Pista pistaPadel2 = new Pista(
                 new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", c2); put("19:00-20:00", c1); put("21:00-22:00", null);}},
-                new HashMap<>() {{put("16:00-17:00", s1); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", c3); put("21:00-22:00", null);}},
-                new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", c2); put("19:00-20:00", s3); put("21:00-22:00", null);}},
+                new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", c3); put("21:00-22:00", null);}},
+                new HashMap<>() {{put("16:00-17:00", s1); put("17:00-18:00", null); put("18:00-19:00", c2); put("19:00-20:00", s3); put("21:00-22:00", null);}},
                 new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", s2); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", null);}},
                 new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", null);}},
                 2,
                 "",
                 "PADEL"
         );
+        
+        Pista pistaPadel3Decorator = new Luces(new Pista(
+                new HashMap<>() {{put("16:00-17:00", c2); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", c1); put("21:00-22:00", null);}},
+                new HashMap<>() {{put("16:00-17:00", s1); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", null);}},
+                new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", s3); put("19:00-20:00", null); put("21:00-22:00", null);}},
+                new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", s2); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", null);}},
+                new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", null);}},
+                3,
+                "",
+                "PADEL"
+        ));
+        
+        Pista pistaPadel4Decorator = new Material(new Luces(new Pista(
+                new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", s3); put("19:00-20:00", null); put("21:00-22:00", c1);}},
+                new HashMap<>() {{put("16:00-17:00", s1); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", null);}},
+                new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", s2); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", c2);}},
+                new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", null); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", null);}},
+                new HashMap<>() {{put("16:00-17:00", null); put("17:00-18:00", s2); put("18:00-19:00", null); put("19:00-20:00", null); put("21:00-22:00", c3);}},
+                4,
+                "",
+                "PADEL"
+        )));
         
         try {
             app.registrarUsuario(c1);
@@ -165,6 +184,8 @@ public class VentanaLogin extends javax.swing.JFrame {
             app.anadirPista(pistaFutbol2);
             app.anadirPista(pistaPadel1);
             app.anadirPista(pistaPadel2);
+            app.anadirPista(pistaPadel3Decorator);
+            app.anadirPista(pistaPadel4Decorator);
         }catch (Excepcion ex) {
             System.out.println("Excepcion: "+ex.toString());
         }
@@ -183,7 +204,6 @@ public class VentanaLogin extends javax.swing.JFrame {
         textoClickAqui = new javax.swing.JLabel();
         campoContrasenna = new javax.swing.JPasswordField();
         checkBoxMostrarContraseña = new javax.swing.JCheckBox();
-        jButton1 = new javax.swing.JButton();
         scrollLaminaRegistrarse = new javax.swing.JScrollPane();
         laminaRegistrarse = new javax.swing.JPanel();
         laminaBotonRegistrarse = new javax.swing.JPanel();
@@ -266,13 +286,6 @@ public class VentanaLogin extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout laminaLoginLayout = new javax.swing.GroupLayout(laminaLogin);
         laminaLogin.setLayout(laminaLoginLayout);
         laminaLoginLayout.setHorizontalGroup(
@@ -298,10 +311,7 @@ public class VentanaLogin extends javax.swing.JFrame {
                             .addComponent(campoContrasenna, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
                             .addGroup(laminaLoginLayout.createSequentialGroup()
                                 .addGap(16, 16, 16)
-                                .addComponent(checkBoxMostrarContraseña))))
-                    .addGroup(laminaLoginLayout.createSequentialGroup()
-                        .addGap(152, 152, 152)
-                        .addComponent(jButton1)))
+                                .addComponent(checkBoxMostrarContraseña)))))
                 .addGap(37, 37, 37))
         );
         laminaLoginLayout.setVerticalGroup(
@@ -319,13 +329,11 @@ public class VentanaLogin extends javax.swing.JFrame {
                 .addComponent(checkBoxMostrarContraseña)
                 .addGap(43, 43, 43)
                 .addComponent(botonIniciarSesion)
-                .addGap(26, 26, 26)
-                .addComponent(jButton1)
-                .addGap(40, 40, 40)
+                .addGap(89, 89, 89)
                 .addGroup(laminaLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textoRegistrarse)
                     .addComponent(textoClickAqui))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         scrollLaminaRegistrarse.setBackground(new java.awt.Color(83, 82, 83));
@@ -458,33 +466,31 @@ public class VentanaLogin extends javax.swing.JFrame {
     private void botonIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIniciarSesionActionPerformed
         Enum iniciarSesion = app.iniciarSesion(campoCorreo.getText(), arrayCharToString(campoContrasenna.getPassword()));
         
+        if (iniciarSesion != LoginEnum.ERROR_CONTRASENA && iniciarSesion != LoginEnum.ERROR_CORREO) {
+            campoCorreo.setBackground(Color.white);
+            campoContrasenna.setBackground(Color.white);
+        }
         if (iniciarSesion == LoginEnum.ADMIN){
-            System.out.println("admin");
-            InterfazAdmin iadmin = new InterfazAdmin(this);
+            new InterfazAdmin(this).setVisible(true);
             
         }
         else if (iniciarSesion == LoginEnum.SOCIO){
-            System.out.println("socio");
-            VistaUsuarios vu = new VistaUsuarios(this);
+            new VistaUsuarios(this).setVisible(true);
         }
         else if (iniciarSesion == LoginEnum.CLIENTE){
-            System.out.println("cliente");
-            VistaUsuarios vu = new VistaUsuarios(this);
+            new VistaUsuarios(this).setVisible(true);
 
         }
         else if (iniciarSesion == LoginEnum.MONITOR){
-            System.out.println("monitor");
-            VistaUsuarios vu = new VistaUsuarios(this);
+            new VistaPrincipal(this).setVisible(true);
 
         }
         else if (iniciarSesion == LoginEnum.PROFESOR){
-            System.out.println("profesor");
-            VistaUsuarios vu = new VistaUsuarios(this);
+            new VistaUsuarios(this).setVisible(true);
 
         }
         else if (iniciarSesion == LoginEnum.RECEPCIONISTA){
-            System.out.println("recepcionista");
-            VistaUsuarios vu = new VistaUsuarios(this);
+            new InterfazAdmin(this).setVisible(true);
 
         }
         else if (iniciarSesion == LoginEnum.ERROR_CONTRASENA) {
@@ -552,15 +558,6 @@ public class VentanaLogin extends javax.swing.JFrame {
         //Aplicacion.guardarDatos();
     }//GEN-LAST:event_formWindowClosing
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-
-        //new VistaDieta().setVisible(true);
-        new VistaRutina().setVisible(true);
-
-
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private LocalDate stringToDate(String fecha) {
         try {
             String[] fechaSplit = fecha.split("/");
@@ -626,7 +623,6 @@ public class VentanaLogin extends javax.swing.JFrame {
     private javax.swing.JTextField campoTelefono;
     private javax.swing.JCheckBox checkBoxMostrarContraseña;
     private javax.swing.JComboBox<String> desplegableTipoCliente;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel laminaBotonRegistrarse;
     private javax.swing.JPanel laminaLogin;
     private javax.swing.JPanel laminaObjetosRegistrarse;

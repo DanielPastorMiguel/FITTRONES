@@ -177,12 +177,18 @@ public class InterfazBuscarClase extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxNivelActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (app.apuntarSocioClase((Socio) app.getUsuarioLogueado(), app.getClase(String.valueOf(jComboBoxDeporte.getSelectedItem()), String.valueOf(jComboBoxNivel.getSelectedItem())))){
-            JOptionPane.showMessageDialog(this, "Has sido añadido a la clase", "EXITO", JOptionPane.INFORMATION_MESSAGE);
-        }else{
-            JOptionPane.showMessageDialog(this, "La clase tiene el aforo completo. Te avisaremos cuando haya una plaza libre", "ERROR", JOptionPane.ERROR_MESSAGE);
+        int resultado = app.apuntarSocioClase((Socio) app.getUsuarioLogueado(), app.getClase(String.valueOf(jComboBoxDeporte.getSelectedItem()), String.valueOf(jComboBoxNivel.getSelectedItem())));
+        switch (resultado) {
+            case 1:
+                JOptionPane.showMessageDialog(this, "Has sido añadido a la clase", "EXITO", JOptionPane.INFORMATION_MESSAGE);
+                break;
+            case 0:
+                JOptionPane.showMessageDialog(this, "Ya se encuentra inscrito en esta clase", "ERROR", JOptionPane.ERROR_MESSAGE);
+                break;
+            default:
+                JOptionPane.showMessageDialog(this, "La clase tiene el aforo completo. Te avisaremos cuando haya una plaza libre", "ERROR", JOptionPane.ERROR_MESSAGE);
+                break;
         }
-        System.out.println(app.getClase(String.valueOf(jComboBoxDeporte.getSelectedItem()), String.valueOf(jComboBoxNivel.getSelectedItem())).toString());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed

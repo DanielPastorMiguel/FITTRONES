@@ -18,14 +18,15 @@ public class Recepcionista extends Empleado implements IntCliente, Serializable{
         super(turno, contrasena, correo, dni, fechaNacimiento, nombre, telefono);
     }
 
-    public void verInformacionSocio(Socio s) {
+    public void setUsuario(Socio s) {
         proxyProteccionClientes.setSocio(s);
     }
 
-    public void verInformacionCliente(Cliente c) {
+    public void setUsuario(Cliente c) {
         proxyProteccionClientes.setCliente(c);
     }
 
+    @Override
     public String getInformacionCliente() {
         return proxyProteccionClientes.getInformacionCliente();
     }

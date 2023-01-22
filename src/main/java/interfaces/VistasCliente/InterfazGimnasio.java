@@ -35,10 +35,9 @@ public class InterfazGimnasio extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButtonAlta = new javax.swing.JButton();
-        jButtonBaja = new javax.swing.JButton();
         jButtonBusquedaActividades = new javax.swing.JButton();
         jButtonVolver = new javax.swing.JButton();
+        jButtonMisActividades = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -50,21 +49,24 @@ public class InterfazGimnasio extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel1.setText("Bienvenido a nuestro gym");
 
-        jButtonAlta.setText("Darse de alta");
-        jButtonAlta.addActionListener(new java.awt.event.ActionListener() {
+        jButtonBusquedaActividades.setText("Buscar actividades");
+        jButtonBusquedaActividades.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAltaActionPerformed(evt);
+                jButtonBusquedaActividadesActionPerformed(evt);
             }
         });
-
-        jButtonBaja.setText("Darse de baja");
-
-        jButtonBusquedaActividades.setText("Buscar actividades");
 
         jButtonVolver.setText("Volver");
         jButtonVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonVolverActionPerformed(evt);
+            }
+        });
+
+        jButtonMisActividades.setText("Ver mis actividades");
+        jButtonMisActividades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMisActividadesActionPerformed(evt);
             }
         });
 
@@ -80,10 +82,9 @@ public class InterfazGimnasio extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(182, 182, 182)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButtonBaja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonAlta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonBusquedaActividades, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jButtonVolver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonMisActividades, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(59, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -91,12 +92,10 @@ public class InterfazGimnasio extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonAlta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(26, 26, 26)
                 .addComponent(jButtonBusquedaActividades)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonBaja)
+                .addGap(27, 27, 27)
+                .addComponent(jButtonMisActividades)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonVolver)
                 .addContainerGap(64, Short.MAX_VALUE))
@@ -104,10 +103,6 @@ public class InterfazGimnasio extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButtonAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAltaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonAltaActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // TODO add your handling code here:
@@ -123,11 +118,18 @@ public class InterfazGimnasio extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButtonVolverActionPerformed
 
+    private void jButtonBusquedaActividadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBusquedaActividadesActionPerformed
+        new InterfazReservaActividades(this, "RESERVAR").setVisible(true);
+    }//GEN-LAST:event_jButtonBusquedaActividadesActionPerformed
+
+    private void jButtonMisActividadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMisActividadesActionPerformed
+        new InterfazReservaActividades(this, "VER").setVisible(true);
+    }//GEN-LAST:event_jButtonMisActividadesActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAlta;
-    private javax.swing.JButton jButtonBaja;
     private javax.swing.JButton jButtonBusquedaActividades;
+    private javax.swing.JButton jButtonMisActividades;
     private javax.swing.JButton jButtonVolver;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables

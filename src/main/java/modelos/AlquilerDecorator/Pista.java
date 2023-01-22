@@ -1,7 +1,9 @@
 package modelos.AlquilerDecorator;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import modelos.Usuarios.Cliente;
 import modelos.Usuarios.Socio;
 import modelos.Usuarios.Usuario;
@@ -37,6 +39,14 @@ public class Pista implements Serializable, Cloneable {
     
     public Pista(){
         
+    }
+    
+    public boolean aAlquilado(Usuario user){
+        if (alquilerLunes.values().contains(user)) return true;
+        if (alquilerMartes.values().contains(user)) return true;
+        if (alquilerMiercoles.values().contains(user)) return true;
+        if (alquilerJueves.values().contains(user)) return true;
+        return alquilerViernes.values().contains(user);
     }
 
     public HashMap getAlquilerLunes() {

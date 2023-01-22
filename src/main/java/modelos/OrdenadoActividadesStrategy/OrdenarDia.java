@@ -4,6 +4,7 @@
  */
 package modelos.OrdenadoActividadesStrategy;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -14,6 +15,8 @@ import modelos.Actividad;
  * @author Octavian
  */
 public class OrdenarDia implements IntEstrategiaOrdenadoActividades{
+    
+    List dia = List.of("LUNES", "MARTES", "MIERCOLES", "JUEVES", "VIERNES");
 
     @Override
     public void ordenarActividades(List<Actividad> actividades) {
@@ -23,8 +26,8 @@ public class OrdenarDia implements IntEstrategiaOrdenadoActividades{
             public int compare(Object a1, Object a2) {
                 Actividad act1 = (Actividad) a1;
                 Actividad act2 = (Actividad) a2;
-
-                return String.valueOf(act1.getDia()).compareTo(String.valueOf(act2.getDia()));
+                
+                return String.valueOf(dia.indexOf(String.valueOf(act1.getDia()))).compareTo(String.valueOf(dia.indexOf(String.valueOf(act2.getDia()))));
             }
         };
 

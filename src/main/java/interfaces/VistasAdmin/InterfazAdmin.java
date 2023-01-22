@@ -4,7 +4,9 @@
  */
 package interfaces.VistasAdmin;
 
+import interfaces.VistasCliente.InterfazVerPerfil;
 import javax.swing.JFrame;
+import modelos.Aplicacion;
 
 /**
  *
@@ -12,7 +14,8 @@ import javax.swing.JFrame;
  */
 public class InterfazAdmin extends javax.swing.JFrame {
 
-    private JFrame principal;
+    private JFrame anterior;
+    private Aplicacion app = Aplicacion.getInstancia();
 
     /**
      * Creates new form InterfazAdmin
@@ -22,8 +25,8 @@ public class InterfazAdmin extends javax.swing.JFrame {
     public InterfazAdmin(JFrame ventana) {
         initComponents();
         this.setLocationRelativeTo(null);
-        principal = ventana;
-        principal.setVisible(false);
+        anterior = ventana;
+        anterior.setVisible(false);
         this.setVisible(true);
 
     }
@@ -46,6 +49,7 @@ public class InterfazAdmin extends javax.swing.JFrame {
         jButtonCrearPista = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -129,7 +133,7 @@ public class InterfazAdmin extends javax.swing.JFrame {
                 .addComponent(jButtonCrearPista)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonVolver)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
@@ -137,15 +141,12 @@ public class InterfazAdmin extends javax.swing.JFrame {
 
     private void jButtonAltaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAltaClienteActionPerformed
         // TODO add your handling code here:
-        AltaCliente ac = new AltaCliente(this);
+        //AltaCliente ac = new AltaCliente(this);
 
     }//GEN-LAST:event_jButtonAltaClienteActionPerformed
 
     private void jButtonConsultarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarClientesActionPerformed
-        // TODO add your handling code here:
-        ConsultarClientes consulta = new ConsultarClientes(this);
-
-
+       new InterfazVerPerfil(this, app.getClientesYSocios()).setVisible(true);
     }//GEN-LAST:event_jButtonConsultarClientesActionPerformed
 
     private void jButtonConsultarReservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarReservasActionPerformed
@@ -163,14 +164,14 @@ public class InterfazAdmin extends javax.swing.JFrame {
 
     private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverActionPerformed
         // TODO add your handling code here:
-        principal.setVisible(true);
-                this.setVisible(false);
+        anterior.setVisible(true);
+        this.setVisible(false);
 
     }//GEN-LAST:event_jButtonVolverActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // TODO add your handling code here:
-        principal.setVisible(true);
+        anterior.setVisible(true);
     }//GEN-LAST:event_formWindowClosed
 
 

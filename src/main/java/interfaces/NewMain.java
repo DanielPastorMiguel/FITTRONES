@@ -9,6 +9,7 @@ import modelos.Usuarios.Monitor;
 import modelos.Usuarios.Socio;
 import utiles.Enum.*;
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.HashMap;
 import modelos.Aplicacion;
 import modelos.Clase;
@@ -21,7 +22,7 @@ public class NewMain {
     public static void main(String[] args) {
 
         Aplicacion app = Aplicacion.getInstancia();
-
+        
         Cliente c1 = new Cliente("123", "c1", "", LocalDate.of(2001, 5, 7), "", "");
         Cliente c2 = new Cliente("123", "c2", "", LocalDate.of(2002, 5, 17), "", "");
         Cliente c3 = new Cliente("123", "c3", "", LocalDate.of(2000, 7, 2), "", "");
@@ -30,15 +31,15 @@ public class NewMain {
         Socio s2 = new Socio("123", "s2", "", LocalDate.of(1998, 12, 3), "", "");
         Socio s3 = new Socio("123", "s3", "", LocalDate.of(2000, 2, 5), "", "");
 
-        Actividad act1 = new Actividad(DiaEnum.LUNES, LocalTime.of(10, 30), new ArrayList<>(), ActividadEnum.BODY_PUMP);
-        Actividad act2 = new Actividad(DiaEnum.LUNES, LocalTime.of(17, 0), new ArrayList<>(), ActividadEnum.BOXEO);
-        Actividad act3 = new Actividad(DiaEnum.MARTES, LocalTime.of(10, 30), new ArrayList<>(), ActividadEnum.SPINNING);
-        Actividad act4 = new Actividad(DiaEnum.MARTES, LocalTime.of(17, 0), new ArrayList<>(), ActividadEnum.BODY_PUMP);
-        Actividad act5 = new Actividad(DiaEnum.MIERCOLES, LocalTime.of(10, 30), new ArrayList<>(), ActividadEnum.YOGA);
-        Actividad act6 = new Actividad(DiaEnum.MIERCOLES, LocalTime.of(17, 0), new ArrayList<>(), ActividadEnum.BOXEO);
-        Actividad act7 = new Actividad(DiaEnum.JUEVES, LocalTime.of(10, 30), new ArrayList<>(), ActividadEnum.SPINNING);
-        Actividad act8 = new Actividad(DiaEnum.JUEVES, LocalTime.of(17, 0), new ArrayList<>(), ActividadEnum.DEFENSA_PERSONAL);
-        Actividad act9 = new Actividad(DiaEnum.VIERNES, LocalTime.of(12, 0), new ArrayList<>(), ActividadEnum.YOGA);
+        Actividad act1 = new Actividad(utiles.Enum.DiaEnum.LUNES, LocalTime.of(10, 30), new ArrayList<>(), utiles.Enum.ActividadEnum.BODY_PUMP, 5);
+        Actividad act2 = new Actividad(utiles.Enum.DiaEnum.LUNES, LocalTime.of(17, 0), new ArrayList<>(), utiles.Enum.ActividadEnum.BOXEO, 4);
+        Actividad act3 = new Actividad(utiles.Enum.DiaEnum.MARTES, LocalTime.of(10, 30), new ArrayList<>(), utiles.Enum.ActividadEnum.SPINNING, 7);
+        Actividad act4 = new Actividad(utiles.Enum.DiaEnum.MARTES, LocalTime.of(17, 0), new ArrayList<>(), utiles.Enum.ActividadEnum.BODY_PUMP, 5);
+        Actividad act5 = new Actividad(utiles.Enum.DiaEnum.MIERCOLES, LocalTime.of(10, 30), new ArrayList<>(), utiles.Enum.ActividadEnum.YOGA, 8);
+        Actividad act6 = new Actividad(utiles.Enum.DiaEnum.MIERCOLES, LocalTime.of(17, 0), new ArrayList<>(), utiles.Enum.ActividadEnum.BOXEO, 4);
+        Actividad act7 = new Actividad(utiles.Enum.DiaEnum.JUEVES, LocalTime.of(10, 30), new ArrayList<>(), utiles.Enum.ActividadEnum.SPINNING, 7);
+        Actividad act8 = new Actividad(utiles.Enum.DiaEnum.JUEVES, LocalTime.of(17, 0), new ArrayList<>(), utiles.Enum.ActividadEnum.DEFENSA_PERSONAL, 5);
+        Actividad act9 = new Actividad(utiles.Enum.DiaEnum.VIERNES, LocalTime.of(12, 0), new ArrayList<>(), utiles.Enum.ActividadEnum.YOGA, 8);
 
         Monitor m1 = new Monitor(new ArrayList<>(), new ArrayList<>(Arrays.asList(act1, act4, act3, act7)), TurnoEnum.MAÑANA, "123", "m1", "", LocalDate.of(1990, 5, 12), "", "");
         Monitor m2 = new Monitor(new ArrayList<>(), new ArrayList<>(Arrays.asList(act2, act6, act8)), TurnoEnum.TARDE, "123", "m2", "", LocalDate.of(1993, 7, 2), "", "");
@@ -106,6 +107,6 @@ public class NewMain {
             System.out.println(app.getClases().size());            
         } catch (Excepcion ex) {
             System.out.println("Excepcion: "+ex.toString());
-        }
+        }   
     }
 }

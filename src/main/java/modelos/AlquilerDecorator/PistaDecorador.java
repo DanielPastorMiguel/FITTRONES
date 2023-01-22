@@ -10,6 +10,7 @@ public abstract class PistaDecorador extends Pista {
     public Pista pista;
 
     public PistaDecorador(Pista pista) {
+        super(pista.getAlquilerLunes(), pista.getAlquilerMartes(), pista.getAlquilerMiercoles(), pista.getAlquilerJueves(), pista.getAlquilerViernes(), pista.getNumPista(), pista.getDescripcion(), pista.getTipo());
         this.pista = pista;
     }
 

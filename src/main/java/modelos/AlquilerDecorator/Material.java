@@ -13,7 +13,7 @@ public class Material extends PistaDecorador {
 
     @Override
     public String getDescripcion() {
-        return pista.getDescripcion() + ", con material";
+        return pista.getDescripcion() + " + material";
     }
 
     @Override

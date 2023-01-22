@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import modelos.Aplicacion;
 import modelos.Usuarios.Usuario;
 import modelos.FabricaRutina.*;
@@ -18,11 +20,14 @@ import modelos.Usuarios.Socio;
  */
 public class VistaRutina extends javax.swing.JFrame {
 
+    private JFrame anterior;
     /**
      * Creates new form VistaRutina
      */
-    public VistaRutina() {
+    public VistaRutina(JFrame anterior) {
         initComponents();
+        this.anterior = anterior;
+        anterior.setVisible(false);
         inicializarDesplegableNombres(jComboBoxNombre, app.getSocios());
     }
     
@@ -57,7 +62,12 @@ public class VistaRutina extends javax.swing.JFrame {
         jComboBoxTipoRutina = new javax.swing.JComboBox<>();
         jButtonCrear = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -123,17 +133,27 @@ public class VistaRutina extends javax.swing.JFrame {
 
     private void jButtonCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearActionPerformed
         Rutina rutina;
-        if ((String)jComboBoxTipoRutina.getSelectedItem() == "Principiante"){
-            rutina = fp.crearEjercicios();
-                       
-        }else if((String)jComboBoxTipoRutina.getSelectedItem() == "Intermedio"){
-            rutina = fi.crearEjercicios();
-            //Falta añadir la dieta el socio elegido
-        }else{
-            rutina = fa.crearEjercicios();
+        switch (String.valueOf(jComboBoxTipoRutina.getSelectedItem())) {
+            case "Principiante":
+                rutina = fp.crearEjercicios();
+                break;
+            case "Intermedio":
+                rutina = fi.crearEjercicios();
+                break;
+            default:
+                rutina = fa.crearEjercicios();
+                break;
         }
         app.getSocio((String)jComboBoxNombre.getSelectedItem()).setRutina(rutina);
+        JOptionPane.showMessageDialog(this, "Se ha creado la rutina correctamente", "FITTRONES", JOptionPane.INFORMATION_MESSAGE);
+        anterior.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButtonCrearActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        anterior.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_formWindowClosed
 
     
 
