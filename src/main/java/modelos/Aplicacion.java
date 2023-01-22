@@ -296,6 +296,14 @@ public class Aplicacion {
             System.out.println("ERROR al generar la factura");
         }
     }
+    
+    public void vaciarPista(Pista p){
+        p.getAlquilerLunes().forEach((k,v) -> p.getAlquilerLunes().put(k, null));
+        p.getAlquilerMartes().forEach((k,v) -> p.getAlquilerMartes().put(k, null));
+        p.getAlquilerMiercoles().forEach((k,v) -> p.getAlquilerMiercoles().put(k, null));
+        p.getAlquilerJueves().forEach((k,v) -> p.getAlquilerJueves().put(k, null));
+        p.getAlquilerViernes().forEach((k,v) -> p.getAlquilerViernes().put(k, null));
+    }
 
     /**
      * Apunta un socio a una clase

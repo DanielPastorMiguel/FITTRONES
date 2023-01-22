@@ -471,27 +471,22 @@ public class VentanaLogin extends javax.swing.JFrame {
             campoContrasenna.setBackground(Color.white);
         }
         if (iniciarSesion == LoginEnum.ADMIN){
-            new InterfazAdmin(this).setVisible(true);
-            
+            new InterfazAdmin(this).setVisible(true);   
         }
         else if (iniciarSesion == LoginEnum.SOCIO){
             new VistaUsuarios(this).setVisible(true);
         }
         else if (iniciarSesion == LoginEnum.CLIENTE){
             new VistaUsuarios(this).setVisible(true);
-
         }
         else if (iniciarSesion == LoginEnum.MONITOR){
             new VistaPrincipal(this).setVisible(true);
-
         }
         else if (iniciarSesion == LoginEnum.PROFESOR){
             new VistaUsuarios(this).setVisible(true);
-
         }
         else if (iniciarSesion == LoginEnum.RECEPCIONISTA){
             new InterfazAdmin(this).setVisible(true);
-
         }
         else if (iniciarSesion == LoginEnum.ERROR_CONTRASENA) {
             JOptionPane.showMessageDialog(this, "Contraseña incorrecta", "ERROR", JOptionPane.ERROR_MESSAGE);

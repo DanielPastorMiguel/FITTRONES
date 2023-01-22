@@ -5,9 +5,7 @@
 package interfaces.VistasCliente;
 
 import java.util.List;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import modelos.Actividad;
 import modelos.Aplicacion;

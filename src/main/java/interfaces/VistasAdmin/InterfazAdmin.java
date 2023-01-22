@@ -4,6 +4,7 @@
  */
 package interfaces.VistasAdmin;
 
+import interfaces.VistasCliente.InterfazReservaPista;
 import interfaces.VistasCliente.InterfazVerPerfil;
 import javax.swing.JFrame;
 import modelos.Aplicacion;
@@ -44,7 +45,6 @@ public class InterfazAdmin extends javax.swing.JFrame {
         jButtonAltaCliente = new javax.swing.JButton();
         jButtonConsultarClientes = new javax.swing.JButton();
         jButtonConsultarReservas = new javax.swing.JButton();
-        jButtonConsultarVentas = new javax.swing.JButton();
         jButtonVolver = new javax.swing.JButton();
         jButtonCrearPista = new javax.swing.JButton();
 
@@ -73,17 +73,10 @@ public class InterfazAdmin extends javax.swing.JFrame {
             }
         });
 
-        jButtonConsultarReservas.setText("Consultar reservas");
+        jButtonConsultarReservas.setText("Consultar pistas");
         jButtonConsultarReservas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonConsultarReservasActionPerformed(evt);
-            }
-        });
-
-        jButtonConsultarVentas.setText("Consultar ventas");
-        jButtonConsultarVentas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonConsultarVentasActionPerformed(evt);
             }
         });
 
@@ -95,6 +88,11 @@ public class InterfazAdmin extends javax.swing.JFrame {
         });
 
         jButtonCrearPista.setText("Crear nueva pista");
+        jButtonCrearPista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCrearPistaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -111,7 +109,6 @@ public class InterfazAdmin extends javax.swing.JFrame {
                             .addComponent(jButtonConsultarClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonAltaCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonConsultarReservas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonConsultarVentas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonVolver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonCrearPista, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(60, Short.MAX_VALUE))
@@ -128,10 +125,8 @@ public class InterfazAdmin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonConsultarReservas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonConsultarVentas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonCrearPista)
-                .addGap(18, 18, 18)
+                .addGap(47, 47, 47)
                 .addComponent(jButtonVolver)
                 .addContainerGap(24, Short.MAX_VALUE))
         );
@@ -150,17 +145,8 @@ public class InterfazAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonConsultarClientesActionPerformed
 
     private void jButtonConsultarReservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarReservasActionPerformed
-        // TODO add your handling code here:
-        ConsultarReservas cr = new ConsultarReservas(this);
-
-
+        new InterfazReservaPista(this).setVisible(true);
     }//GEN-LAST:event_jButtonConsultarReservasActionPerformed
-
-    private void jButtonConsultarVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarVentasActionPerformed
-        // TODO add your handling code here:
-        ConsultarVentas cv = new ConsultarVentas(this);
-
-    }//GEN-LAST:event_jButtonConsultarVentasActionPerformed
 
     private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverActionPerformed
         // TODO add your handling code here:
@@ -174,12 +160,15 @@ public class InterfazAdmin extends javax.swing.JFrame {
         anterior.setVisible(true);
     }//GEN-LAST:event_formWindowClosed
 
+    private void jButtonCrearPistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearPistaActionPerformed
+        new InterfazCrearPista(this).setVisible(true);
+    }//GEN-LAST:event_jButtonCrearPistaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAltaCliente;
     private javax.swing.JButton jButtonConsultarClientes;
     private javax.swing.JButton jButtonConsultarReservas;
-    private javax.swing.JButton jButtonConsultarVentas;
     private javax.swing.JButton jButtonCrearPista;
     private javax.swing.JButton jButtonVolver;
     private javax.swing.JLabel jLabel1;

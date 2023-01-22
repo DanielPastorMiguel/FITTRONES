@@ -4,7 +4,11 @@
  */
 package interfaces.VistasMonitor;
 
+import interfaces.VistasCliente.InterfazVerPerfil;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import modelos.Aplicacion;
+import modelos.Usuarios.Monitor;
 
 /**
  *
@@ -13,6 +17,8 @@ import javax.swing.JFrame;
 public class VistaPrincipal extends javax.swing.JFrame {
 
     private JFrame anterior;
+    private Aplicacion app = Aplicacion.getInstancia();
+            
     /**
      * Creates new form VistaPrincipal
      */
@@ -34,7 +40,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButtonRutina = new javax.swing.JButton();
         jButtonDieta = new javax.swing.JButton();
-        jButtonSociosAsignados = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -62,13 +67,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButtonSociosAsignados.setText("Socios Asignados");
-        jButtonSociosAsignados.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSociosAsignadosActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -78,8 +76,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
                     .addComponent(jButtonRutina, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonDieta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonSociosAsignados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButtonDieta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(115, 115, 115))
         );
         layout.setVerticalGroup(
@@ -87,13 +84,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addGap(57, 57, 57)
                 .addComponent(jButtonRutina)
-                .addGap(34, 34, 34)
+                .addGap(48, 48, 48)
                 .addComponent(jButtonDieta)
-                .addGap(34, 34, 34)
-                .addComponent(jButtonSociosAsignados)
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         pack();
@@ -113,16 +108,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
         new VistaDieta(this).setVisible(true);
     }//GEN-LAST:event_jButtonDietaActionPerformed
 
-    private void jButtonSociosAsignadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSociosAsignadosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonSociosAsignadosActionPerformed
-
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonDieta;
     private javax.swing.JButton jButtonRutina;
-    private javax.swing.JButton jButtonSociosAsignados;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

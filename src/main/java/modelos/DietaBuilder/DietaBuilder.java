@@ -17,12 +17,12 @@ public abstract class DietaBuilder {
     protected List<String> listaDatosMeriendas = List.of("Cereales con proteina", "Porridge de avena", "Tostadas de tomate y jamon york", "Yogur con cereales y fruta", "Fruta", "Tortitas proteicas", "Frutos secos", "Tostada de aguacate", "Huevos revueltos", "Tortitas de arroz con jamon york");
     protected List<String> listaDatosCenas = List.of("Pescado al horno", "Pizza proteica", "Tosta de sardinas", "Huevo y patata cocida", "Fajitas de pollo con pimientos", "Burrito bowl", "Sushi", "Poke bowl");
 
+    public DietaBuilder(){
+        dieta = new Dieta();
+    }
+    
     public Dieta getDieta() {
         return dieta;
-    }
-
-    public void crearNuevaDieta() {
-        dieta = new Dieta();
     }
 
     /**
@@ -71,7 +71,7 @@ public abstract class DietaBuilder {
         Plato plato = new Plato();
 
         int numeroCalorias;
-        int numeroRandom = (int) (Math.random() * (listaDatosDesayunos.size() + 1));
+        int numeroRandom = (int) (Math.random() * (listaDatosDesayunos.size() - 1));
 
         if (tipo.equals("definicion")) {
             numeroCalorias = (int) (Math.random() * (400 - 300 + 1) + 300); //random entre 300 y 400 kcal
@@ -88,7 +88,7 @@ public abstract class DietaBuilder {
     protected Plato crearPlatoComida(String tipo) {
         Plato plato = new Plato();
         int numeroCalorias;
-        int numeroRandom = (int) (Math.random() * (listaDatosDesayunos.size() + 1));
+        int numeroRandom = (int) (Math.random() * (listaDatosComidas.size() - 1));
 
         if (tipo.equals("definicion")) {
             numeroCalorias = (int) (Math.random() * (700 - 600 + 1) + 600); //random entre 700 y 600 kcal
@@ -104,7 +104,7 @@ public abstract class DietaBuilder {
     protected Plato crearPlatoMerienda(String tipo) {
         Plato plato = new Plato();
         int numeroCalorias;
-        int numeroRandom = (int) (Math.random() * (listaDatosMeriendas.size() + 1));
+        int numeroRandom = (int) (Math.random() * (listaDatosMeriendas.size() - 1));
 
         if (tipo.equals("definicion")) {
             numeroCalorias = (int) (Math.random() * (500 - 400 + 1) + 400); //random entre 500 y 400 kcal
@@ -121,7 +121,7 @@ public abstract class DietaBuilder {
     protected Plato crearPlatoCena(String tipo) {
         Plato plato = new Plato();
         int numeroCalorias;
-        int numeroRandom = (int) (Math.random() * (listaDatosCenas.size() + 1));
+        int numeroRandom = (int) (Math.random() * (listaDatosCenas.size() - 1));
 
         if (tipo.equals("definicion")) {
             numeroCalorias = (int) (Math.random() * (600 - 500 + 1) + 500); //random entre 600 y 600 kcal
