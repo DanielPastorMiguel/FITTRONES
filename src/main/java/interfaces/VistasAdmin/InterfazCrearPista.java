@@ -16,6 +16,7 @@ public class InterfazCrearPista extends javax.swing.JFrame {
     public InterfazCrearPista(JFrame anterior) {
         initComponents();
         this.anterior = anterior;
+        anterior.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")
