@@ -41,6 +41,11 @@ public class Pista implements Serializable, Cloneable {
         
     }
     
+    /**
+     * Comprueba si un usuario ha alquilado esta pista
+     * @param user
+     * @return 
+     */
     public boolean aAlquilado(Usuario user){
         if (alquilerLunes.values().contains(user)) return true;
         if (alquilerMartes.values().contains(user)) return true;
@@ -117,6 +122,11 @@ public class Pista implements Serializable, Cloneable {
         this.descripcion = descripcion;
     }
 
+    /**
+     * Clona el objecto Pista
+     * @return
+     * @throws CloneNotSupportedException 
+     */
     @Override
     public Object clone() throws CloneNotSupportedException {
         Pista otra = null;

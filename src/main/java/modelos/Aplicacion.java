@@ -67,6 +67,11 @@ public class Aplicacion {
     private Aplicacion() {
     }
 
+    /**
+     * Registra un usuario en la aplicación
+     * @param usuario
+     * @throws Excepcion 
+     */
     public void registrarUsuario(Usuario usuario) throws Excepcion {
         if (usuario == null) {
             throw new Excepcion("el cliente introducido no es válido");
@@ -78,6 +83,12 @@ public class Aplicacion {
         }
     }
 
+    /**
+     * Metodo para iniciar sesion en la aplicación
+     * @param correo
+     * @param contrasena
+     * @return Enum en funcion del resultado de inicio sesion. Puede devolver LoginEnum.CLIENTE si las credenciales introducidas corresponden a un cliente normal, LoginEnum.SOCIO, LoginEnum.RECEPCIONISTA, LoginEnum.MONITOR o LoginEnum.ERROR_CONTRASENA y LoginEnum.ERROR_CORREO si se han introducido valores erroneos
+     */
     public Enum iniciarSesion(String correo, String contrasena) {
         if (correo.equals("admin@fittrones.com") && contrasena.equals("admin")) {
             return LoginEnum.ADMIN;
@@ -107,6 +118,11 @@ public class Aplicacion {
         return LoginEnum.ERROR_CORREO;
     }
 
+    /**
+     * Comprueba si un correo dado existe en los usuarios registrados
+     * @param correo
+     * @return 
+     */
     private boolean existeCorreo(String correo) {
         for (Usuario usuario : usuariosRegistrados) {
             if (usuario.getCorreo().equals(correo)) {
@@ -209,6 +225,10 @@ public class Aplicacion {
         return null;
     }
 
+    /**
+     * Devuelve todos los clientes y socios registrados en la aplicacion
+     * @return 
+     */
     public List<Usuario> getClientesYSocios() {
         List<Usuario> lista = new ArrayList<>();
         for (Usuario user : usuariosRegistrados) {
@@ -219,6 +239,11 @@ public class Aplicacion {
         return lista;
     }
 
+    /**
+     * Obtiene las actividades en las que esta apuntado un usuario dado
+     * @param user
+     * @return Una lista de actividades
+     */
     public List<Actividad> getActividadesUsuario(Usuario user) {
         List<Actividad> lista = new ArrayList<>();
         for (Actividad act : listaActividades) {
@@ -229,6 +254,11 @@ public class Aplicacion {
         return lista;
     }
 
+    /**
+     * Obtiene los descuentos asociados a un usuario
+     * @param usuario
+     * @return 
+     */
     public Descuento getDescuento(Usuario usuario) {
         DescuentoCompuesto dCompuesto = new DescuentoCompuesto();
         if (usuario.getClass() == Socio.class) {
@@ -270,6 +300,13 @@ public class Aplicacion {
         return cal.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY;
     }
 
+    /**
+     * Genera una factura y crea un documento .txt con la misma
+     * @param concepto
+     * @param descuento
+     * @param usuario
+     * @param precio 
+     */
     public void generarFactura(String concepto, Descuento descuento, Usuario usuario, double precio) {
         Factura f = new Factura(listaFacturas.size(), concepto, descuento, usuario, LocalDate.now(), precio);
         listaFacturas.add(f);
@@ -291,6 +328,10 @@ public class Aplicacion {
         }
     }
     
+    /**
+     * Vacia todos las asignaciones que tiene una pista
+     * @param p 
+     */
     public void vaciarPista(Pista p){
         p.getAlquilerLunes().forEach((k,v) -> p.getAlquilerLunes().put(k, null));
         p.getAlquilerMartes().forEach((k,v) -> p.getAlquilerMartes().put(k, null));
@@ -351,6 +392,10 @@ public class Aplicacion {
         return null;
     }
 
+    /**
+     * Obtiene todos los socios registrados en la aplicacion
+     * @return Una lista de socios
+     */
     public List<Socio> getSocios() {
         List<Socio> listasocios = new ArrayList<>();
         for (Usuario user : usuariosRegistrados) {
@@ -361,6 +406,11 @@ public class Aplicacion {
         return listasocios;
     }
 
+    /**
+     * Obtiene un socio dado un correo
+     * @param correo
+     * @return 
+     */
     public Socio getSocio(String correo) {
         for (Socio s : getSocios()) {
             if (s.getCorreo().equals(correo)) {
@@ -386,6 +436,10 @@ public class Aplicacion {
         return listaPistas;
     }
 
+    /**
+     * Obtiene todas las pistas de futbol registradas en la aplicacion
+     * @return 
+     */
     public List<Pista> getPistasFutbol() {
         List<Pista> pf = new ArrayList<>();
         for (Pista p : listaPistas) {
@@ -396,6 +450,10 @@ public class Aplicacion {
         return pf;
     }
 
+    /**
+     * Obtiene todas las pistas de padel registradas en la aplicacion
+     * @return 
+     */
     public List<Pista> getPistasPadel() {
         List<Pista> pf = new ArrayList<>();
         for (Pista p : listaPistas) {
@@ -406,6 +464,10 @@ public class Aplicacion {
         return pf;
     }
 
+    /**
+     * Devuelve el numero de empleados registrados en la aplicacion
+     * @return 
+     */
     public int getNumEmpleados() {
         int num = 0;
         for (Usuario user : usuariosRegistrados) {
@@ -416,6 +478,10 @@ public class Aplicacion {
         return num;
     }
 
+    /**
+     * Devuelve el numero de socios registrados en la aplicacion
+     * @return 
+     */
     public int getNumSocios() {
         int num = 0;
         for (Usuario user : usuariosRegistrados) {

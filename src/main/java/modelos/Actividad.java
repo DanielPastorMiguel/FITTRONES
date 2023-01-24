@@ -19,6 +19,14 @@ public class Actividad implements Serializable{
     private int aforo;
     private List<Usuario> usuariosInscritos;
 
+    /**
+     * Constructor de objetos de tipo Actividad
+     * @param dia
+     * @param hora
+     * @param usuariosInscritos
+     * @param tipo
+     * @param aforo 
+     */
     public Actividad(Enum dia, LocalTime hora, List<Usuario> usuariosInscritos, Enum tipo, int aforo) {
         this.dia = dia;
         this.hora = hora;
@@ -27,6 +35,10 @@ public class Actividad implements Serializable{
         this.aforo = aforo;
     }
 
+    /**
+     * Indcribe un socio en la Actividad
+     * @param u 
+     */
     public void inscribirSocio(Usuario u){
         usuariosInscritos.add(u);
     }

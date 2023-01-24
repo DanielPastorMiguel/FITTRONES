@@ -15,6 +15,10 @@ public class Cliente extends Usuario implements Serializable, IntCliente {
         super(contrasena, correo, dni, fechaNacimiento, nombre, telefono);
     }
 
+    /**
+     * Obtiene la informacion del cliente
+     * @return 
+     */
     @Override
     public String getInformacionCliente() {
         String datos = "Nombre: " + getNombre() + ";Correo: " + getCorreo() + ";Dni: " + getDni() + ";Fecha nacimiento: " + getFechaNacimiento() + ";Telefono: " + getTelefono() + ";Contraseña: " + getContrasena();

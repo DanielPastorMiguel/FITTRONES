@@ -81,6 +81,10 @@ public class Socio extends Usuario implements IntCliente, IntSuscriptor, Seriali
         listaNotificaciones = new ArrayList<>();
     }
 
+    /**
+     * Obtiene la informacion del socio
+     * @return 
+     */
     @Override
     public String getInformacionCliente() {
         String datos = "Nombre: " + getNombre() + ";Correo: " + getCorreo() + ";Dni: " + getDni() + ";Fecha nacimiento: " + getFechaNacimiento() + ";Telefono: " + getTelefono() + ";Numero socio: "+ getId() +";Contraseña: " + getContrasena();
